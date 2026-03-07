@@ -15,20 +15,25 @@ const NewsletterSection = () => {
   return (
     <section className="py-24 px-6 bg-secondary">
       <div className="container max-w-2xl mx-auto text-center">
-        <p className="font-body text-sm tracking-[0.3em] uppercase text-primary">
+        <p className="font-body text-xs tracking-[0.4em] uppercase text-primary">
           Exclusive Access
         </p>
         <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 text-foreground">
-          Join the List
+          Become Luscious
         </h2>
         <p className="font-body text-muted-foreground mt-4">
-          Be the first to know about new launches, VIP offers, and beauty secrets.
+          Join our ritual circle and get 10% off your first order, plus early access to new launches and VIP offers.
         </p>
 
         {submitted ? (
-          <p className="mt-10 font-body text-primary font-semibold tracking-wide">
-            ✨ Welcome to the VV Luscious family!
-          </p>
+          <div className="mt-10">
+            <p className="font-display text-xl text-primary font-semibold">
+              ✨ Welcome to the ritual.
+            </p>
+            <p className="font-body text-sm text-muted-foreground mt-2">
+              Check your inbox for your 10% off code.
+            </p>
+          </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
@@ -43,7 +48,7 @@ const NewsletterSection = () => {
               type="submit"
               className="bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-8 py-3 hover:opacity-90 transition-opacity shadow-gold whitespace-nowrap"
             >
-              Subscribe
+              Become Luscious
             </button>
           </form>
         )}
