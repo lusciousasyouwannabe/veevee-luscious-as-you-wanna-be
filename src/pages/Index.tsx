@@ -1,9 +1,12 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ProductsSection from "@/components/ProductsSection";
-import AboutSection from "@/components/AboutSection";
-import SocialSection from "@/components/SocialSection";
+import BestSellersSection from "@/components/BestSellersSection";
+import BrandStorySection from "@/components/BrandStorySection";
+import TransformationSection from "@/components/TransformationSection";
+import RitualBundlesSection from "@/components/RitualBundlesSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsletterSection from "@/components/NewsletterSection";
+import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -11,10 +14,13 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <ProductsSection />
-      <AboutSection />
-      <SocialSection />
+      <BestSellersSection />
+      <BrandStorySection />
+      <TransformationSection />
+      <RitualBundlesSection />
+      <TestimonialsSection />
       <NewsletterSection />
+      <FinalCTASection />
       <Footer />
     </div>
   );
