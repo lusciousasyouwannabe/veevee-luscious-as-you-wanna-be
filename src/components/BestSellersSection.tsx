@@ -9,7 +9,7 @@ const bestsellers = [
     price: "$38",
     image: productBodyButter,
     tag: "Bestseller",
-    collection: "Glow Ritual",
+    collection: "Glow Collection",
   },
   {
     name: "Golden Glow Body Scrub",
