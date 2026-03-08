@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between h-16 px-6">
-        <a href="#" className="font-display text-lg tracking-wider text-gradient-gold font-bold">
+        <a href="#" className="flex items-center gap-2 font-display text-lg tracking-wider text-gradient-gold font-bold">
+          <img src={logo} alt="VeeVee Luscious logo" className="w-8 h-8 rounded-full object-cover" />
           VEEVEE LUSCIOUS AS YOU WANNA BE
         </a>
 
