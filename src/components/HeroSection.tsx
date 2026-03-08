@@ -25,10 +25,10 @@ const HeroSection = () => {
           Luxury Self-Care
         </p>
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mt-6 leading-[1] animate-fade-up-delay-1">
-          <span className="text-gradient-gold">VeeVee Luscious</span>
+          <span className="text-gradient-gold">Luxury Self-Care</span>
           <br />
           <span className="text-foreground italic font-medium text-3xl md:text-5xl lg:text-6xl">
-            As You Wanna Be
+            That Feels As Good As It Works
           </span>
         </h1>
         <p className="font-body text-sm md:text-base text-muted-foreground mt-6 max-w-xl mx-auto leading-relaxed animate-fade-up-delay-2">
