@@ -20,7 +20,7 @@ const bundles = [
     savings: "Save $8",
   },
   {
-    name: "Couples Ritual Kit",
+    name: "Couples Kit",
     description: "Massage oil, bath soak & body butters for two. Connection redefined.",
     price: "$110",
     savings: "Save $15",
