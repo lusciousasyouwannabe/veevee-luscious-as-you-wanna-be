@@ -24,7 +24,7 @@ const HeroSection = () => {
           </span>
         </h1>
         <p className="font-body text-sm md:text-base text-muted-foreground mt-6 max-w-xl mx-auto leading-relaxed animate-fade-up-delay-2">
-          Crafted by two mothers. Designed to nourish skin, calm the body, and turn everyday care into ritual.
+          Crafted by two mothers. Designed to nourish skin, calm the body, and elevate everyday care.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
           <a
