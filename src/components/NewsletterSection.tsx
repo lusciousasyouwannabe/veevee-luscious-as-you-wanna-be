@@ -22,13 +22,13 @@ const NewsletterSection = () => {
           Become Luscious
         </h2>
         <p className="font-body text-muted-foreground mt-4">
-          Join our ritual circle and get 10% off your first order, plus early access to new launches and VIP offers.
+          Join our inner circle and get 10% off your first order, plus early access to new launches and VIP offers.
         </p>
 
         {submitted ? (
           <div className="mt-10">
             <p className="font-display text-xl text-primary font-semibold">
-              ✨ Welcome to the ritual.
+              ✨ Welcome to the family.
             </p>
             <p className="font-body text-sm text-muted-foreground mt-2">
               Check your inbox for your 10% off code.

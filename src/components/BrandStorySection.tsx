@@ -26,7 +26,7 @@ const BrandStorySection = () => {
             <div className="mt-8 space-y-5 text-muted-foreground font-body leading-relaxed text-sm md:text-base">
               <p>
                 VeeVee Luscious was born from a simple belief: self-care should be
-                more than a routine — it should be a ritual. As mothers, we know
+                more than a routine — it should be an experience. As mothers, we know
                 what it means to pour into everyone else. We created this brand so
                 you can pour back into yourself.
               </p>

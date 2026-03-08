@@ -8,7 +8,7 @@ const Footer = () => {
               VEEVEE LUSCIOUS
             </span>
             <p className="font-body text-xs text-muted-foreground mt-2 max-w-xs">
-              Luxury self-care that nourishes skin, calms the body, and turns everyday care into ritual.
+              Luxury self-care that nourishes skin, calms the body, and elevates everyday care.
             </p>
           </div>
 
@@ -17,7 +17,7 @@ const Footer = () => {
               Collections
             </h4>
             <div className="space-y-2">
-              {["Glow Ritual", "Soft Skin Ritual", "Bath Ritual", "Gentleman's Ritual", "Couples Ritual"].map((c) => (
+              {["Glow Collection", "Soft Skin Collection", "Bath Collection", "Gentleman's Collection", "Couples Collection"].map((c) => (
                 <a key={c} href="#bestsellers" className="block font-body text-xs text-muted-foreground hover:text-primary transition-colors">
                   {c}
                 </a>

@@ -9,28 +9,28 @@ const bestsellers = [
     price: "$38",
     image: productBodyButter,
     tag: "Bestseller",
-    collection: "Glow Ritual",
+    collection: "Glow Collection",
   },
   {
     name: "Golden Glow Body Scrub",
     price: "$32",
     image: productBodyScrub,
     tag: "Fan Favorite",
-    collection: "Soft Skin Ritual",
+    collection: "Soft Skin Collection",
   },
   {
     name: "Lavender Dream Bath Soak",
     price: "$28",
     image: productBathSoak,
     tag: "New",
-    collection: "Bath Ritual",
+    collection: "Bath Collection",
   },
   {
     name: "Sensual Massage Oil",
     price: "$34",
     image: productMassageOil,
     tag: "Couples Pick",
-    collection: "Couples Ritual",
+    collection: "Couples Collection",
   },
 ];
 
@@ -46,7 +46,7 @@ const BestSellersSection = () => {
             Best Sellers
           </h2>
           <p className="font-body text-muted-foreground mt-4 max-w-lg mx-auto">
-            The rituals our community can't stop raving about.
+            The products our community can't stop raving about.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ const BestSellersSection = () => {
                   {product.price}
                 </p>
                 <button className="mt-4 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                  Add to Ritual
+                  Add to Cart
                 </button>
               </div>
             </div>

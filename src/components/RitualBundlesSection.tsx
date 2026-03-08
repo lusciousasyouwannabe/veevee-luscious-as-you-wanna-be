@@ -2,7 +2,7 @@ import ritualSetImage from "@/assets/ritual-set.jpg";
 
 const bundles = [
   {
-    name: "The Luscious Ritual Set",
+    name: "The Luscious Self-Care Set",
     description: "Body butter, scrub & bath soak — the complete self-care experience.",
     price: "$89",
     savings: "Save $9",
@@ -20,7 +20,7 @@ const bundles = [
     savings: "Save $8",
   },
   {
-    name: "Couples Ritual Kit",
+    name: "Couples Kit",
     description: "Massage oil, bath soak & body butters for two. Connection redefined.",
     price: "$110",
     savings: "Save $15",
@@ -37,7 +37,7 @@ const RitualBundlesSection = () => {
               Curated Sets
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 text-foreground leading-tight">
-              Ritual Bundles
+              Curated Bundles
             </h2>
             <p className="font-body text-muted-foreground mt-4 max-w-md">
               Thoughtfully paired collections for every kind of self-care moment.
@@ -73,7 +73,7 @@ const RitualBundlesSection = () => {
           <div className="relative">
             <img
               src={ritualSetImage}
-              alt="VeeVee Luscious ritual bundle set"
+              alt="VeeVee Luscious bundle set"
               className="w-full aspect-square object-cover"
             />
             <div className="absolute inset-0 border border-primary/20" />
