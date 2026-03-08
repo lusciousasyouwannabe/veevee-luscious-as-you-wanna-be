@@ -15,9 +15,9 @@ const testimonials = [
   },
   {
     name: "Keisha W.",
-    text: "My husband and I do the couples ritual every Sunday. It's become our thing. The massage oil is divine.",
+    text: "My husband and I do the couples self-care every Sunday. It's become our thing. The massage oil is divine.",
     rating: 5,
-    product: "Couples Ritual Kit",
+    product: "Couples Kit",
   },
 ];
 

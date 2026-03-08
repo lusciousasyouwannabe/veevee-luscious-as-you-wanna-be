@@ -28,7 +28,7 @@ const NewsletterSection = () => {
         {submitted ? (
           <div className="mt-10">
             <p className="font-display text-xl text-primary font-semibold">
-              ✨ Welcome to the ritual.
+              ✨ Welcome to the family.
             </p>
             <p className="font-body text-sm text-muted-foreground mt-2">
               Check your inbox for your 10% off code.

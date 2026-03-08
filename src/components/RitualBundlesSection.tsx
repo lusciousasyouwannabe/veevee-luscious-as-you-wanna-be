@@ -73,7 +73,7 @@ const RitualBundlesSection = () => {
           <div className="relative">
             <img
               src={ritualSetImage}
-              alt="VeeVee Luscious ritual bundle set"
+              alt="VeeVee Luscious bundle set"
               className="w-full aspect-square object-cover"
             />
             <div className="absolute inset-0 border border-primary/20" />

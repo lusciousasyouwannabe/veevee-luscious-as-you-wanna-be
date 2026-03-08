@@ -28,7 +28,7 @@ const FinalCTASection = () => {
             href="#bestsellers"
             className="inline-block bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-12 py-4 hover:opacity-90 transition-opacity shadow-gold"
           >
-            Begin Your Ritual
+            Begin Your Journey
           </a>
         </div>
       </div>

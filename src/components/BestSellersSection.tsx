@@ -77,7 +77,7 @@ const BestSellersSection = () => {
                   {product.price}
                 </p>
                 <button className="mt-4 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                  Add to Ritual
+                  Add to Cart
                 </button>
               </div>
             </div>

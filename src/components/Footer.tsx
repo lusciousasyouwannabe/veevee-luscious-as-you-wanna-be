@@ -17,7 +17,7 @@ const Footer = () => {
               Collections
             </h4>
             <div className="space-y-2">
-              {["Glow Ritual", "Soft Skin Ritual", "Bath Ritual", "Gentleman's Ritual", "Couples Ritual"].map((c) => (
+              {["Glow Collection", "Soft Skin Collection", "Bath Collection", "Gentleman's Collection", "Couples Collection"].map((c) => (
                 <a key={c} href="#bestsellers" className="block font-body text-xs text-muted-foreground hover:text-primary transition-colors">
                   {c}
                 </a>

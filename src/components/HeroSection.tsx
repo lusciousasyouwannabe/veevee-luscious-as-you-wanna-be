@@ -6,7 +6,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="VeeVee Luscious luxury self-care ritual"
+          alt="VeeVee Luscious luxury self-care"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
