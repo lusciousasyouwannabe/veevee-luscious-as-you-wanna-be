@@ -37,7 +37,7 @@ const RitualBundlesSection = () => {
               Curated Sets
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 text-foreground leading-tight">
-              Ritual Bundles
+              Curated Bundles
             </h2>
             <p className="font-body text-muted-foreground mt-4 max-w-md">
               Thoughtfully paired collections for every kind of self-care moment.
