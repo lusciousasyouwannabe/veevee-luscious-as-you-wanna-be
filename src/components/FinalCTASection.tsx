@@ -21,7 +21,7 @@ const FinalCTASection = () => {
           <span className="text-gradient-gold italic">Luscious</span>?
         </h2>
         <p className="font-body text-muted-foreground mt-6 max-w-md mx-auto">
-          Nourish your skin. Calm your body. Reconnect with softness. Your ritual starts now.
+          Nourish your skin. Calm your body. Reconnect with softness. Your journey starts now.
         </p>
         <div className="mt-10">
           <a
