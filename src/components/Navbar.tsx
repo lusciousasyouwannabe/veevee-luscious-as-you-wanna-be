@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between h-16 px-6">
         <a href="#" className="font-display text-lg tracking-wider text-gradient-gold font-bold">
-          VEEVEE LUSCIOUS
+          VEEVEE LUSCIOUS AS YOU WANNA BE
         </a>
 
         <div className="hidden md:flex items-center gap-8">

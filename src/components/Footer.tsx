@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div>
             <span className="font-display text-lg tracking-wider text-gradient-gold font-bold">
-              VEEVEE LUSCIOUS
+              VEEVEE LUSCIOUS AS YOU WANNA BE
             </span>
             <p className="font-body text-xs text-muted-foreground mt-2 max-w-xs">
               Luxury self-care that nourishes skin, calms the body, and elevates everyday care.
