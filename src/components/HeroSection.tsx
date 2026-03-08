@@ -31,13 +31,13 @@ const HeroSection = () => {
             href="#bestsellers"
             className="inline-block bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-10 py-4 hover:opacity-90 transition-opacity shadow-gold"
           >
-            Begin Your Ritual
+            Begin Your Journey
           </a>
           <a
             href="#bestsellers"
             className="inline-block border border-primary text-primary font-body font-semibold text-sm tracking-[0.15em] uppercase px-10 py-4 hover:bg-primary hover:text-primary-foreground transition-all"
           >
-            Shop the Ritual
+            Shop Now
           </a>
         </div>
       </div>
