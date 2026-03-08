@@ -14,7 +14,7 @@ const HeroSection = () => {
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <p className="font-body text-xs tracking-[0.5em] uppercase text-primary animate-fade-up">
-          Luxury Self-Care Rituals
+          Luxury Self-Care
         </p>
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mt-6 leading-[1] animate-fade-up-delay-1">
           <span className="text-gradient-gold">Luxury Self-Care</span>
