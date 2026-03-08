@@ -16,7 +16,7 @@ const bestsellers = [
     price: "$32",
     image: productBodyScrub,
     tag: "Fan Favorite",
-    collection: "Soft Skin Ritual",
+    collection: "Soft Skin Collection",
   },
   {
     name: "Lavender Dream Bath Soak",
