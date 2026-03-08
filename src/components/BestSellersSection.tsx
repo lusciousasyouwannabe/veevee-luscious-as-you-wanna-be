@@ -30,7 +30,7 @@ const bestsellers = [
     price: "$34",
     image: productMassageOil,
     tag: "Couples Pick",
-    collection: "Couples Ritual",
+    collection: "Couples Collection",
   },
 ];
 
