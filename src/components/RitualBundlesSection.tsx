@@ -2,7 +2,7 @@ import ritualSetImage from "@/assets/ritual-set.jpg";
 
 const bundles = [
   {
-    name: "The Luscious Ritual Set",
+    name: "The Luscious Self-Care Set",
     description: "Body butter, scrub & bath soak — the complete self-care experience.",
     price: "$89",
     savings: "Save $9",
