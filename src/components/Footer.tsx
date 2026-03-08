@@ -8,7 +8,7 @@ const Footer = () => {
               VEEVEE LUSCIOUS
             </span>
             <p className="font-body text-xs text-muted-foreground mt-2 max-w-xs">
-              Luxury self-care that nourishes skin, calms the body, and turns everyday care into ritual.
+              Luxury self-care that nourishes skin, calms the body, and elevates everyday care.
             </p>
           </div>
 
