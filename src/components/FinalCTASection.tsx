@@ -14,7 +14,7 @@ const FinalCTASection = () => {
 
       <div className="relative z-10 text-center max-w-2xl mx-auto">
         <p className="font-body text-xs tracking-[0.4em] uppercase text-primary">
-          Your Ritual Awaits
+          Your Glow Awaits
         </p>
         <h2 className="font-display text-4xl md:text-6xl font-bold mt-4 text-foreground leading-tight">
           Ready to Feel{" "}
