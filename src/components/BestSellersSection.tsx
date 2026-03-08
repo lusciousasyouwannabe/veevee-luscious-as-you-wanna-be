@@ -23,7 +23,7 @@ const bestsellers = [
     price: "$28",
     image: productBathSoak,
     tag: "New",
-    collection: "Bath Ritual",
+    collection: "Bath Collection",
   },
   {
     name: "Sensual Massage Oil",
