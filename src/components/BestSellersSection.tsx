@@ -46,7 +46,7 @@ const BestSellersSection = () => {
             Best Sellers
           </h2>
           <p className="font-body text-muted-foreground mt-4 max-w-lg mx-auto">
-            The rituals our community can't stop raving about.
+            The products our community can't stop raving about.
           </p>
         </div>
 
