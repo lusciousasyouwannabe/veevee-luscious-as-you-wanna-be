@@ -1,5 +1,4 @@
 import heroImage from "@/assets/hero-ritual.jpg";
-import logo from "@/assets/logo.png";
 
 const HeroSection = () => {
   return (
@@ -14,13 +13,6 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <div className="flex items-center justify-center mb-6 animate-fade-up">
-          <img
-            src={logo}
-            alt="VeeVee Luscious logo"
-            className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover"
-          />
-        </div>
         <p className="font-body text-xs tracking-[0.5em] uppercase text-primary animate-fade-up">
           Luxury Self-Care
         </p>
