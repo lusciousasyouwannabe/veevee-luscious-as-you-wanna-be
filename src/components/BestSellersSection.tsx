@@ -1,7 +1,7 @@
-import productBodyButter from "@/assets/product-body-butter.jpg";
-import productBodyScrub from "@/assets/product-body-scrub.jpg";
-import productBathSoak from "@/assets/product-bath-soak.jpg";
-import productMassageOil from "@/assets/product-massage-oil.jpg";
+import productBodyButter from "@/assets/product-selfcare-edited.jpg";
+import productBodyScrub from "@/assets/product-glow-topview-edited.jpg";
+import productBathSoak from "@/assets/product-lavender-edited.jpg";
+import productMassageOil from "@/assets/product-glow-collection-edited.jpg";
 
 const bestsellers = [
   {
@@ -61,6 +61,7 @@ const BestSellersSection = () => {
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
                 <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold tracking-wider uppercase px-3 py-1">
                   {product.tag}
@@ -89,3 +90,4 @@ const BestSellersSection = () => {
 };
 
 export default BestSellersSection;
+
