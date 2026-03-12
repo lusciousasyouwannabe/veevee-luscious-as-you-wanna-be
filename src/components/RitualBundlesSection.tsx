@@ -1,4 +1,4 @@
-import ritualSetImage from "@/assets/ritual-set.jpg";
+import ritualSetImage from "@/assets/product-selfcare-edited.jpg";
 
 const bundles = [
   {
@@ -75,6 +75,7 @@ const RitualBundlesSection = () => {
               src={ritualSetImage}
               alt="VeeVee Luscious bundle set"
               className="w-full aspect-square object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 border border-primary/20" />
           </div>
@@ -85,3 +86,4 @@ const RitualBundlesSection = () => {
 };
 
 export default RitualBundlesSection;
+
