@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import logo from "@/assets/transparent_logo.png";
+import logo from "@/assets/logo-black-gold.png";
+import bgImage from "@/assets/invoice-bg-lavender.jpg";
 
 interface LineItem {
   id: number;
