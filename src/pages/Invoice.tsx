@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import logo from "@/assets/transparent_logo.png";
+import logo from "@/assets/logo-black-gold.png";
+import bgImage from "@/assets/invoice-bg-lavender.jpg";
 
 interface LineItem {
   id: number;
@@ -36,7 +37,12 @@ const Invoice = () => {
   const handlePrint = () => window.print();
 
   return (
-    <div className="min-h-screen bg-[hsl(0,0%,5%)] text-[hsl(40,20%,90%)] font-[var(--font-body)]">
+    <div 
+      className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat text-[hsl(40,20%,90%)] font-[var(--font-body)]"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="min-h-screen bg-black/60 backdrop-blur-[2px]">
       {/* Controls - hidden on print */}
       <div className="print:hidden sticky top-0 z-50 bg-[hsl(0,0%,8%)] border-b border-[hsl(40,15%,18%)] px-6 py-3 flex items-center justify-between">
         <a href="/" className="text-sm text-[hsl(40,10%,55%)] hover:text-[hsl(43,72%,55%)] transition-colors">
@@ -215,6 +221,8 @@ const Invoice = () => {
             VeeVee Luscious · Luscious As You Wanna Be · Thank you for your business
           </p>
         </div>
+      </div>
+
       </div>
     </div>
   );
