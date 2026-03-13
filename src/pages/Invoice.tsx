@@ -222,6 +222,8 @@ const Invoice = () => {
           </p>
         </div>
       </div>
+
+      </div>
     </div>
   );
 };
