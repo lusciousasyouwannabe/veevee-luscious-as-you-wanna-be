@@ -20,10 +20,10 @@ const SubscriptionSection = () => {
               Monthly Ritual Box
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 text-foreground leading-tight">
-              48-Hour Pre-Sale This Weekend
+              This Weekend Only — 48-Hour Sale
             </h2>
             <p className="font-body text-muted-foreground mt-4 max-w-lg">
-              Join the curated monthly box subscription and get handpicked VeeVee Luscious self-care favorites delivered every month.
+              Join the curated monthly box subscription and get handpicked VeeVee Luscious self-care favorites delivered every month. Don't miss this weekend-only deal!
             </p>
 
             <div className="mt-8 p-6 bg-card border border-border space-y-4">
@@ -32,7 +32,7 @@ const SubscriptionSection = () => {
                 <p className="font-body text-sm text-muted-foreground line-through">$75/mo</p>
               </div>
               <p className="font-body text-sm text-foreground uppercase tracking-[0.15em]">
-                Pre-sale pricing valid for 48 hours only
+                This weekend only — 48-hour sale pricing
               </p>
               <p className="font-body text-sm text-muted-foreground">
                 After pre-sale ends, monthly subscription returns to $75.
