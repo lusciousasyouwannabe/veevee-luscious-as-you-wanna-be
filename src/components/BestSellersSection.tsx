@@ -71,6 +71,11 @@ const BestSellersSection = () => {
                 <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold tracking-wider uppercase px-3 py-1">
                   {product.tag}
                 </span>
+                <img
+                  src={logo}
+                  alt="VeeVee Luscious"
+                  className="absolute bottom-3 right-3 w-10 h-10 opacity-60"
+                />
               </div>
               <div className="p-5">
                 <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-1">
