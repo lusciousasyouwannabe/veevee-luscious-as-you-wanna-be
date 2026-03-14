@@ -2,6 +2,7 @@ import productGentleman from "@/assets/product-selfcare-edited.jpg";
 import productOhHoney1 from "@/assets/product-glow-topview-edited.jpg";
 import productGoodGirl from "@/assets/product-lavender-edited.jpg";
 import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
+import logo from "@/assets/transparent_logo.png";
 
 const bestsellers = [
   {
