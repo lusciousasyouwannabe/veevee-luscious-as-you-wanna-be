@@ -8,22 +8,12 @@ import berryVanilla3 from "@/assets/product-berry-vanilla-3.jpg";
 import berryVanilla4 from "@/assets/product-berry-vanilla-4.jpg";
 import berryVanilla5 from "@/assets/product-berry-vanilla-5.jpg";
 import berryVanilla6 from "@/assets/product-berry-vanilla-6.jpg";
-import citronella1 from "@/assets/product-citronella-1.jpg";
-import citronella2 from "@/assets/product-citronella-2.jpg";
-import citronella3 from "@/assets/product-citronella-3.jpg";
-
 const products = [
   {
     name: "Very Berry Vanilla Milk & Botanical Bath Soak",
     category: "Bath Soaks",
     price: "$22",
     images: [berryVanilla1, berryVanilla6],
-  },
-  {
-    name: "Cool Citronella Luxury Bath Bar",
-    category: "Bath Bars",
-    price: "$15",
-    images: [citronella1, citronella2, citronella3],
   },
 ];
 

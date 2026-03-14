@@ -1,17 +1,8 @@
-import productGentleman from "@/assets/product-selfcare-edited.jpg";
 import productOhHoney1 from "@/assets/product-glow-topview-edited.jpg";
 import productGoodGirl from "@/assets/product-lavender-edited.jpg";
 import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
 
 const bestsellers = [
-  {
-    name: "The Gentleman",
-    price: "$75",
-    image: productGentleman,
-    tag: "Bestseller",
-    collection: "Men's Collection",
-    description: "Whipped kokum body butter, creamy body scrub, moisturizing bath soak & luxury bath bar.",
-  },
   {
     name: "Ohh Honey Collection",
     price: "$72",
