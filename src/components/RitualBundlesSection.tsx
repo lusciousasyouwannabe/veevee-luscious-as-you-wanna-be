@@ -1,4 +1,4 @@
-import ritualSetImage from "@/assets/product-selfcare-edited.jpg";
+import ritualSetImage from "@/assets/product-glow-topview-edited.jpg";
 
 const bundles = [
   {
