@@ -16,7 +16,7 @@ const products = [
   {
     name: "Very Berry Vanilla Milk & Botanical Bath Soak",
     category: "Bath Soaks",
-    price: "$28",
+    price: "$22",
     images: [berryVanilla1, berryVanilla6],
   },
   {
