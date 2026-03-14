@@ -32,7 +32,7 @@ const SubscriptionSection = () => {
                 <p className="font-body text-sm text-muted-foreground line-through">$75/mo</p>
               </div>
               <p className="font-body text-sm text-foreground uppercase tracking-[0.15em]">
-                Pre-sale pricing valid for 48 hours only
+                This weekend only — 48-hour sale pricing
               </p>
               <p className="font-body text-sm text-muted-foreground">
                 After pre-sale ends, monthly subscription returns to $75.
