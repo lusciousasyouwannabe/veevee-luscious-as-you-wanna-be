@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import logo from "@/assets/transparent_logo.png";
 import Footer from "@/components/Footer";
 
 import berryVanilla1 from "@/assets/product-berry-vanilla-1.jpg";
@@ -69,11 +68,6 @@ const Shop = () => {
                   <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold tracking-wider uppercase px-3 py-1">
                     {product.category}
                   </span>
-                  <img
-                    src={logo}
-                    alt="VeeVee Luscious"
-                    className="absolute bottom-3 right-3 w-10 h-10 opacity-60"
-                  />
                 </div>
 
                 {/* Thumbnail strip */}

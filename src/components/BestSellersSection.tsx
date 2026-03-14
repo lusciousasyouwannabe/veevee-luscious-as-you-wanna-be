@@ -2,7 +2,6 @@ import productGentleman from "@/assets/product-selfcare-edited.jpg";
 import productOhHoney1 from "@/assets/product-glow-topview-edited.jpg";
 import productGoodGirl from "@/assets/product-lavender-edited.jpg";
 import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
-import logo from "@/assets/transparent_logo.png";
 
 const bestsellers = [
   {
@@ -71,11 +70,6 @@ const BestSellersSection = () => {
                 <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold tracking-wider uppercase px-3 py-1">
                   {product.tag}
                 </span>
-                <img
-                  src={logo}
-                  alt="VeeVee Luscious"
-                  className="absolute bottom-3 right-3 w-10 h-10 opacity-60"
-                />
               </div>
               <div className="p-5">
                 <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-1">
