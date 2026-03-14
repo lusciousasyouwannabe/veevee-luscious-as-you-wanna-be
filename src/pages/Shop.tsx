@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import logo from "@/assets/transparent_logo.png";
 import Footer from "@/components/Footer";
 
 import berryVanilla1 from "@/assets/product-berry-vanilla-1.jpg";
