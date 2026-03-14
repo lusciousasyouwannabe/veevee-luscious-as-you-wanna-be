@@ -17,12 +17,12 @@ const products = [
     name: "Very Berry Vanilla Milk & Botanical Bath Soak",
     category: "Bath Soaks",
     price: "$28",
-    images: [berryVanilla1, berryVanilla2, berryVanilla3, berryVanilla4, berryVanilla5, berryVanilla6],
+    images: [berryVanilla1, berryVanilla6],
   },
   {
     name: "Cool Citronella Luxury Bath Bar",
     category: "Bath Bars",
-    price: "$14",
+    price: "$15",
     images: [citronella1, citronella2, citronella3],
   },
 ];
