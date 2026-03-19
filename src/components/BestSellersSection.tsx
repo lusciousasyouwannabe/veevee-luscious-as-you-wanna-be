@@ -4,11 +4,11 @@ import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
 
 const bestsellers = [
   {
-    name: "Ohh Honey Collection",
+    name: "Ohh Honey",
     price: "$72",
     image: productOhHoney1,
     tag: "Fan Favorite",
-    collection: "Ohh Honey",
+    collection: "Ohh Honey Collection",
     description: "",
   },
   {
@@ -16,15 +16,15 @@ const bestsellers = [
     price: "$68",
     image: productGoodGirl,
     tag: "New",
-    collection: "Women's Collection",
+    collection: "Good Girl Collection",
     description: "",
   },
   {
-    name: "Ohh Honey Collection",
+    name: "Ohh Honey",
     price: "$34",
     image: productOhHoney2,
     tag: "Couples Pick",
-    collection: "Ohh Honey",
+    collection: "Ohh Honey Collection",
     description: "",
   },
 ];
