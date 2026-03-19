@@ -1,1 +1,4 @@
 project_id = "jpujaqqvbfwvtzsxvxap"
+
+[functions.clover-charge]
+verify_jwt = false
