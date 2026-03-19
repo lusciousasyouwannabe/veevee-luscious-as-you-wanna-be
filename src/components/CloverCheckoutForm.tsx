@@ -24,11 +24,7 @@ const CloverCheckoutForm = ({ totalCents, onSuccess, onCancel, itemSummary }: Cl
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const pakmsId = import.meta.env.VITE_CLOVER_PAKMS_ID;
-    if (!pakmsId) {
-      setError("Clover PAKMS key is not configured. Contact the store owner.");
-      return;
-    }
+    const pakmsId = "4dfd746c22cd9272176c5e5d13285095";
 
     if (!window.Clover) {
       setError("Clover SDK failed to load. Please refresh the page.");
