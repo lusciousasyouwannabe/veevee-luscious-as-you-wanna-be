@@ -115,7 +115,8 @@ const CloverCheckoutForm = ({ totalCents, onSuccess, onCancel, itemSummary }: Cl
           </label>
           <div
             ref={cardRef}
-            className="w-full border border-border bg-background px-4 py-3 min-h-[48px]"
+            className="w-full border border-border bg-background px-4 py-3 min-h-[48px] relative overflow-hidden"
+            style={{ position: "relative", zIndex: 1 }}
           />
         </div>
 
