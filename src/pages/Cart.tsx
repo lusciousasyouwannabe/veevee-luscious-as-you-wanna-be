@@ -17,7 +17,7 @@ const Cart = () => {
     setError(null);
 
     try {
-      const { data, error: fnError } = await supabase.functions.invoke("clover-charge", {
+      const { data, error: fnError } = await supabase.functions.invoke("clover-checkout", {
         body: {
           items: items.map((i) => ({
             name: i.name,
