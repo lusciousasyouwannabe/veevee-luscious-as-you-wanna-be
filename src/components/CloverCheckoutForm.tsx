@@ -130,6 +130,7 @@ const CloverCheckoutForm = ({ totalCents, onSuccess, onCancel, itemSummary }: Cl
               bottom: auto !important;
             }
           `}</style>
+        </div>
 
         {error && (
           <p className="font-body text-sm text-destructive">{error}</p>
