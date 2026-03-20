@@ -115,10 +115,21 @@ const CloverCheckoutForm = ({ totalCents, onSuccess, onCancel, itemSummary }: Cl
           </label>
           <div
             ref={cardRef}
-            className="w-full border border-border bg-background px-4 py-3 min-h-[48px] relative overflow-hidden"
-            style={{ position: "relative", zIndex: 1 }}
+            id="clover-card-element"
+            className="w-full border border-border bg-white px-4 py-3 min-h-[48px]"
           />
-        </div>
+          <style>{`
+            #clover-card-element iframe {
+              position: relative !important;
+              width: 100% !important;
+              height: 48px !important;
+              min-height: 48px !important;
+              top: auto !important;
+              left: auto !important;
+              right: auto !important;
+              bottom: auto !important;
+            }
+          `}</style>
 
         {error && (
           <p className="font-body text-sm text-destructive">{error}</p>
