@@ -25,7 +25,7 @@ const Cart = () => {
             price: i.price,
           })),
           email: email || undefined,
-          returnUrl: window.location.origin + "/cart?success=true",
+          returnUrl: window.location.origin + "/checkout/success",
         },
       });
 
