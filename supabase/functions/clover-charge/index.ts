@@ -15,67 +15,66 @@ serve(async (req) => {
     const CLOVER_API_KEY = Deno.env.get("CLOVER_API_KEY");
     const CLOVER_MERCHANT_ID = Deno.env.get("CLOVER_MERCHANT_ID");
 
-    if (!CLOVER_API_KEY) {
-      throw new Error("CLOVER_API_KEY is not configured");
-    }
-    if (!CLOVER_MERCHANT_ID) {
-      throw new Error("CLOVER_MERCHANT_ID is not configured");
-    }
+    if (!CLOVER_API_KEY) throw new Error("CLOVER_API_KEY is not configured");
+    if (!CLOVER_MERCHANT_ID) throw new Error("CLOVER_MERCHANT_ID is not configured");
 
-    const { source, amount, currency, description, email } = await req.json();
+    const { items, email, returnUrl } = await req.json();
 
-    if (!source || !amount) {
+    if (!items || !items.length) {
       return new Response(
-        JSON.stringify({ error: "Missing required fields: source, amount" }),
+        JSON.stringify({ error: "Cart is empty" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // Create charge via Clover Ecommerce API (production)
-    const chargeRes = await fetch(
-      `https://scl.clover.com/v1/charges`,
+    // Build shopping cart for Clover Hosted Checkout
+    const shoppingCart = {
+      lineItems: items.map((item: any) => ({
+        name: item.name,
+        unitQty: item.quantity,
+        price: Math.round(item.price * 100), // convert to cents
+      })),
+    };
+
+    const body: any = {
+      customer: email ? { email } : {},
+      shoppingCart,
+    };
+
+    // Create Hosted Checkout session
+    const checkoutRes = await fetch(
+      `https://api.clover.com/invoicingcheckoutservice/v1/checkouts`,
       {
         method: "POST",
         headers: {
           Authorization: `Bearer ${CLOVER_API_KEY}`,
           "Content-Type": "application/json",
+          "X-Clover-Merchant-Id": CLOVER_MERCHANT_ID,
         },
-        body: JSON.stringify({
-          amount: Math.round(amount), // amount in cents
-          currency: currency || "usd",
-          source,
-          description: description || "VeeVee Luscious order",
-          receipt_email: email || undefined,
-        }),
+        body: JSON.stringify(body),
       }
     );
 
-    const chargeData = await chargeRes.json();
+    const checkoutData = await checkoutRes.json();
 
-    if (!chargeRes.ok) {
-      console.error("Clover charge failed:", chargeData);
+    if (!checkoutRes.ok) {
+      console.error("Clover checkout session failed:", checkoutData);
       return new Response(
-        JSON.stringify({
-          error: chargeData.message || "Payment failed",
-          details: chargeData,
-        }),
-        {
-          status: chargeRes.status,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
+        JSON.stringify({ error: checkoutData.message || "Failed to create checkout session", details: checkoutData }),
+        { status: checkoutRes.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    return new Response(JSON.stringify({ success: true, charge: chargeData }), {
-      status: 200,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ success: true, checkoutUrl: checkoutData.href }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   } catch (error) {
-    console.error("Clover charge error:", error);
+    console.error("Clover checkout error:", error);
     const message = error instanceof Error ? error.message : "Unknown error";
-    return new Response(JSON.stringify({ error: message }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: message }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   }
 });
