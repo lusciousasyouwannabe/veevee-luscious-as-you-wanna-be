@@ -30,7 +30,7 @@ serve(async (req) => {
 
     // Build shopping cart for Clover Hosted Checkout
     const shoppingCart = {
-      lineItems: items.map((item) => ({
+      lineItems: items.map((item: { name: string; quantity: number; price: number }) => ({
         name: item.name,
         unitQty: item.quantity,
         price: Math.round(item.price * 100), // convert to cents
@@ -43,26 +43,44 @@ serve(async (req) => {
     };
 
     // Create Hosted Checkout session
-    const checkoutRes = await fetch(
-      `https://api.clover.com/invoicingcheckoutservice/v1/checkouts`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${CLOVER_API_KEY}`,
-          "Content-Type": "application/json",
-          "X-Clover-Merchant-Id": CLOVER_MERCHANT_ID,
-        },
-        body: JSON.stringify(body),
-      }
-    );
+    const checkoutUrl = `https://api.clover.com/invoicingcheckoutservice/v1/checkouts`;
+    console.log("Calling Clover API:", checkoutUrl);
 
-    const checkoutData = await checkoutRes.json();
+    const checkoutRes = await fetch(checkoutUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${CLOVER_API_KEY}`,
+        "Content-Type": "application/json",
+        "X-Clover-Merchant-Id": CLOVER_MERCHANT_ID,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const responseText = await checkoutRes.text();
+    console.log("Clover response status:", checkoutRes.status, "body:", responseText);
 
     if (!checkoutRes.ok) {
-      console.error("Clover checkout session failed:", JSON.stringify(checkoutData));
+      console.error("Clover checkout session failed:", responseText);
+      let errorMessage = "Failed to create checkout session";
+      try {
+        const parsed = JSON.parse(responseText);
+        errorMessage = parsed.message || errorMessage;
+      } catch {
+        errorMessage = responseText || errorMessage;
+      }
       return new Response(
-        JSON.stringify({ error: checkoutData.message || "Failed to create checkout session", details: checkoutData }),
+        JSON.stringify({ error: errorMessage }),
         { status: checkoutRes.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    let checkoutData;
+    try {
+      checkoutData = JSON.parse(responseText);
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid response from payment provider" }),
+        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
