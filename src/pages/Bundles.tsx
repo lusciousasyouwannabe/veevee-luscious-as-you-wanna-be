@@ -62,6 +62,15 @@ const bundles: BundleItem[] = [
     includes: ["Massage oil", "Bath soak", "Body butters for two", "Connection redefined"],
     category: "Kits",
   },
+  // Mini Bundles
+  {
+    id: "blueberry-chamomile",
+    name: "Blue Berry Chamomile",
+    price: 45,
+    image: blueberryChamomile,
+    includes: ["Scrub", "Bath soak", "Body butter"],
+    category: "Sets",
+  },
   // Self Care Sets
   {
     id: "selfcare-mini",
