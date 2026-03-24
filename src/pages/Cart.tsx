@@ -1,46 +1,15 @@
-import { useState } from "react";
-import { Minus, Plus, Trash2, ShoppingBag, CheckCircle } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
-import { supabase } from "@/integrations/supabase/client";
 
 const Cart = () => {
-  const { items, updateQuantity, removeFromCart, totalPrice, totalItems, clearCart } = useCart();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [email, setEmail] = useState("");
+  const { items, updateQuantity, removeFromCart, totalPrice, totalItems } = useCart();
 
-  const handleCheckout = async () => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const { data, error: fnError } = await supabase.functions.invoke("clover-checkout", {
-        body: {
-          items: items.map((i) => ({
-            name: i.name,
-            quantity: i.quantity,
-            price: i.price,
-          })),
-          email: email || undefined,
-          returnUrl: window.location.origin + "/checkout/success",
-        },
-      });
-
-      if (fnError) throw new Error(fnError.message);
-      if (data?.error) throw new Error(data.error);
-
-      if (data?.checkoutUrl) {
-        // Redirect to Clover Hosted Checkout
-        window.location.href = data.checkoutUrl;
-      }
-    } catch (err: any) {
-      setError(err.message || "Failed to start checkout. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+  const handleCheckout = () => {
+    // Clover integration placeholder — will be connected once API keys are provided
+    alert("Clover checkout integration will be connected once API keys are configured. Your cart total is $" + totalPrice.toFixed(2));
   };
 
   if (items.length === 0) {
@@ -108,36 +77,17 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* Summary & Checkout */}
+          {/* Summary */}
           <div className="mt-10 bg-card border border-border p-6">
             <div className="flex justify-between items-center mb-6">
               <span className="font-display text-lg font-semibold text-foreground">Total</span>
               <span className="font-display text-2xl font-bold text-primary">${totalPrice.toFixed(2)}</span>
             </div>
-
-            <div className="mb-4">
-              <label className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground block mb-2">
-                Email (optional, for receipt)
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="w-full border border-border bg-background text-foreground font-body text-sm px-4 py-3 focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-
-            {error && (
-              <p className="font-body text-sm text-destructive mb-4">{error}</p>
-            )}
-
             <button
               onClick={handleCheckout}
-              disabled={loading}
-              className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 hover:bg-primary/90 transition-all duration-300"
             >
-              {loading ? "Creating checkout..." : "Proceed to Checkout"}
+              Proceed to Checkout
             </button>
             <p className="font-body text-[10px] text-muted-foreground text-center mt-3">Secure checkout powered by Clover</p>
           </div>

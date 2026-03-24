@@ -1,4 +1,0 @@
-project_id = "jpujaqqvbfwvtzsxvxap"
-
-[functions.clover-checkout]
-verify_jwt = false
