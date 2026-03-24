@@ -12,12 +12,14 @@ import gentlemanBathbar from "@/assets/product-gentleman-bathbar.png";
 import classicManBathbar from "@/assets/product-classic-man-bathbar.png";
 import lovelyLotusBathsoak from "@/assets/product-lovely-lotus-bathsoak.png";
 import frenchVanillaBathsoak from "@/assets/product-french-vanilla-bathsoak.png";
+import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
   { id: "creme-brulee-bathbar", name: "Crème Brûlée Luxury Bath Bar", category: "Bath Bars", price: 15, image: cremeBruleeBathbar },
   { id: "gentleman-bathbar", name: "The Gentleman Luxury Bath Bar", category: "Bath Bars", price: 15, image: gentlemanBathbar },
   { id: "classic-man-bathbar", name: "Classic Man Luxury Bath Bar", category: "Bath Bars", price: 15, image: classicManBathbar },
+  { id: "beach-boys-bathbar", name: "Beach Boys Luxury Bath Bar", category: "Bath Bars", price: 15, image: beachBoysBathbar },
   { id: "creme-brulee-1", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee1 },
   { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
