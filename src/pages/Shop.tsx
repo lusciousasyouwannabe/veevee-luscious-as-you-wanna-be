@@ -4,26 +4,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 
-import citronella1 from "@/assets/product-citronella-shop-1.png";
-
+import citronellaEdited from "@/assets/product-citronella-edited.png";
 import cremeBruleeBathbar from "@/assets/product-creme-brulee-bathbar.png";
 import cremeBrulee1 from "@/assets/product-creme-brulee-1.png";
 import cremeBrulee2 from "@/assets/product-creme-brulee-2.png";
-import gentleman1 from "@/assets/product-gentleman-1.png";
-import gentleman2 from "@/assets/product-gentleman-2.png";
 
 const products = [
-  { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronella1 },
+  { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
   { id: "creme-brulee-bathbar", name: "Crème Brûlée Luxury Bath Bar", category: "Bath Bars", price: 15, image: cremeBruleeBathbar },
   { id: "creme-brulee-1", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee1 },
   { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
-  // The Gentleman individual products
-  { id: "gentleman-butter-lg", name: "The Gentleman Whipped Body Butter — Large", category: "The Gentleman", price: 35, image: gentleman1 },
-  { id: "gentleman-butter-md", name: "The Gentleman Whipped Body Butter — Medium", category: "The Gentleman", price: 25, image: gentleman1 },
-  { id: "gentleman-scrub-lg", name: "The Gentleman Body Scrub — Large", category: "The Gentleman", price: 35, image: gentleman2 },
-  { id: "gentleman-scrub-md", name: "The Gentleman Body Scrub — Medium", category: "The Gentleman", price: 25, image: gentleman2 },
-  { id: "gentleman-soap", name: "The Gentleman Luxury Bath Bar", category: "The Gentleman", price: 15, image: gentleman2 },
-  { id: "gentleman-soak", name: "The Gentleman Moisturizing Bath Soak", category: "The Gentleman", price: 22, image: gentleman1 },
 ];
 
 const Shop = () => {
