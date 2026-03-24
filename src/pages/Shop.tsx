@@ -6,7 +6,7 @@ import { useCart } from "@/contexts/CartContext";
 
 import citronella1 from "@/assets/product-citronella-shop-1.png";
 import citronella2 from "@/assets/product-citronella-shop-2.png";
-import citronella3 from "@/assets/product-citronella-shop-3.png";
+import cremeBruleeBathbar from "@/assets/product-creme-brulee-bathbar.png";
 import cremeBrulee1 from "@/assets/product-creme-brulee-1.png";
 import cremeBrulee2 from "@/assets/product-creme-brulee-2.png";
 import gentleman1 from "@/assets/product-gentleman-1.png";
