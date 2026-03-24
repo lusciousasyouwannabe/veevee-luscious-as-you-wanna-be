@@ -12,6 +12,7 @@ import selfcareSet from "@/assets/product-selfcare-edited.jpg";
 import gentlemanSet from "@/assets/product-gentleman-set.jpg";
 import oceanSet from "@/assets/product-ocean-edited.jpg";
 import greenScrub from "@/assets/product-green-edited.jpg";
+import blueberryChamomile from "@/assets/product-blueberry-chamomile.png";
 
 interface BundleItem {
   id: string;
@@ -87,6 +88,14 @@ const bundles: BundleItem[] = [
     savings: "Save $10",
     image: glowTopview,
     includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bar soap"],
+    category: "Sets",
+  },
+  {
+    id: "blueberry-chamomile-mini",
+    name: "Blue Berry Chamomile Mini Bundle",
+    price: 45,
+    image: blueberryChamomile,
+    includes: ["Body scrub", "Bath soak", "Body butter"],
     category: "Sets",
   },
 ];
