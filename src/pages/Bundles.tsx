@@ -90,6 +90,14 @@ const bundles: BundleItem[] = [
     includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bar soap"],
     category: "Sets",
   },
+  {
+    id: "blueberry-chamomile-mini",
+    name: "Blue Berry Chamomile Mini Bundle",
+    price: 45,
+    image: blueberryChamomile,
+    includes: ["Body scrub", "Bath soak", "Body butter"],
+    category: "Sets",
+  },
 ];
 
 const subscriptions = [
