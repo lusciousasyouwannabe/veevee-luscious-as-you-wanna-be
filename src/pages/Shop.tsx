@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 
 import citronella1 from "@/assets/product-citronella-shop-1.png";
-import citronella2 from "@/assets/product-citronella-shop-2.png";
+
 import cremeBruleeBathbar from "@/assets/product-creme-brulee-bathbar.png";
 import cremeBrulee1 from "@/assets/product-creme-brulee-1.png";
 import cremeBrulee2 from "@/assets/product-creme-brulee-2.png";
