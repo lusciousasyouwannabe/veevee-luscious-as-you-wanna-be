@@ -6,7 +6,7 @@ import { useCart } from "@/contexts/CartContext";
 
 import citronella1 from "@/assets/product-citronella-shop-1.png";
 import citronella2 from "@/assets/product-citronella-shop-2.png";
-import citronella3 from "@/assets/product-citronella-shop-3.png";
+import cremeBruleeBathbar from "@/assets/product-creme-brulee-bathbar.png";
 import cremeBrulee1 from "@/assets/product-creme-brulee-1.png";
 import cremeBrulee2 from "@/assets/product-creme-brulee-2.png";
 import gentleman1 from "@/assets/product-gentleman-1.png";
@@ -15,7 +15,7 @@ import gentleman2 from "@/assets/product-gentleman-2.png";
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronella1 },
   { id: "citronella-2", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronella2 },
-  { id: "citronella-3", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronella3 },
+  { id: "creme-brulee-bathbar", name: "Crème Brûlée Luxury Bath Bar", category: "Bath Bars", price: 15, image: cremeBruleeBathbar },
   { id: "creme-brulee-1", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee1 },
   { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
   // The Gentleman individual products
