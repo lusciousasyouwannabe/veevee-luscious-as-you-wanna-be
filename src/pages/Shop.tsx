@@ -29,6 +29,7 @@ const products = [
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub 8oz", category: "Body Scrubs", price: 35, image: cremeBruleeScrub },
+  { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
 ];
 
 const Shop = () => {
