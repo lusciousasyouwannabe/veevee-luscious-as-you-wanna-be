@@ -14,6 +14,7 @@ import lovelyLotusBathsoak from "@/assets/product-lovely-lotus-bathsoak.png";
 import frenchVanillaBathsoak from "@/assets/product-french-vanilla-bathsoak.png";
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
+import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
@@ -26,6 +27,7 @@ const products = [
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
+  { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub 8oz", category: "Body Scrubs", price: 35, image: cremeBruleeScrub },
 ];
 
 const Shop = () => {
