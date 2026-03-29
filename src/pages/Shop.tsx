@@ -121,6 +121,11 @@ const Shop = () => {
           </div>
         </div>
       </section>
+      <ProductDetailModal
+        open={veryBerryOpen}
+        onOpenChange={setVeryBerryOpen}
+        product={veryBerryVariants}
+      />
       <Footer />
     </div>
   );
