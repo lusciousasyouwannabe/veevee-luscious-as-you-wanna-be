@@ -48,11 +48,16 @@ const veryBerryVariants = {
 const Shop = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
+  const [veryBerryOpen, setVeryBerryOpen] = useState(false);
 
   const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = filter === "All" ? products : products.filter((p) => p.category === filter);
 
   const handleAdd = (product: typeof products[0]) => {
+    if ((product as any).hasVariants) {
+      setVeryBerryOpen(true);
+      return;
+    }
     addToCart({ id: product.id, name: product.name, price: product.price, image: product.image, category: product.category });
     toast.success(`${product.name} added to cart`);
   };
