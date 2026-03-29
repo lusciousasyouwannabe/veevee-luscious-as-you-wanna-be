@@ -33,6 +33,7 @@ const products = [
   { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
+  { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 22, image: classicManBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
