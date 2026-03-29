@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
+import ProductDetailModal from "@/components/ProductDetailModal";
 
 import citronellaEdited from "@/assets/product-citronella-edited.png";
 import cremeBruleeBathbar from "@/assets/product-creme-brulee-bathbar.png";
@@ -16,7 +17,8 @@ import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 import luxMyrtilleScrub from "@/assets/product-lux-myrtille-scrub.png";
-import veryBerryScrub from "@/assets/product-very-berry-scrub.jpg";
+import veryBerryScrub4oz from "@/assets/product-very-berry-scrub-4oz.jpg";
+import veryBerryScrub8oz from "@/assets/product-very-berry-scrub-8oz.jpg";
 
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
@@ -31,18 +33,31 @@ const products = [
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub 8oz", category: "Body Scrubs", price: 35, image: cremeBruleeScrub },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
-  { id: "very-berry-scrub-8oz", name: "Luxe Very Berry Body Scrub 8oz", category: "Body Scrubs", price: 35, image: veryBerryScrub },
-  { id: "very-berry-scrub-4oz", name: "Luxe Very Berry Body Scrub 4oz", category: "Body Scrubs", price: 25, image: veryBerryScrub },
+  { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true },
 ];
+
+const veryBerryVariants = {
+  name: "Luxe Very Berry Body Scrub",
+  category: "Body Scrubs",
+  sizes: [
+    { size: "4oz", price: 25, image: veryBerryScrub4oz, id: "very-berry-scrub-4oz" },
+    { size: "8oz", price: 35, image: veryBerryScrub8oz, id: "very-berry-scrub-8oz" },
+  ],
+};
 
 const Shop = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
+  const [veryBerryOpen, setVeryBerryOpen] = useState(false);
 
   const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = filter === "All" ? products : products.filter((p) => p.category === filter);
 
   const handleAdd = (product: typeof products[0]) => {
+    if ((product as any).hasVariants) {
+      setVeryBerryOpen(true);
+      return;
+    }
     addToCart({ id: product.id, name: product.name, price: product.price, image: product.image, category: product.category });
     toast.success(`${product.name} added to cart`);
   };
@@ -77,7 +92,11 @@ const Shop = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((product) => (
-              <div key={product.id} className="group bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-500">
+              <div
+                key={product.id}
+                className="group bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 cursor-pointer"
+                onClick={() => (product as any).hasVariants && setVeryBerryOpen(true)}
+              >
                 <div className="relative aspect-square overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                   <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold tracking-wider uppercase px-3 py-1">
@@ -87,12 +106,14 @@ const Shop = () => {
                 <div className="p-5">
                   <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-1">{product.category}</p>
                   <h3 className="font-display text-lg font-semibold text-foreground">{product.name}</h3>
-                  <p className="font-body text-primary font-semibold mt-1 tracking-wider">${product.price}</p>
+                  <p className="font-body text-primary font-semibold mt-1 tracking-wider">
+                    {(product as any).hasVariants ? "From $25" : `$${product.price}`}
+                  </p>
                   <button
-                    onClick={() => handleAdd(product)}
+                    onClick={(e) => { e.stopPropagation(); handleAdd(product); }}
                     className="mt-4 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   >
-                    Add to Cart
+                    {(product as any).hasVariants ? "Select Size" : "Add to Cart"}
                   </button>
                 </div>
               </div>
@@ -100,6 +121,11 @@ const Shop = () => {
           </div>
         </div>
       </section>
+      <ProductDetailModal
+        open={veryBerryOpen}
+        onOpenChange={setVeryBerryOpen}
+        product={veryBerryVariants}
+      />
       <Footer />
     </div>
   );
