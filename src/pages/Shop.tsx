@@ -113,7 +113,7 @@ const Shop = () => {
               <div
                 key={product.id}
                 className="group bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 cursor-pointer"
-                onClick={() => (product as any).hasVariants && setVeryBerryOpen(true)}
+                onClick={() => (product as any).hasVariants && openVariantModal((product as any).variantKey)}
               >
                 <div className="relative aspect-square overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
