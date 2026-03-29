@@ -16,6 +16,8 @@ import frenchVanillaBathsoak from "@/assets/product-french-vanilla-bathsoak.png"
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
+import cremeBruleeScrub8oz from "@/assets/product-creme-brulee-scrub-8oz.jpg";
+import cremeBruleeScrub4oz from "@/assets/product-creme-brulee-scrub-4oz.jpg";
 import luxMyrtilleScrub from "@/assets/product-lux-myrtille-scrub.png";
 import veryBerryScrub4oz from "@/assets/product-very-berry-scrub-4oz.jpg";
 import veryBerryScrub8oz from "@/assets/product-very-berry-scrub-8oz.jpg";
@@ -31,31 +33,47 @@ const products = [
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
-  { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub 8oz", category: "Body Scrubs", price: 35, image: cremeBruleeScrub },
+  { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
-  { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true },
+  { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
 ];
 
-const veryBerryVariants = {
-  name: "Luxe Very Berry Body Scrub",
-  category: "Body Scrubs",
-  sizes: [
-    { size: "4oz", price: 25, image: veryBerryScrub4oz, id: "very-berry-scrub-4oz" },
-    { size: "8oz", price: 35, image: veryBerryScrub8oz, id: "very-berry-scrub-8oz" },
-  ],
+const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
+  "very-berry-scrub": {
+    name: "Luxe Very Berry Body Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: veryBerryScrub4oz, id: "very-berry-scrub-4oz" },
+      { size: "8oz", price: 35, image: veryBerryScrub8oz, id: "very-berry-scrub-8oz" },
+    ],
+  },
+  "creme-brulee-scrub": {
+    name: "Crème Brûlée Sugar Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: cremeBruleeScrub4oz, id: "creme-brulee-scrub-4oz" },
+      { size: "8oz", price: 35, image: cremeBruleeScrub8oz, id: "creme-brulee-scrub-8oz" },
+    ],
+  },
 };
 
 const Shop = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
-  const [veryBerryOpen, setVeryBerryOpen] = useState(false);
+  const [variantModalOpen, setVariantModalOpen] = useState(false);
+  const [activeVariantKey, setActiveVariantKey] = useState<string>("very-berry-scrub");
 
   const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = filter === "All" ? products : products.filter((p) => p.category === filter);
 
+  const openVariantModal = (key: string) => {
+    setActiveVariantKey(key);
+    setVariantModalOpen(true);
+  };
+
   const handleAdd = (product: typeof products[0]) => {
     if ((product as any).hasVariants) {
-      setVeryBerryOpen(true);
+      openVariantModal((product as any).variantKey);
       return;
     }
     addToCart({ id: product.id, name: product.name, price: product.price, image: product.image, category: product.category });
@@ -95,7 +113,7 @@ const Shop = () => {
               <div
                 key={product.id}
                 className="group bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 cursor-pointer"
-                onClick={() => (product as any).hasVariants && setVeryBerryOpen(true)}
+                onClick={() => (product as any).hasVariants && openVariantModal((product as any).variantKey)}
               >
                 <div className="relative aspect-square overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
@@ -122,9 +140,9 @@ const Shop = () => {
         </div>
       </section>
       <ProductDetailModal
-        open={veryBerryOpen}
-        onOpenChange={setVeryBerryOpen}
-        product={veryBerryVariants}
+        open={variantModalOpen}
+        onOpenChange={setVariantModalOpen}
+        product={variantProducts[activeVariantKey]}
       />
       <Footer />
     </div>
