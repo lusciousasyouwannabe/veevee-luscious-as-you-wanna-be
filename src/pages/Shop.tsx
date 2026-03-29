@@ -16,6 +16,7 @@ import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 import luxMyrtilleScrub from "@/assets/product-lux-myrtille-scrub.png";
+import veryBerryScrub from "@/assets/product-very-berry-scrub.jpg";
 
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
@@ -30,6 +31,8 @@ const products = [
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub 8oz", category: "Body Scrubs", price: 35, image: cremeBruleeScrub },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
+  { id: "very-berry-scrub-8oz", name: "Luxe Very Berry Body Scrub 8oz", category: "Body Scrubs", price: 35, image: veryBerryScrub },
+  { id: "very-berry-scrub-4oz", name: "Luxe Very Berry Body Scrub 4oz", category: "Body Scrubs", price: 25, image: veryBerryScrub },
 ];
 
 const Shop = () => {
