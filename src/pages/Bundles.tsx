@@ -13,6 +13,7 @@ import gentlemanSet from "@/assets/product-gentleman-set.jpg";
 import oceanSet from "@/assets/product-ocean-edited.jpg";
 import greenScrub from "@/assets/product-green-edited.jpg";
 import blueberryChamomile from "@/assets/product-blueberry-chamomile.png";
+import cremeBruleeBundle from "@/assets/product-creme-brulee-bundle.jpg";
 
 interface BundleItem {
   id: string;
@@ -96,6 +97,16 @@ const bundles: BundleItem[] = [
     price: 45,
     image: blueberryChamomile,
     includes: ["Body scrub", "Bath soak", "Body butter"],
+    category: "Sets",
+  },
+  {
+    id: "creme-brulee-bundle",
+    name: "Luxury Crème Brûlée Bundle",
+    price: 95,
+    originalPrice: 107,
+    savings: "Save $12",
+    image: cremeBruleeBundle,
+    includes: ["Body butter", "Sugar scrub", "Bath soak", "Bar soap", "Massage oil"],
     category: "Sets",
   },
 ];
