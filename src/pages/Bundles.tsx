@@ -13,6 +13,7 @@ import gentlemanSet from "@/assets/product-gentleman-set.jpg";
 import oceanSet from "@/assets/product-ocean-edited.jpg";
 import greenScrub from "@/assets/product-green-edited.jpg";
 import blueberryChamomile from "@/assets/product-blueberry-chamomile.png";
+import myrtilleChamomileBundle from "@/assets/product-myrtille-chamomile-bundle.jpg";
 import cremeBruleeBundle from "@/assets/product-creme-brulee-bundle.jpg";
 
 interface BundleItem {
