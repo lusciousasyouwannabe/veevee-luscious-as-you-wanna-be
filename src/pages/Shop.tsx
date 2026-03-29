@@ -16,6 +16,7 @@ import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 import luxMyrtilleScrub from "@/assets/product-lux-myrtille-scrub.png";
+import veryBerryScrub from "@/assets/product-very-berry-scrub.jpg";
 
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
