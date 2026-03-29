@@ -16,6 +16,8 @@ import frenchVanillaBathsoak from "@/assets/product-french-vanilla-bathsoak.png"
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
+import coolCitronellaButter from "@/assets/product-cool-citronella-butter.jpg";
+import gentlemanButter from "@/assets/product-gentleman-butter.jpg";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 import cremeBruleeScrub8oz from "@/assets/product-creme-brulee-scrub-8oz.jpg";
 import cremeBruleeScrub4oz from "@/assets/product-creme-brulee-scrub-4oz.jpg";
