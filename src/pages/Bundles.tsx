@@ -99,6 +99,16 @@ const bundles: BundleItem[] = [
     includes: ["Body scrub", "Bath soak", "Body butter"],
     category: "Sets",
   },
+  {
+    id: "creme-brulee-bundle",
+    name: "Luxury Crème Brûlée Bundle",
+    price: 95,
+    originalPrice: 107,
+    savings: "Save $12",
+    image: cremeBruleeBundle,
+    includes: ["Body butter", "Sugar scrub", "Bath soak", "Bar soap", "Massage oil"],
+    category: "Sets",
+  },
 ];
 
 const subscriptions = [
