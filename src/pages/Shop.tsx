@@ -66,9 +66,14 @@ const Shop = () => {
   const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = filter === "All" ? products : products.filter((p) => p.category === filter);
 
+  const openVariantModal = (key: string) => {
+    setActiveVariantKey(key);
+    setVariantModalOpen(true);
+  };
+
   const handleAdd = (product: typeof products[0]) => {
     if ((product as any).hasVariants) {
-      setVeryBerryOpen(true);
+      openVariantModal((product as any).variantKey);
       return;
     }
     addToCart({ id: product.id, name: product.name, price: product.price, image: product.image, category: product.category });
