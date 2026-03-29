@@ -92,7 +92,11 @@ const Shop = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((product) => (
-              <div key={product.id} className="group bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-500">
+              <div
+                key={product.id}
+                className="group bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-500 cursor-pointer"
+                onClick={() => (product as any).hasVariants && setVeryBerryOpen(true)}
+              >
                 <div className="relative aspect-square overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                   <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold tracking-wider uppercase px-3 py-1">
@@ -102,12 +106,14 @@ const Shop = () => {
                 <div className="p-5">
                   <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-1">{product.category}</p>
                   <h3 className="font-display text-lg font-semibold text-foreground">{product.name}</h3>
-                  <p className="font-body text-primary font-semibold mt-1 tracking-wider">${product.price}</p>
+                  <p className="font-body text-primary font-semibold mt-1 tracking-wider">
+                    {(product as any).hasVariants ? "From $25" : `$${product.price}`}
+                  </p>
                   <button
-                    onClick={() => handleAdd(product)}
+                    onClick={(e) => { e.stopPropagation(); handleAdd(product); }}
                     className="mt-4 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   >
-                    Add to Cart
+                    {(product as any).hasVariants ? "Select Size" : "Add to Cart"}
                   </button>
                 </div>
               </div>
