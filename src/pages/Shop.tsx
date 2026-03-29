@@ -140,9 +140,9 @@ const Shop = () => {
         </div>
       </section>
       <ProductDetailModal
-        open={veryBerryOpen}
-        onOpenChange={setVeryBerryOpen}
-        product={veryBerryVariants}
+        open={variantModalOpen}
+        onOpenChange={setVariantModalOpen}
+        product={variantProducts[activeVariantKey]}
       />
       <Footer />
     </div>
