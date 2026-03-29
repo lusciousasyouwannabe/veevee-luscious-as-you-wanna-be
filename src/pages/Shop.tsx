@@ -33,18 +33,28 @@ const products = [
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
-  { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub 8oz", category: "Body Scrubs", price: 35, image: cremeBruleeScrub },
+  { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
-  { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true },
+  { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
 ];
 
-const veryBerryVariants = {
-  name: "Luxe Very Berry Body Scrub",
-  category: "Body Scrubs",
-  sizes: [
-    { size: "4oz", price: 25, image: veryBerryScrub4oz, id: "very-berry-scrub-4oz" },
-    { size: "8oz", price: 35, image: veryBerryScrub8oz, id: "very-berry-scrub-8oz" },
-  ],
+const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
+  "very-berry-scrub": {
+    name: "Luxe Very Berry Body Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: veryBerryScrub4oz, id: "very-berry-scrub-4oz" },
+      { size: "8oz", price: 35, image: veryBerryScrub8oz, id: "very-berry-scrub-8oz" },
+    ],
+  },
+  "creme-brulee-scrub": {
+    name: "Crème Brûlée Sugar Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: cremeBruleeScrub4oz, id: "creme-brulee-scrub-4oz" },
+      { size: "8oz", price: 35, image: cremeBruleeScrub8oz, id: "creme-brulee-scrub-8oz" },
+    ],
+  },
 };
 
 const Shop = () => {
