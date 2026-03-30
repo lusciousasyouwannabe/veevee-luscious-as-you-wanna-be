@@ -25,7 +25,24 @@ import luxMyrtilleScrub from "@/assets/product-lux-myrtille-scrub.png";
 import veryBerryScrub4oz from "@/assets/product-very-berry-scrub-4oz.jpg";
 import veryBerryScrub8oz from "@/assets/product-very-berry-scrub-8oz.jpg";
 
-const products: { id: string; name: string; category: string; price: number; image: string; hasVariants?: boolean; variantKey?: string }[] = [];
+const products = [
+  { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
+  { id: "creme-brulee-bathbar", name: "Crème Brûlée Luxury Bath Bar", category: "Bath Bars", price: 15, image: cremeBruleeBathbar },
+  { id: "gentleman-bathbar", name: "The Gentleman Luxury Bath Bar", category: "Bath Bars", price: 15, image: gentlemanBathbar },
+  { id: "classic-man-bathbar", name: "Classic Man Luxury Bath Bar", category: "Bath Bars", price: 15, image: classicManBathbar },
+  { id: "beach-boys-bathbar", name: "Beach Boys Luxury Bath Bar", category: "Bath Bars", price: 15, image: beachBoysBathbar },
+  { id: "creme-brulee-1", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee1 },
+  { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
+  { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
+  { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
+  { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 22, image: classicManBathsoak },
+  { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
+  { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: coolCitronellaButter },
+  { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: gentlemanButter },
+  { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
+  { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
+  { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
+];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
   "very-berry-scrub": {
