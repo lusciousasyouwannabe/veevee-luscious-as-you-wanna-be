@@ -35,8 +35,6 @@ const products = [
   { id: "good-girl-bathbar", name: "Good Girl Luxury Bath Bar", category: "Bath Bars", price: 15, image: goodGirlBathbar },
   { id: "strawberry-cream-bathbar", name: "Strawberry & Cream Luxury Bath Bar", category: "Bath Bars", price: 15, image: strawberryCreamBathbar },
   { id: "mardi-gras-bathbar", name: "Mardi Gras Luxury Bath Bar", category: "Bath Bars", price: 15, image: mardiGrasBathbar },
-  { id: "creme-brulee-1", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee1 },
-  { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 22, image: classicManBathsoak },
