@@ -11,6 +11,7 @@ import gentlemanBathbar from "@/assets/product-gentleman-bathbar.png";
 import classicManBathbar from "@/assets/product-classic-man-bathbar.png";
 import lovelyLotusBathsoak from "@/assets/product-lovely-lotus-bathsoak.png";
 import frenchVanillaBathsoak from "@/assets/product-french-vanilla-bathsoak.png";
+import cremeBruleeBathsoak from "@/assets/product-creme-brulee-bathsoak.jpg";
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
@@ -38,6 +39,7 @@ const products = [
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 22, image: classicManBathsoak },
+  { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBruleeBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: coolCitronellaButter },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: gentlemanButter },
