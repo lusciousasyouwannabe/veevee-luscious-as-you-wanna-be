@@ -71,6 +71,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
       { size: "8oz", price: 35, image: cremeBruleeScrub8oz, id: "creme-brulee-scrub-8oz" },
     ],
   },
+  "french-vanilla-scrub": {
+    name: "French Vanilla Luxury Body Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: frenchVanillaScrub, id: "french-vanilla-scrub-4oz" },
+      { size: "8oz", price: 35, image: frenchVanillaScrub, id: "french-vanilla-scrub-8oz" },
+    ],
+  },
 };
 
 const Shop = () => {
