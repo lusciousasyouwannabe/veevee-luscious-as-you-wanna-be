@@ -17,6 +17,9 @@ import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
 import coolCitronellaButter from "@/assets/product-cool-citronella-butter.jpg";
+import goodGirlBathbar from "@/assets/product-good-girl-bathbar.jpg";
+import strawberryCreamBathbar from "@/assets/product-strawberry-cream-bathbar.jpg";
+import mardiGrasBathbar from "@/assets/product-mardi-gras-bathbar.jpg";
 import gentlemanButter from "@/assets/product-gentleman-butter.jpg";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 import cremeBruleeScrub8oz from "@/assets/product-creme-brulee-scrub-8oz.jpg";
@@ -31,6 +34,9 @@ const products = [
   { id: "gentleman-bathbar", name: "The Gentleman Luxury Bath Bar", category: "Bath Bars", price: 15, image: gentlemanBathbar },
   { id: "classic-man-bathbar", name: "Classic Man Luxury Bath Bar", category: "Bath Bars", price: 15, image: classicManBathbar },
   { id: "beach-boys-bathbar", name: "Beach Boys Luxury Bath Bar", category: "Bath Bars", price: 15, image: beachBoysBathbar },
+  { id: "good-girl-bathbar", name: "Good Girl Luxury Bath Bar", category: "Bath Bars", price: 15, image: goodGirlBathbar },
+  { id: "strawberry-cream-bathbar", name: "Strawberry & Cream Luxury Bath Bar", category: "Bath Bars", price: 15, image: strawberryCreamBathbar },
+  { id: "mardi-gras-bathbar", name: "Mardi Gras Luxury Bath Bar", category: "Bath Bars", price: 15, image: mardiGrasBathbar },
   { id: "creme-brulee-1", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee1 },
   { id: "creme-brulee-2", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBrulee2 },
   { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
