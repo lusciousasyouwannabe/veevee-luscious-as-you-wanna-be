@@ -11,6 +11,7 @@ import gentlemanBathbar from "@/assets/product-gentleman-bathbar.png";
 import classicManBathbar from "@/assets/product-classic-man-bathbar.png";
 import lovelyLotusBathsoak from "@/assets/product-lovely-lotus-bathsoak.png";
 import frenchVanillaBathsoak from "@/assets/product-french-vanilla-bathsoak.png";
+import cremeBruleeBathsoak from "@/assets/product-creme-brulee-bathsoak.jpg";
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
