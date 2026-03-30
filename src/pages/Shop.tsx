@@ -28,6 +28,7 @@ import luxMyrtilleScrub from "@/assets/product-lux-myrtille-scrub.png";
 import veryBerryScrub4oz from "@/assets/product-very-berry-scrub-4oz.jpg";
 import veryBerryScrub8oz from "@/assets/product-very-berry-scrub-8oz.jpg";
 import veryBerryBathsoak from "@/assets/product-very-berry-bathsoak.jpg";
+import frenchVanillaScrub from "@/assets/product-french-vanilla-bodyscrub.jpg";
 
 const products = [
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
@@ -50,6 +51,7 @@ const products = [
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
   { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
+  { id: "french-vanilla-scrub", name: "French Vanilla Luxury Body Scrub", category: "Body Scrubs", price: 25, image: frenchVanillaScrub, hasVariants: true, variantKey: "french-vanilla-scrub" },
 ];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
@@ -67,6 +69,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
     sizes: [
       { size: "4oz", price: 25, image: cremeBruleeScrub4oz, id: "creme-brulee-scrub-4oz" },
       { size: "8oz", price: 35, image: cremeBruleeScrub8oz, id: "creme-brulee-scrub-8oz" },
+    ],
+  },
+  "french-vanilla-scrub": {
+    name: "French Vanilla Luxury Body Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: frenchVanillaScrub, id: "french-vanilla-scrub-4oz" },
+      { size: "8oz", price: 35, image: frenchVanillaScrub, id: "french-vanilla-scrub-8oz" },
     ],
   },
 };
