@@ -7,8 +7,6 @@ import ProductDetailModal from "@/components/ProductDetailModal";
 
 import citronellaEdited from "@/assets/product-citronella-edited.png";
 import cremeBruleeBathbar from "@/assets/product-creme-brulee-bathbar.png";
-import cremeBrulee1 from "@/assets/product-creme-brulee-1.png";
-import cremeBrulee2 from "@/assets/product-creme-brulee-2.png";
 import gentlemanBathbar from "@/assets/product-gentleman-bathbar.png";
 import classicManBathbar from "@/assets/product-classic-man-bathbar.png";
 import lovelyLotusBathsoak from "@/assets/product-lovely-lotus-bathsoak.png";
