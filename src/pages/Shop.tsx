@@ -41,6 +41,7 @@ const products = [
   { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
   { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 22, image: classicManBathsoak },
   { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBruleeBathsoak },
+  { id: "gentleman-bathsoak", name: "The Gentleman Luxury Bath Soak", category: "Bath Soaks", price: 22, image: gentlemanBathsoak },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: coolCitronellaButter },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: gentlemanButter },
