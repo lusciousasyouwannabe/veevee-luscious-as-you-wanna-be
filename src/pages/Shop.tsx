@@ -20,6 +20,7 @@ import goodGirlBathbar from "@/assets/product-good-girl-bathbar.jpg";
 import strawberryCreamBathbar from "@/assets/product-strawberry-cream-bathbar.jpg";
 import mardiGrasBathbar from "@/assets/product-mardi-gras-bathbar.jpg";
 import gentlemanButter from "@/assets/product-gentleman-butter.jpg";
+import gentlemanBathsoak from "@/assets/product-gentleman-bathsoak.jpg";
 import cremeBruleeScrub from "@/assets/product-creme-brulee-scrub.png";
 import cremeBruleeScrub8oz from "@/assets/product-creme-brulee-scrub-8oz.jpg";
 import cremeBruleeScrub4oz from "@/assets/product-creme-brulee-scrub-4oz.jpg";
