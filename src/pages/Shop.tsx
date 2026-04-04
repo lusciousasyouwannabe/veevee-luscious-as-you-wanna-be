@@ -81,6 +81,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
       { size: "8oz", price: 35, image: frenchVanillaScrub, id: "french-vanilla-scrub-8oz" },
     ],
   },
+  "good-girl-scrub": {
+    name: "Good Girl Luxury Body Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: goodGirlScrub, id: "good-girl-scrub-4oz" },
+      { size: "8oz", price: 35, image: goodGirlScrub, id: "good-girl-scrub-8oz" },
+    ],
+  },
 };
 
 const Shop = () => {
