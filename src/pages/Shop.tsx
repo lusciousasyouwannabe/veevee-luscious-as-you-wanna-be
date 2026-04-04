@@ -53,6 +53,7 @@ const products = [
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
   { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
   { id: "french-vanilla-scrub", name: "French Vanilla Luxury Body Scrub", category: "Body Scrubs", price: 25, image: frenchVanillaScrub, hasVariants: true, variantKey: "french-vanilla-scrub" },
+  { id: "good-girl-scrub", name: "Good Girl Luxury Body Scrub", category: "Body Scrubs", price: 25, image: goodGirlScrub, hasVariants: true, variantKey: "good-girl-scrub" },
 ];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
