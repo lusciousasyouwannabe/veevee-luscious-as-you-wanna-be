@@ -91,6 +91,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
       { size: "8oz", price: 35, image: goodGirlScrub, id: "good-girl-scrub-8oz" },
     ],
   },
+  "beach-boys-scrub": {
+    name: "Beach Boys Luxury Body Scrub",
+    category: "Body Scrubs",
+    sizes: [
+      { size: "4oz", price: 25, image: beachBoysScrub, id: "beach-boys-scrub-4oz" },
+      { size: "8oz", price: 35, image: beachBoysScrub, id: "beach-boys-scrub-8oz" },
+    ],
+  },
 };
 
 const Shop = () => {
