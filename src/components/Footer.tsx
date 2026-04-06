@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer className="py-12 px-6 border-t border-border">
       <div className="container max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
             <span className="font-display text-lg tracking-wider text-gradient-gold font-bold">
               VEEVEE LUSCIOUS AS YOU WANNA BE
