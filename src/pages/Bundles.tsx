@@ -35,7 +35,7 @@ const bundles: BundleItem[] = [
     name: "Ohh Honey Collection",
     price: 120,
     image: glowCollection,
-    includes: ["Body butter", "Body scrub", "Bath soak", "Bar soap"],
+    includes: ["Body butter", "Body scrub", "Bath soak", "Bath bar"],
     category: "Collections",
   },
   {
@@ -43,7 +43,7 @@ const bundles: BundleItem[] = [
     name: "Good Girl Collection",
     price: 120,
     image: lavenderCollection,
-    includes: ["Body butter", "Body scrub", "Bath soak", "Bar soap"],
+    includes: ["Body butter", "Body scrub", "Bath soak", "Bath bar"],
     category: "Collections",
   },
   {
@@ -61,7 +61,7 @@ const bundles: BundleItem[] = [
     price: 102,
     savings: "Save $10",
     image: selfcareSet,
-    includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bar soap"],
+    includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bath bar"],
     category: "Sets",
   },
   {
@@ -70,7 +70,7 @@ const bundles: BundleItem[] = [
     price: 120,
     savings: "Save $10",
     image: glowTopview,
-    includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bar soap"],
+    includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bath bar"],
     category: "Sets",
   },
   {
@@ -90,7 +90,7 @@ const bundles: BundleItem[] = [
     originalPrice: 107,
     savings: "Save $12",
     image: cremeBruleeBundle,
-    includes: ["Body butter", "Body scrub", "Bath soak", "Bar soap", "Massage oil"],
+    includes: ["Body butter", "Body scrub", "Bath soak", "Bath bar", "Massage oil"],
     category: "Sets",
   },
   {
@@ -98,7 +98,7 @@ const bundles: BundleItem[] = [
     name: "Classic Man Set",
     price: 120,
     image: classicManSet,
-    includes: ["Body butter", "Body scrub", "Body butter", "Massage oil", "Bar soap"],
+    includes: ["Body butter", "Body scrub", "Body butter", "Massage oil", "Bath bar"],
     category: "Sets",
   },
 ];
@@ -109,7 +109,7 @@ const subscriptions = [
   
 ];
 
-const subscriptionIncludes = ["Bar soap", "Body scrub", "Body butter", "Spray mist", "Mini massage oil"];
+const subscriptionIncludes = ["Bath bar", "Body scrub", "Body butter", "Spray mist", "Mini massage oil"];
 
 const specialOffer = {
   id: "special-48hr",
