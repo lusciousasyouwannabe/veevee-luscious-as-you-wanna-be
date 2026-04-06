@@ -110,7 +110,7 @@ const subscriptions = [
   
 ];
 
-const subscriptionIncludes = ["Bath bar", "Body scrub", "Body butter", "Spray mist", "Mini massage oil"];
+const subscriptionIncludes = ["Bath bar", "Body scrub", "Body butter", "Massage oil"];
 
 const specialOffer = {
   id: "special-48hr",
