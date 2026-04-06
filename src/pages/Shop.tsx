@@ -59,6 +59,54 @@ const products = [
 ];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
+  "lovely-lotus-bathsoak": {
+    name: "Lovely Lotus Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: lovelyLotusBathsoak, id: "lovely-lotus-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: lovelyLotusBathsoak, id: "lovely-lotus-bathsoak-8oz" },
+    ],
+  },
+  "french-vanilla-bathsoak": {
+    name: "French Vanilla & Oatmeal Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: frenchVanillaBathsoak, id: "french-vanilla-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: frenchVanillaBathsoak, id: "french-vanilla-bathsoak-8oz" },
+    ],
+  },
+  "classic-man-bathsoak": {
+    name: "Classic Man Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: classicManBathsoak, id: "classic-man-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: classicManBathsoak, id: "classic-man-bathsoak-8oz" },
+    ],
+  },
+  "creme-brulee-bathsoak": {
+    name: "Crème Brûlée Cream & Butter Botanical Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: cremeBruleeBathsoak, id: "creme-brulee-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: cremeBruleeBathsoak, id: "creme-brulee-bathsoak-8oz" },
+    ],
+  },
+  "gentleman-bathsoak": {
+    name: "The Gentleman Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: gentlemanBathsoak, id: "gentleman-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: gentlemanBathsoak, id: "gentleman-bathsoak-8oz" },
+    ],
+  },
+  "very-berry-bathsoak": {
+    name: "Very Berry Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: veryBerryBathsoak, id: "very-berry-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: veryBerryBathsoak, id: "very-berry-bathsoak-8oz" },
+    ],
+  },
   "very-berry-scrub": {
     name: "Luxe Very Berry Body Scrub",
     category: "Body Scrubs",
