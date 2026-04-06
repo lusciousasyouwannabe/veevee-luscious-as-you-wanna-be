@@ -78,7 +78,7 @@ const bundles: BundleItem[] = [
   },
   {
     id: "myrtille-chamomile-bundle",
-    name: "Luxury Myrtille Chamomile",
+    name: "Luxury Myrtille Chamomile Set",
     price: 95,
     originalPrice: 107,
     savings: "Save $12",
