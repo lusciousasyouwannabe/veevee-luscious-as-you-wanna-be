@@ -124,7 +124,7 @@ const Bundles = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
 
-  const categories = ["All", "Collections", "Sets", "Kits"];
+  const categories = ["All", "Collections", "Sets"];
   const filtered = filter === "All" ? bundles : bundles.filter((b) => b.category === filter);
 
   const handleAdd = (item: BundleItem) => {
