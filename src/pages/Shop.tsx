@@ -155,6 +155,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
       { size: "8oz", price: 35, image: veryBerryBathsoak, id: "very-berry-bathsoak-8oz" },
     ],
   },
+  "luxury-myrtille-bathsoak": {
+    name: "Luxury Myrtille Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: luxMyrtilleBathsoak, id: "luxury-myrtille-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: luxMyrtilleBathsoak, id: "luxury-myrtille-bathsoak-8oz" },
+    ],
+  },
   "very-berry-scrub": {
     name: "Luxe Very Berry Body Scrub",
     category: "Body Scrubs",
