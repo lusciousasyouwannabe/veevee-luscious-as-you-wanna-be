@@ -31,8 +31,10 @@ import veryBerryBathsoak from "@/assets/product-very-berry-bathsoak.jpg";
 import frenchVanillaScrub from "@/assets/product-french-vanilla-bodyscrub.jpg";
 import goodGirlScrub from "@/assets/product-good-girl-scrub.jpg";
 import beachBoysScrub from "@/assets/product-beach-boys-scrub.jpg";
+import ohHoneyBathbar from "@/assets/product-oh-honey-bathbar.jpg";
 
 const products = [
+  { id: "oh-honey-bathbar", name: "Ohh Honey Luxury Bath Bar", category: "Bath Bars", price: 15, image: ohHoneyBathbar },
   { id: "citronella-1", name: "Cool Citronella Luxury Bath Bar", category: "Bath Bars", price: 15, image: citronellaEdited },
   { id: "creme-brulee-bathbar", name: "Crème Brûlée Luxury Bath Bar", category: "Bath Bars", price: 15, image: cremeBruleeBathbar },
   { id: "gentleman-bathbar", name: "The Gentleman Luxury Bath Bar", category: "Bath Bars", price: 15, image: gentlemanBathbar },
