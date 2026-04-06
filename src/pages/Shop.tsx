@@ -16,6 +16,7 @@ import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
 import ohHoneyButter from "@/assets/product-oh-honey-butter.jpg";
+import amberBathsoak from "@/assets/product-amber-bathsoak.jpg";
 import coolCitronellaButter from "@/assets/product-cool-citronella-butter.jpg";
 import goodGirlBathbar from "@/assets/product-good-girl-bathbar.jpg";
 import strawberryCreamBathbar from "@/assets/product-strawberry-cream-bathbar.jpg";
@@ -50,6 +51,7 @@ const products = [
   { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 25, image: cremeBruleeBathsoak, hasVariants: true, variantKey: "creme-brulee-bathsoak" },
   { id: "gentleman-bathsoak", name: "The Gentleman Luxury Bath Soak", category: "Bath Soaks", price: 25, image: gentlemanBathsoak, hasVariants: true, variantKey: "gentleman-bathsoak" },
   { id: "very-berry-bathsoak", name: "Very Berry Luxury Bath Soak", category: "Bath Soaks", price: 25, image: veryBerryBathsoak, hasVariants: true, variantKey: "very-berry-bathsoak" },
+  { id: "amber-bathsoak", name: "Amber Luxury Bath Soak", category: "Bath Soaks", price: 25, image: amberBathsoak, hasVariants: true, variantKey: "amber-bathsoak" },
   { id: "lux-myrtille-butter", name: "Luxury Myrtille Body Butter", category: "Body Butters", price: 25, image: luxMyrtilleButter, hasVariants: true, variantKey: "lux-myrtille-butter" },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter", category: "Body Butters", price: 25, image: coolCitronellaButter, hasVariants: true, variantKey: "cool-citronella-butter" },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter", category: "Body Butters", price: 25, image: gentlemanButter, hasVariants: true, variantKey: "gentleman-butter" },
@@ -133,6 +135,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
     sizes: [
       { size: "4oz", price: 25, image: gentlemanBathsoak, id: "gentleman-bathsoak-4oz" },
       { size: "8oz", price: 35, image: gentlemanBathsoak, id: "gentleman-bathsoak-8oz" },
+    ],
+  },
+  "amber-bathsoak": {
+    name: "Amber Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: amberBathsoak, id: "amber-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: amberBathsoak, id: "amber-bathsoak-8oz" },
     ],
   },
   "very-berry-bathsoak": {
