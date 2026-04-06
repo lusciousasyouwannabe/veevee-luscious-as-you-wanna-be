@@ -87,6 +87,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
       { size: "8oz", price: 35, image: gentlemanButter, id: "gentleman-butter-8oz" },
     ],
   },
+  "oh-honey-butter": {
+    name: "Ohh Honey Luxury Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: ohHoneyButter, id: "oh-honey-butter-4oz" },
+      { size: "8oz", price: 35, image: ohHoneyButter, id: "oh-honey-butter-8oz" },
+    ],
+  },
   "lovely-lotus-bathsoak": {
     name: "Lovely Lotus Luxury Bath Soak",
     category: "Bath Soaks",
