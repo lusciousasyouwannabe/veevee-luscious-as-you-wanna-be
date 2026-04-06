@@ -1,5 +1,5 @@
 
-import productGoodGirl from "@/assets/product-lavender-edited.jpg";
+import productGoodGirl from "@/assets/bundle-good-girl-collection.jpg";
 import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
 
 const bestsellers = [
