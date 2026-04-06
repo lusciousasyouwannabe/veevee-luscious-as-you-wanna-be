@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-ritual.jpg";
 
 const HeroSection = () => {
@@ -33,12 +34,12 @@ const HeroSection = () => {
           >
             Begin Your Journey
           </a>
-          <a
-            href="#bestsellers"
+          <Link
+            to="/shop"
             className="inline-block border border-primary text-primary font-body font-semibold text-sm tracking-[0.15em] uppercase px-10 py-4 hover:bg-primary hover:text-primary-foreground transition-all"
           >
             Shop Now
-          </a>
+          </Link>
         </div>
       </div>
     </section>
