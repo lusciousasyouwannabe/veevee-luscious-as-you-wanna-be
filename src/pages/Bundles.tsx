@@ -59,7 +59,7 @@ const bundles: BundleItem[] = [
   // Self Care Sets
   {
     id: "selfcare-medium",
-    name: "Luscious Self Care Set — Medium",
+    name: "The Luxury Gentlemen's Self Care Set",
     price: 102,
     savings: "Save $10",
     image: selfcareSet,
