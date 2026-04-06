@@ -1,6 +1,7 @@
 
 import productGoodGirl from "@/assets/bundle-good-girl-collection.jpg";
 import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
+import productBeachBoys from "@/assets/product-beach-boys-set-bestseller.jpg";
 
 const bestsellers = [
   {
@@ -17,6 +18,14 @@ const bestsellers = [
     image: productOhHoney2,
     tag: "Couples Pick",
     collection: "Ohh Honey Collection",
+    description: "",
+  },
+  {
+    name: "The Beach Boy",
+    price: "$75",
+    image: productBeachBoys,
+    tag: "For Him",
+    collection: "The Beach Boy Collection",
     description: "",
   },
 ];
