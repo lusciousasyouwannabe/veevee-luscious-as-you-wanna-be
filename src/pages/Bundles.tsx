@@ -51,7 +51,7 @@ const bundles: BundleItem[] = [
     name: "The Beach Boy Collection",
     price: 40,
     image: gentlemanSet,
-    includes: ["Creamy body scrub", "Luxury bath bar"],
+    includes: ["Creamy body scrub", "Bath bar"],
     category: "Collections",
   },
   // Self Care Sets
