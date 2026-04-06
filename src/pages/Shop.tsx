@@ -51,6 +51,7 @@ const products = [
   { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 25, image: cremeBruleeBathsoak, hasVariants: true, variantKey: "creme-brulee-bathsoak" },
   { id: "gentleman-bathsoak", name: "The Gentleman Luxury Bath Soak", category: "Bath Soaks", price: 25, image: gentlemanBathsoak, hasVariants: true, variantKey: "gentleman-bathsoak" },
   { id: "very-berry-bathsoak", name: "Very Berry Luxury Bath Soak", category: "Bath Soaks", price: 25, image: veryBerryBathsoak, hasVariants: true, variantKey: "very-berry-bathsoak" },
+  { id: "amber-bathsoak", name: "Amber Luxury Bath Soak", category: "Bath Soaks", price: 25, image: amberBathsoak, hasVariants: true, variantKey: "amber-bathsoak" },
   { id: "lux-myrtille-butter", name: "Luxury Myrtille Body Butter", category: "Body Butters", price: 25, image: luxMyrtilleButter, hasVariants: true, variantKey: "lux-myrtille-butter" },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter", category: "Body Butters", price: 25, image: coolCitronellaButter, hasVariants: true, variantKey: "cool-citronella-butter" },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter", category: "Body Butters", price: 25, image: gentlemanButter, hasVariants: true, variantKey: "gentleman-butter" },
