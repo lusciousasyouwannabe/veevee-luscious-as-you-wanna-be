@@ -22,7 +22,7 @@ const bestsellers = [
   },
   {
     name: "The Beach Boy",
-    price: "$75",
+    price: "$40",
     image: productBeachBoys,
     tag: "For Him",
     collection: "The Beach Boy Collection",
