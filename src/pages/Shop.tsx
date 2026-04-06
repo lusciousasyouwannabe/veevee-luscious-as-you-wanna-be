@@ -207,12 +207,12 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
 
 const Shop = () => {
   const { addToCart } = useCart();
-  const [filter, setFilter] = useState("All");
   const [variantModalOpen, setVariantModalOpen] = useState(false);
   const [activeVariantKey, setActiveVariantKey] = useState<string>("very-berry-scrub");
 
-  const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
-  const filtered = filter === "All" ? products : products.filter((p) => p.category === filter);
+  const categories = Array.from(new Set(products.map((p) => p.category)));
+  const [filter, setFilter] = useState(categories[0]);
+  const filtered = products.filter((p) => p.category === filter);
 
   const openVariantModal = (key: string) => {
     setActiveVariantKey(key);
