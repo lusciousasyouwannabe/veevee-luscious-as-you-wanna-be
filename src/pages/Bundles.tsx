@@ -32,7 +32,7 @@ const bundles: BundleItem[] = [
   {
     id: "ohh-honey-collection",
     name: "Ohh Honey Collection",
-    price: 72,
+    price: 120,
     image: glowCollection,
     includes: ["Body butter", "Sugar scrub", "Bath soak", "Bar soap"],
     category: "Collections",
