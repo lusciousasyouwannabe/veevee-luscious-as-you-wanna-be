@@ -88,7 +88,7 @@ const bundles: BundleItem[] = [
   },
   {
     id: "creme-brulee-bundle",
-    name: "Luxury Crème Brûlée Bundle",
+    name: "Luxury Crème Brûlée Set",
     price: 95,
     originalPrice: 107,
     savings: "Save $12",
