@@ -29,7 +29,7 @@ const HeroSection = () => {
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
           <Link
-            to="/bundles"
+            to="/bundles?tab=Sets"
             className="inline-block bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-10 py-4 hover:opacity-90 transition-opacity shadow-gold"
           >
             Begin Your Journey

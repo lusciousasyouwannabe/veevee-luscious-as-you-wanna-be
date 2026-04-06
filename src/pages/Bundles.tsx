@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Clock, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -124,7 +125,8 @@ const specialOffer = {
 
 const Bundles = () => {
   const { addToCart } = useCart();
-  const [filter, setFilter] = useState("All");
+  const [searchParams] = useSearchParams();
+  const [filter, setFilter] = useState(searchParams.get("tab") || "All");
   const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
   const categories = ["All", "Collections", "Sets"];
