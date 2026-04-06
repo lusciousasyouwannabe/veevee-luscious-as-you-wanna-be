@@ -4,6 +4,7 @@ import { Clock, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
+import PresaleBundleModal from "@/components/PresaleBundleModal";
 
 import glowCollection from "@/assets/product-glow-collection-edited.jpg";
 import presaleBundle from "@/assets/product-presale-bundle.jpg";
