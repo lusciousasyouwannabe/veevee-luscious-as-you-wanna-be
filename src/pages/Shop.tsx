@@ -59,6 +59,30 @@ const products = [
 ];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
+  "lux-myrtille-butter": {
+    name: "Lux Myrtille Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: luxMyrtilleButter, id: "lux-myrtille-butter-4oz" },
+      { size: "8oz", price: 35, image: luxMyrtilleButter, id: "lux-myrtille-butter-8oz" },
+    ],
+  },
+  "cool-citronella-butter": {
+    name: "Cool Citronella Luxury Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: coolCitronellaButter, id: "cool-citronella-butter-4oz" },
+      { size: "8oz", price: 35, image: coolCitronellaButter, id: "cool-citronella-butter-8oz" },
+    ],
+  },
+  "gentleman-butter": {
+    name: "The Gentleman Luxury Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: gentlemanButter, id: "gentleman-butter-4oz" },
+      { size: "8oz", price: 35, image: gentlemanButter, id: "gentleman-butter-8oz" },
+    ],
+  },
   "lovely-lotus-bathsoak": {
     name: "Lovely Lotus Luxury Bath Soak",
     category: "Bath Soaks",
