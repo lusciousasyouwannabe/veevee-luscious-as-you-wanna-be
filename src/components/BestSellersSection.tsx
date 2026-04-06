@@ -14,7 +14,7 @@ const bestsellers = [
   },
   {
     name: "Ohh Honey",
-    price: "$34",
+    price: "$120",
     image: productOhHoney2,
     tag: "Couples Pick",
     collection: "Ohh Honey Collection",
