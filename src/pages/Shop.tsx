@@ -62,7 +62,7 @@ const products = [
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
   "lux-myrtille-butter": {
-    name: "Lux Myrtille Body Butter",
+    name: "Luxury Myrtille Body Butter",
     category: "Body Butters",
     sizes: [
       { size: "4oz", price: 25, image: luxMyrtilleButter, id: "lux-myrtille-butter-4oz" },
