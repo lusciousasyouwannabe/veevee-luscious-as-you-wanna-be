@@ -53,6 +53,7 @@ const products = [
   { id: "lux-myrtille-butter", name: "Luxury Myrtille Body Butter", category: "Body Butters", price: 25, image: luxMyrtilleButter, hasVariants: true, variantKey: "lux-myrtille-butter" },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter", category: "Body Butters", price: 25, image: coolCitronellaButter, hasVariants: true, variantKey: "cool-citronella-butter" },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter", category: "Body Butters", price: 25, image: gentlemanButter, hasVariants: true, variantKey: "gentleman-butter" },
+  { id: "oh-honey-butter", name: "Ohh Honey Luxury Body Butter", category: "Body Butters", price: 25, image: ohHoneyButter, hasVariants: true, variantKey: "oh-honey-butter" },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Luxury Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
   { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
