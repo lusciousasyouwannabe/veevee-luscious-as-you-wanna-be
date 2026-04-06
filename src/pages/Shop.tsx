@@ -15,6 +15,7 @@ import cremeBruleeBathsoak from "@/assets/product-creme-brulee-bathsoak.jpg";
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
+import ohHoneyButter from "@/assets/product-oh-honey-butter.jpg";
 import coolCitronellaButter from "@/assets/product-cool-citronella-butter.jpg";
 import goodGirlBathbar from "@/assets/product-good-girl-bathbar.jpg";
 import strawberryCreamBathbar from "@/assets/product-strawberry-cream-bathbar.jpg";
@@ -52,6 +53,7 @@ const products = [
   { id: "lux-myrtille-butter", name: "Luxury Myrtille Body Butter", category: "Body Butters", price: 25, image: luxMyrtilleButter, hasVariants: true, variantKey: "lux-myrtille-butter" },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter", category: "Body Butters", price: 25, image: coolCitronellaButter, hasVariants: true, variantKey: "cool-citronella-butter" },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter", category: "Body Butters", price: 25, image: gentlemanButter, hasVariants: true, variantKey: "gentleman-butter" },
+  { id: "oh-honey-butter", name: "Ohh Honey Luxury Body Butter", category: "Body Butters", price: 25, image: ohHoneyButter, hasVariants: true, variantKey: "oh-honey-butter" },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Luxury Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
   { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
@@ -83,6 +85,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
     sizes: [
       { size: "4oz", price: 25, image: gentlemanButter, id: "gentleman-butter-4oz" },
       { size: "8oz", price: 35, image: gentlemanButter, id: "gentleman-butter-8oz" },
+    ],
+  },
+  "oh-honey-butter": {
+    name: "Ohh Honey Luxury Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: ohHoneyButter, id: "oh-honey-butter-4oz" },
+      { size: "8oz", price: 35, image: ohHoneyButter, id: "oh-honey-butter-8oz" },
     ],
   },
   "lovely-lotus-bathsoak": {
