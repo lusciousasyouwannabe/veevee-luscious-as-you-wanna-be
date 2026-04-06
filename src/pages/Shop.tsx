@@ -137,6 +137,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
       { size: "8oz", price: 35, image: gentlemanBathsoak, id: "gentleman-bathsoak-8oz" },
     ],
   },
+  "amber-bathsoak": {
+    name: "Amber Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: amberBathsoak, id: "amber-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: amberBathsoak, id: "amber-bathsoak-8oz" },
+    ],
+  },
   "very-berry-bathsoak": {
     name: "Very Berry Luxury Bath Soak",
     category: "Bath Soaks",
