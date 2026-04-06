@@ -28,12 +28,12 @@ const HeroSection = () => {
           Crafted by two mothers. Designed to nourish skin, calm the body, and elevate everyday care.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
-          <a
-            href="#bestsellers"
+          <Link
+            to="/bundles"
             className="inline-block bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-10 py-4 hover:opacity-90 transition-opacity shadow-gold"
           >
             Begin Your Journey
-          </a>
+          </Link>
           <Link
             to="/shop"
             className="inline-block border border-primary text-primary font-body font-semibold text-sm tracking-[0.15em] uppercase px-10 py-4 hover:bg-primary hover:text-primary-foreground transition-all"
