@@ -53,17 +53,6 @@ const bundles: BundleItem[] = [
     includes: ["Whipped kokum body butter", "Creamy body scrub", "Moisturizing bath soak", "Luxury bath bar"],
     category: "Collections",
   },
-  // Couples Kit
-  {
-    id: "couples-kit",
-    name: "Couples Kit",
-    price: 150,
-    originalPrice: 164,
-    savings: "Save $14",
-    image: oceanSet,
-    includes: ["Massage oil", "Bath soak", "Body butters for two", "Connection redefined"],
-    category: "Kits",
-  },
   // Self Care Sets
   {
     id: "selfcare-mini",
@@ -135,7 +124,7 @@ const Bundles = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
 
-  const categories = ["All", "Collections", "Sets", "Kits"];
+  const categories = ["All", "Collections", "Sets"];
   const filtered = filter === "All" ? bundles : bundles.filter((b) => b.category === filter);
 
   const handleAdd = (item: BundleItem) => {
