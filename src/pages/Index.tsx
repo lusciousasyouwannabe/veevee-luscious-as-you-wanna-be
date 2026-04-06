@@ -6,6 +6,7 @@ import TransformationSection from "@/components/TransformationSection";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsletterSection from "@/components/NewsletterSection";
+import SubscriptionSection from "@/components/SubscriptionSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 
@@ -20,7 +21,7 @@ const Index = () => {
       
       <TestimonialsSection />
       <NewsletterSection />
-      
+      <SubscriptionSection />
       <FinalCTASection />
       <Footer />
     </div>
