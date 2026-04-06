@@ -254,7 +254,7 @@ const Bundles = () => {
             A curated box of indulgence delivered to your door every month. Each tier includes: {subscriptionIncludes.join(", ").toLowerCase()}.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12 max-w-2xl mx-auto">
             {subscriptions.map((sub) => (
               <div key={sub.id} className="bg-card border border-border p-8 hover:border-primary/40 transition-all duration-300">
                 <h3 className="font-display text-xl font-semibold text-foreground">{sub.name.replace("Luscious Monthly — ", "")}</h3>
