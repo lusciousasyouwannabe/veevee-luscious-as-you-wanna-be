@@ -280,6 +280,13 @@ const Bundles = () => {
         </div>
       </section>
 
+      <PresaleBundleModal
+        open={presaleModalOpen}
+        onClose={() => setPresaleModalOpen(false)}
+        bundleImage={presaleBundle}
+        presalePrice={specialOffer.presalePrice}
+        regularPrice={specialOffer.regularPrice}
+      />
       <Footer />
     </div>
   );
