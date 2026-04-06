@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 
 import glowCollection from "@/assets/product-glow-collection-edited.jpg";
-import lavenderCollection from "@/assets/product-lavender-edited.jpg";
+import lavenderCollection from "@/assets/bundle-good-girl-collection.jpg";
 import glowTopview from "@/assets/product-glow-topview-edited.jpg";
 import selfcareSet from "@/assets/product-selfcare-edited.jpg";
 import gentlemanSet from "@/assets/product-gentleman-set.jpg";
