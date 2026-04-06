@@ -9,7 +9,7 @@ const bestsellers = [
     name: "Good Girl",
     price: "$120",
     image: productGoodGirl,
-    tag: "New",
+    tag: "For Her",
     collection: "Good Girl Collection",
     description: "",
   },
