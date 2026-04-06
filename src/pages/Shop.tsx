@@ -15,6 +15,7 @@ import cremeBruleeBathsoak from "@/assets/product-creme-brulee-bathsoak.jpg";
 import beachBoysBathbar from "@/assets/product-beach-boys-bathbar.png";
 import classicManBathsoak from "@/assets/product-classic-man-bathsoak.jpg";
 import luxMyrtilleButter from "@/assets/product-lux-myrtille-butter.png";
+import ohHoneyButter from "@/assets/product-oh-honey-butter.jpg";
 import coolCitronellaButter from "@/assets/product-cool-citronella-butter.jpg";
 import goodGirlBathbar from "@/assets/product-good-girl-bathbar.jpg";
 import strawberryCreamBathbar from "@/assets/product-strawberry-cream-bathbar.jpg";
