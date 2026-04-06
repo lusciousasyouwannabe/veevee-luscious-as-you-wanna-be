@@ -178,10 +178,7 @@ const Bundles = () => {
                   ))}
                 </ul>
                 <button
-                  onClick={() => {
-                    addToCart({ id: specialOffer.id, name: specialOffer.name, price: specialOffer.presalePrice, originalPrice: specialOffer.regularPrice, image: specialOffer.image, category: "Special Offer" });
-                    toast.success("Special offer added to cart!");
-                  }}
+                  onClick={() => setPresaleModalOpen(true)}
                   className="mt-8 w-full md:w-auto px-10 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 hover:bg-primary/90 transition-all duration-300"
                 >
                   Grab This Deal
