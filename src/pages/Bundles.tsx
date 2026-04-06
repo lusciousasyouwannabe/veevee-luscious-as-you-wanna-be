@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 
 import glowCollection from "@/assets/product-glow-collection-edited.jpg";
+import presaleBundle from "@/assets/product-presale-bundle.jpg";
 import lavenderCollection from "@/assets/bundle-good-girl-collection.jpg";
 import glowTopview from "@/assets/product-glow-topview-edited.jpg";
 import selfcareSet from "@/assets/product-selfcare-edited.jpg";
@@ -113,11 +114,11 @@ const subscriptionIncludes = ["Bath bar", "Body scrub", "Body butter", "Spray mi
 
 const specialOffer = {
   id: "special-48hr",
-  name: "Luscious Glow Starter Kit",
+  name: "Presale Bundle",
   presalePrice: 55,
-  regularPrice: 75,
-  image: glowCollection,
-  includes: ["Soap", "Medium body butter", "Scrub", "Bath bomb"],
+  regularPrice: 65,
+  image: presaleBundle,
+  includes: ["4oz Body butter", "4oz Body scrub", "Bath bar"],
 };
 
 const Bundles = () => {
@@ -163,9 +164,9 @@ const Bundles = () => {
                 <div className="flex items-baseline gap-3 mt-4">
                   <span className="font-display text-4xl font-bold text-primary">${specialOffer.presalePrice}</span>
                   <span className="font-body text-lg text-muted-foreground line-through">${specialOffer.regularPrice}</span>
-                  <span className="bg-primary/20 text-primary font-body text-xs font-bold px-3 py-1 tracking-wider uppercase">
-                    Save ${specialOffer.regularPrice - specialOffer.presalePrice}
-                  </span>
+                    <span className="bg-primary/20 text-primary font-body text-xs font-bold px-3 py-1 tracking-wider uppercase">
+                      Save {Math.round(((specialOffer.regularPrice - specialOffer.presalePrice) / specialOffer.regularPrice) * 100)}%
+                    </span>
                 </div>
                 <ul className="mt-6 space-y-2">
                   {specialOffer.includes.map((item) => (
