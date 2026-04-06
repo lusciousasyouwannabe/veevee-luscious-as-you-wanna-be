@@ -47,9 +47,9 @@ const products = [
   { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 25, image: cremeBruleeBathsoak, hasVariants: true, variantKey: "creme-brulee-bathsoak" },
   { id: "gentleman-bathsoak", name: "The Gentleman Luxury Bath Soak", category: "Bath Soaks", price: 25, image: gentlemanBathsoak, hasVariants: true, variantKey: "gentleman-bathsoak" },
   { id: "very-berry-bathsoak", name: "Very Berry Luxury Bath Soak", category: "Bath Soaks", price: 25, image: veryBerryBathsoak, hasVariants: true, variantKey: "very-berry-bathsoak" },
-  { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
-  { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: coolCitronellaButter },
-  { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: gentlemanButter },
+  { id: "lux-myrtille-butter", name: "Lux Myrtille Body Butter", category: "Body Butters", price: 25, image: luxMyrtilleButter, hasVariants: true, variantKey: "lux-myrtille-butter" },
+  { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter", category: "Body Butters", price: 25, image: coolCitronellaButter, hasVariants: true, variantKey: "cool-citronella-butter" },
+  { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter", category: "Body Butters", price: 25, image: gentlemanButter, hasVariants: true, variantKey: "gentleman-butter" },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Lux Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
   { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
@@ -59,6 +59,30 @@ const products = [
 ];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
+  "lux-myrtille-butter": {
+    name: "Lux Myrtille Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: luxMyrtilleButter, id: "lux-myrtille-butter-4oz" },
+      { size: "8oz", price: 35, image: luxMyrtilleButter, id: "lux-myrtille-butter-8oz" },
+    ],
+  },
+  "cool-citronella-butter": {
+    name: "Cool Citronella Luxury Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: coolCitronellaButter, id: "cool-citronella-butter-4oz" },
+      { size: "8oz", price: 35, image: coolCitronellaButter, id: "cool-citronella-butter-8oz" },
+    ],
+  },
+  "gentleman-butter": {
+    name: "The Gentleman Luxury Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: gentlemanButter, id: "gentleman-butter-4oz" },
+      { size: "8oz", price: 35, image: gentlemanButter, id: "gentleman-butter-8oz" },
+    ],
+  },
   "lovely-lotus-bathsoak": {
     name: "Lovely Lotus Luxury Bath Soak",
     category: "Bath Soaks",
