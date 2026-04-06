@@ -15,6 +15,7 @@ import greenScrub from "@/assets/product-green-edited.jpg";
 import blueberryChamomile from "@/assets/product-blueberry-chamomile.png";
 import myrtilleChamomileBundle from "@/assets/product-myrtille-chamomile-bundle.jpg";
 import cremeBruleeBundle from "@/assets/product-creme-brulee-bundle.jpg";
+import classicManSet from "@/assets/product-classic-man-set.jpg";
 
 interface BundleItem {
   id: string;
