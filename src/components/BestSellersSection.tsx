@@ -2,6 +2,7 @@
 import productGoodGirl from "@/assets/bundle-good-girl-collection.jpg";
 import productOhHoney2 from "@/assets/product-glow-collection-edited.jpg";
 import productBeachBoys from "@/assets/product-beach-boys-set-bestseller.jpg";
+import productClassicMan from "@/assets/product-classic-man-set.jpg";
 
 const bestsellers = [
   {
@@ -26,6 +27,14 @@ const bestsellers = [
     image: productBeachBoys,
     tag: "For Him",
     collection: "The Beach Boy Collection",
+    description: "",
+  },
+  {
+    name: "Classic Man",
+    price: "$120",
+    image: productClassicMan,
+    tag: "For Him",
+    collection: "Classic Man Collection",
     description: "",
   },
 ];

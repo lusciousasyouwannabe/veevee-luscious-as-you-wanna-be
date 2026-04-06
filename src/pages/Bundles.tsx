@@ -15,6 +15,7 @@ import greenScrub from "@/assets/product-green-edited.jpg";
 import blueberryChamomile from "@/assets/product-blueberry-chamomile.png";
 import myrtilleChamomileBundle from "@/assets/product-myrtille-chamomile-bundle.jpg";
 import cremeBruleeBundle from "@/assets/product-creme-brulee-bundle.jpg";
+import classicManSet from "@/assets/product-classic-man-set.jpg";
 
 interface BundleItem {
   id: string;
@@ -90,6 +91,14 @@ const bundles: BundleItem[] = [
     savings: "Save $12",
     image: cremeBruleeBundle,
     includes: ["Body butter", "Sugar scrub", "Bath soak", "Bar soap", "Massage oil"],
+    category: "Sets",
+  },
+  {
+    id: "classic-man-set",
+    name: "Classic Man Set",
+    price: 120,
+    image: classicManSet,
+    includes: ["Body butter", "Sugar scrub", "Body butter", "Massage oil", "Bar soap"],
     category: "Sets",
   },
 ];
