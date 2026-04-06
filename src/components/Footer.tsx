@@ -18,7 +18,7 @@ const Footer = () => {
               Connect
             </h4>
             <div className="space-y-2">
-              {["Instagram", "TikTok", "Facebook", "Pinterest"].map((s) => (
+              {["Instagram", "TikTok"].map((s) => (
                 <a key={s} href="#" className="block font-body text-xs text-muted-foreground hover:text-primary transition-colors">
                   {s}
                 </a>
