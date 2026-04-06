@@ -55,7 +55,7 @@ const bundles: BundleItem[] = [
     price: 40,
     image: gentlemanSet,
     includes: ["Creamy body scrub", "Bath bar"],
-    category: "Collections",
+    category: "Sets",
   },
   // Self Care Sets
   {
