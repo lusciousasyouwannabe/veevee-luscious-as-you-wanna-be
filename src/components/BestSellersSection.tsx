@@ -29,6 +29,14 @@ const bestsellers = [
     collection: "The Beach Boy Collection",
     description: "",
   },
+  {
+    name: "Classic Man",
+    price: "$120",
+    image: productClassicMan,
+    tag: "For Him",
+    collection: "Classic Man Collection",
+    description: "",
+  },
 ];
 
 const BestSellersSection = () => {

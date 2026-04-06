@@ -93,6 +93,14 @@ const bundles: BundleItem[] = [
     includes: ["Body butter", "Sugar scrub", "Bath soak", "Bar soap", "Massage oil"],
     category: "Sets",
   },
+  {
+    id: "classic-man-set",
+    name: "Classic Man Set",
+    price: 120,
+    image: classicManSet,
+    includes: ["Body butter", "Sugar scrub", "Body butter", "Massage oil", "Bar soap"],
+    category: "Sets",
+  },
 ];
 
 const subscriptions = [
