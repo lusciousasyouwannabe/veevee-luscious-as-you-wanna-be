@@ -85,7 +85,7 @@ const bundles: BundleItem[] = [
   },
   {
     id: "selfcare-large",
-    name: "Luscious Self Care Set — Large",
+    name: "Luxury Ohh Honey Self Care Set — Large",
     price: 120,
     savings: "Save $10",
     image: glowTopview,
