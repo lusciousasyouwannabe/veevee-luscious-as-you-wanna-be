@@ -114,11 +114,11 @@ const subscriptionIncludes = ["Bath bar", "Body scrub", "Body butter", "Spray mi
 
 const specialOffer = {
   id: "special-48hr",
-  name: "Luscious Glow Starter Kit",
+  name: "Presale Bundle",
   presalePrice: 55,
-  regularPrice: 75,
-  image: glowCollection,
-  includes: ["Soap", "Medium body butter", "Scrub", "Bath bomb"],
+  regularPrice: 65,
+  image: presaleBundle,
+  includes: ["4oz Body butter", "4oz Body scrub", "Bath bar"],
 };
 
 const Bundles = () => {
