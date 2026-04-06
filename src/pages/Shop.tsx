@@ -41,12 +41,12 @@ const products = [
   { id: "good-girl-bathbar", name: "Good Girl Luxury Bath Bar", category: "Bath Bars", price: 15, image: goodGirlBathbar },
   { id: "strawberry-cream-bathbar", name: "Strawberry & Cream Luxury Bath Bar", category: "Bath Bars", price: 15, image: strawberryCreamBathbar },
   { id: "mardi-gras-bathbar", name: "Mardi Gras Luxury Bath Bar", category: "Bath Bars", price: 15, image: mardiGrasBathbar },
-  { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 22, image: lovelyLotusBathsoak },
-  { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 22, image: frenchVanillaBathsoak },
-  { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 22, image: classicManBathsoak },
-  { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 22, image: cremeBruleeBathsoak },
-  { id: "gentleman-bathsoak", name: "The Gentleman Luxury Bath Soak", category: "Bath Soaks", price: 22, image: gentlemanBathsoak },
-  { id: "very-berry-bathsoak", name: "Very Berry Luxury Bath Soak", category: "Bath Soaks", price: 22, image: veryBerryBathsoak },
+  { id: "lovely-lotus-bathsoak", name: "Lovely Lotus Luxury Bath Soak", category: "Bath Soaks", price: 25, image: lovelyLotusBathsoak, hasVariants: true, variantKey: "lovely-lotus-bathsoak" },
+  { id: "french-vanilla-bathsoak", name: "French Vanilla & Oatmeal Luxury Bath Soak", category: "Bath Soaks", price: 25, image: frenchVanillaBathsoak, hasVariants: true, variantKey: "french-vanilla-bathsoak" },
+  { id: "classic-man-bathsoak", name: "Classic Man Luxury Bath Soak", category: "Bath Soaks", price: 25, image: classicManBathsoak, hasVariants: true, variantKey: "classic-man-bathsoak" },
+  { id: "creme-brulee-bathsoak", name: "Crème Brûlée Cream & Butter Botanical Bath Soak", category: "Bath Soaks", price: 25, image: cremeBruleeBathsoak, hasVariants: true, variantKey: "creme-brulee-bathsoak" },
+  { id: "gentleman-bathsoak", name: "The Gentleman Luxury Bath Soak", category: "Bath Soaks", price: 25, image: gentlemanBathsoak, hasVariants: true, variantKey: "gentleman-bathsoak" },
+  { id: "very-berry-bathsoak", name: "Very Berry Luxury Bath Soak", category: "Bath Soaks", price: 25, image: veryBerryBathsoak, hasVariants: true, variantKey: "very-berry-bathsoak" },
   { id: "lux-myrtille-butter", name: "Lux Myrtille Butter 4oz", category: "Body Butters", price: 25, image: luxMyrtilleButter },
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: coolCitronellaButter },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter 4oz", category: "Body Butters", price: 25, image: gentlemanButter },
@@ -59,6 +59,54 @@ const products = [
 ];
 
 const variantProducts: Record<string, { name: string; category: string; sizes: { size: string; price: number; image: string; id: string }[] }> = {
+  "lovely-lotus-bathsoak": {
+    name: "Lovely Lotus Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: lovelyLotusBathsoak, id: "lovely-lotus-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: lovelyLotusBathsoak, id: "lovely-lotus-bathsoak-8oz" },
+    ],
+  },
+  "french-vanilla-bathsoak": {
+    name: "French Vanilla & Oatmeal Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: frenchVanillaBathsoak, id: "french-vanilla-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: frenchVanillaBathsoak, id: "french-vanilla-bathsoak-8oz" },
+    ],
+  },
+  "classic-man-bathsoak": {
+    name: "Classic Man Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: classicManBathsoak, id: "classic-man-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: classicManBathsoak, id: "classic-man-bathsoak-8oz" },
+    ],
+  },
+  "creme-brulee-bathsoak": {
+    name: "Crème Brûlée Cream & Butter Botanical Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: cremeBruleeBathsoak, id: "creme-brulee-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: cremeBruleeBathsoak, id: "creme-brulee-bathsoak-8oz" },
+    ],
+  },
+  "gentleman-bathsoak": {
+    name: "The Gentleman Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: gentlemanBathsoak, id: "gentleman-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: gentlemanBathsoak, id: "gentleman-bathsoak-8oz" },
+    ],
+  },
+  "very-berry-bathsoak": {
+    name: "Very Berry Luxury Bath Soak",
+    category: "Bath Soaks",
+    sizes: [
+      { size: "4oz", price: 25, image: veryBerryBathsoak, id: "very-berry-bathsoak-4oz" },
+      { size: "8oz", price: 35, image: veryBerryBathsoak, id: "very-berry-bathsoak-8oz" },
+    ],
+  },
   "very-berry-scrub": {
     name: "Luxe Very Berry Body Scrub",
     category: "Body Scrubs",
