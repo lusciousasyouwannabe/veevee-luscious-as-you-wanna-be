@@ -1,4 +1,4 @@
-import subscriptionImage from "@/assets/product-glow-collection-edited.jpg";
+import subscriptionImage from "@/assets/product-presale-bundle.jpg";
 
 const SubscriptionSection = () => {
   return (
