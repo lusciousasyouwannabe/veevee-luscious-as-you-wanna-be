@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer className="py-12 px-6 border-t border-border">
       <div className="container max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
             <span className="font-display text-lg tracking-wider text-gradient-gold font-bold">
               VEEVEE LUSCIOUS AS YOU WANNA BE
@@ -12,18 +12,6 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
-            <h4 className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-4">
-              Collections
-            </h4>
-            <div className="space-y-2">
-              {["Glow Collection", "Soft Skin Collection", "Bath Collection", "Gentleman's Collection", "Couples Collection"].map((c) => (
-                <a key={c} href="#bestsellers" className="block font-body text-xs text-muted-foreground hover:text-primary transition-colors">
-                  {c}
-                </a>
-              ))}
-            </div>
-          </div>
 
           <div>
             <h4 className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-4">
