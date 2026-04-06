@@ -125,6 +125,7 @@ const specialOffer = {
 const Bundles = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
+  const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
   const categories = ["All", "Collections", "Sets"];
   const filtered = filter === "All" ? bundles : bundles.filter((b) => b.category === filter);
