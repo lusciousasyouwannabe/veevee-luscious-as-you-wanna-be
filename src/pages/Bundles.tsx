@@ -55,15 +55,6 @@ const bundles: BundleItem[] = [
   },
   // Self Care Sets
   {
-    id: "selfcare-mini",
-    name: "Luscious Self Care Set — Mini",
-    price: 35,
-    savings: "Save $2",
-    image: greenScrub,
-    includes: ["Mini soap", "Mini body butter", "Mini scrub"],
-    category: "Sets",
-  },
-  {
     id: "selfcare-medium",
     name: "Luscious Self Care Set — Medium",
     price: 102,
