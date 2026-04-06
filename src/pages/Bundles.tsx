@@ -40,7 +40,7 @@ const bundles: BundleItem[] = [
   {
     id: "good-girl-collection",
     name: "Good Girl Collection",
-    price: 68,
+    price: 120,
     image: lavenderCollection,
     includes: ["Body butter", "Sugar scrub", "Bath soak", "Bar soap"],
     category: "Collections",
