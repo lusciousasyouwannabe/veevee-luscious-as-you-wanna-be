@@ -117,7 +117,7 @@ const bundles: BundleItem[] = [
 const subscriptions = [
   { id: "sub-large", name: "Luscious Monthly — Large", price: 115, label: "/month" },
   { id: "sub-medium", name: "Luscious Monthly — Medium", price: 97, label: "/month" },
-  { id: "sub-mini", name: "Luscious Monthly — Mini", price: 59, label: "/month" },
+  
 ];
 
 const subscriptionIncludes = ["Bar soap", "Sugar scrub", "Body butter", "Spray mist", "Mini massage oil"];
