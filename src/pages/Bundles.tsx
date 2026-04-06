@@ -164,9 +164,9 @@ const Bundles = () => {
                 <div className="flex items-baseline gap-3 mt-4">
                   <span className="font-display text-4xl font-bold text-primary">${specialOffer.presalePrice}</span>
                   <span className="font-body text-lg text-muted-foreground line-through">${specialOffer.regularPrice}</span>
-                  <span className="bg-primary/20 text-primary font-body text-xs font-bold px-3 py-1 tracking-wider uppercase">
-                    Save ${specialOffer.regularPrice - specialOffer.presalePrice}
-                  </span>
+                    <span className="bg-primary/20 text-primary font-body text-xs font-bold px-3 py-1 tracking-wider uppercase">
+                      Save {Math.round(((specialOffer.regularPrice - specialOffer.presalePrice) / specialOffer.regularPrice) * 100)}%
+                    </span>
                 </div>
                 <ul className="mt-6 space-y-2">
                   {specialOffer.includes.map((item) => (
