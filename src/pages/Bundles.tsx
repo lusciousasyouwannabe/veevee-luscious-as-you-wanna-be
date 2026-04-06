@@ -51,7 +51,7 @@ const bundles: BundleItem[] = [
   },
   {
     id: "beach-boy-collection",
-    name: "The Beach Boy Collection",
+    name: "The Beach Boy Set",
     price: 40,
     image: gentlemanSet,
     includes: ["Creamy body scrub", "Bath bar"],
