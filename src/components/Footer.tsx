@@ -12,18 +12,6 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
-            <h4 className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-4">
-              Collections
-            </h4>
-            <div className="space-y-2">
-              {["Glow Collection", "Soft Skin Collection", "Bath Collection", "Gentleman's Collection", "Couples Collection"].map((c) => (
-                <a key={c} href="#bestsellers" className="block font-body text-xs text-muted-foreground hover:text-primary transition-colors">
-                  {c}
-                </a>
-              ))}
-            </div>
-          </div>
 
           <div>
             <h4 className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-4">
