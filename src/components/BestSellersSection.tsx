@@ -6,7 +6,7 @@ import productBeachBoys from "@/assets/product-beach-boys-set-bestseller.jpg";
 const bestsellers = [
   {
     name: "Good Girl",
-    price: "$68",
+    price: "$120",
     image: productGoodGirl,
     tag: "New",
     collection: "Good Girl Collection",
