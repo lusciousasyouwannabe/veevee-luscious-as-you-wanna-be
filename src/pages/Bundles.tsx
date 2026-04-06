@@ -125,7 +125,8 @@ const specialOffer = {
 
 const Bundles = () => {
   const { addToCart } = useCart();
-  const [filter, setFilter] = useState("All");
+  const [searchParams] = useSearchParams();
+  const [filter, setFilter] = useState(searchParams.get("tab") || "All");
   const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
   const categories = ["All", "Collections", "Sets"];
