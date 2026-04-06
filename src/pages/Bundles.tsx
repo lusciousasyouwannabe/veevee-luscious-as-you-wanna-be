@@ -4,6 +4,7 @@ import { Clock, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
+import PresaleBundleModal from "@/components/PresaleBundleModal";
 
 import glowCollection from "@/assets/product-glow-collection-edited.jpg";
 import presaleBundle from "@/assets/product-presale-bundle.jpg";
@@ -124,6 +125,7 @@ const specialOffer = {
 const Bundles = () => {
   const { addToCart } = useCart();
   const [filter, setFilter] = useState("All");
+  const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
   const categories = ["All", "Collections", "Sets"];
   const filtered = filter === "All" ? bundles : bundles.filter((b) => b.category === filter);
@@ -176,10 +178,7 @@ const Bundles = () => {
                   ))}
                 </ul>
                 <button
-                  onClick={() => {
-                    addToCart({ id: specialOffer.id, name: specialOffer.name, price: specialOffer.presalePrice, originalPrice: specialOffer.regularPrice, image: specialOffer.image, category: "Special Offer" });
-                    toast.success("Special offer added to cart!");
-                  }}
+                  onClick={() => setPresaleModalOpen(true)}
                   className="mt-8 w-full md:w-auto px-10 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 hover:bg-primary/90 transition-all duration-300"
                 >
                   Grab This Deal
@@ -281,6 +280,13 @@ const Bundles = () => {
         </div>
       </section>
 
+      <PresaleBundleModal
+        open={presaleModalOpen}
+        onClose={() => setPresaleModalOpen(false)}
+        bundleImage={presaleBundle}
+        presalePrice={specialOffer.presalePrice}
+        regularPrice={specialOffer.regularPrice}
+      />
       <Footer />
     </div>
   );
