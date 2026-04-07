@@ -71,7 +71,14 @@ const AdminLogin = () => {
             disabled={loading}
             className="w-full bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-8 py-3 hover:opacity-90 transition-opacity shadow-gold disabled:opacity-50"
           >
-            {loading ? "Signing in..." : "Sign In"}
+            {loading ? "Please wait..." : isSignUp ? "Create Account" : "Sign In"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsSignUp(!isSignUp)}
+            className="w-full font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {isSignUp ? "Already have an account? Sign in" : "First time? Create account"}
           </button>
         </form>
       </div>
