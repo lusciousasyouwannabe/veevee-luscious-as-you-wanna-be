@@ -1,15 +1,50 @@
-import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import { Minus, Plus, Trash2, ShoppingBag, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, totalPrice, totalItems } = useCart();
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  const handleCheckout = () => {
-    // Clover integration placeholder — will be connected once API keys are provided
-    alert("Clover checkout integration will be connected once API keys are configured. Your cart total is $" + totalPrice.toFixed(2));
+  const handleCheckout = async () => {
+    setIsCheckingOut(true);
+    try {
+      const successUrl = `${window.location.origin}/checkout/success`;
+
+      const { data, error } = await supabase.functions.invoke("clover-checkout", {
+        body: {
+          items: items.map((item) => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+          redirectUrl: successUrl,
+        },
+      });
+
+      if (error) {
+        console.error("Checkout error:", error);
+        toast.error("Checkout failed. Please try again.");
+        return;
+      }
+
+      if (data?.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        toast.error("Unable to create checkout session. Please try again.");
+        console.error("No checkout URL returned:", data);
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsCheckingOut(false);
+    }
   };
 
   if (items.length === 0) {
