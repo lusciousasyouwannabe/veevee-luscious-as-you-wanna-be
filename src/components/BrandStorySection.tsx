@@ -27,7 +27,7 @@ const BrandStorySection = () => {
           </div>
           <div className="mt-8 w-24 h-px bg-gradient-gold mx-auto" />
           <a
-            href="#products"
+            href="/bundles"
             className="inline-block mt-8 bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-8 py-3 hover:opacity-90 transition-opacity shadow-gold"
           >
             Reveal Your Glow
