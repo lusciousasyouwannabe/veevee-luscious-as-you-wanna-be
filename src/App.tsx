@@ -9,6 +9,7 @@ import Invoice from "./pages/Invoice";
 import Shop from "./pages/Shop";
 import Bundles from "./pages/Bundles";
 import Cart from "./pages/Cart";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
