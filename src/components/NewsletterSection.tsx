@@ -71,9 +71,10 @@ const NewsletterSection = () => {
             />
             <button
               type="submit"
-              className="bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-8 py-3 hover:opacity-90 transition-opacity shadow-gold whitespace-nowrap"
+              disabled={loading}
+              className="bg-gradient-gold text-primary-foreground font-body font-semibold text-sm tracking-[0.15em] uppercase px-8 py-3 hover:opacity-90 transition-opacity shadow-gold whitespace-nowrap disabled:opacity-50"
             >
-              Become Luscious
+              {loading ? "Joining..." : "Become Luscious"}
             </button>
           </form>
         )}
