@@ -89,11 +89,11 @@ const bundles: BundleItem[] = [
   },
   {
     id: "classic-man-set",
-    name: "Classic Man Set",
+    name: "Classic Man Collection",
     price: 120,
     image: classicManSet,
     includes: ["Body butter", "Body scrub", "Body butter", "Massage oil", "Bath bar"],
-    category: "Sets",
+    category: "Collections",
   },
 ];
 
