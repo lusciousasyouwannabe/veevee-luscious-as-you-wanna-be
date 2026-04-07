@@ -1,14 +1,39 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (!email.trim()) return;
+
+    setLoading(true);
+    try {
+      const { error } = await supabase
+        .from("newsletter_signups")
+        .insert({ email: email.trim() });
+
+      if (error) throw error;
+
+      // Notify the owner via edge function
+      try {
+        await supabase.functions.invoke("notify-newsletter-signup", {
+          body: { email: email.trim() },
+        });
+      } catch {
+        // Notification failure shouldn't block the signup
+      }
+
       setSubmitted(true);
       setEmail("");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
