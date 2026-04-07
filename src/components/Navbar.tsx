@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16 px-6">
         <Link to="/" className="flex items-center gap-2 font-display text-lg tracking-wider text-gradient-gold font-bold">
           <img src={logo} alt="VeeVee Luscious logo" className="w-8 h-8 rounded-full object-cover" />
-          <span className="hidden sm:inline">VEEVEE LUSCIOUS</span>
+          <span className="hidden sm:inline">VEEVEE LUSCIOUS AS YOU WANNA BE</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
