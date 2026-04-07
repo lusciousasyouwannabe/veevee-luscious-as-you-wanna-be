@@ -16,6 +16,7 @@ const bodyButters = [
   "Cool Citronella Body Butter",
   "The Gentleman Body Butter",
   "Ohh Honey Body Butter",
+  "Crème Brûlée Body Butter",
 ];
 
 const bodyScrubs = [
