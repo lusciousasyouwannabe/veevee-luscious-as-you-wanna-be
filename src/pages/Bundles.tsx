@@ -120,8 +120,7 @@ const Bundles = () => {
   const [filter, setFilter] = useState(searchParams.get("tab") || "All");
   const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
-  const categories = ["All", "Collections", "Sets"];
-  const filtered = filter === "All" ? bundles : bundles.filter((b) => b.category === filter);
+  const filtered = bundles;
 
   const handleAdd = (item: BundleItem) => {
     addToCart({ id: item.id, name: item.name, price: item.price, originalPrice: item.originalPrice, image: item.image, category: item.category });
