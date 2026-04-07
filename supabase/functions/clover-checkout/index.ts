@@ -34,6 +34,9 @@ Deno.serve(async (req) => {
     const apiKey = Deno.env.get('CLOVER_API_KEY')
     const merchantId = Deno.env.get('CLOVER_MERCHANT_ID')
 
+    console.log('API Key present:', !!apiKey, 'length:', apiKey?.length)
+    console.log('Merchant ID present:', !!merchantId, 'value:', merchantId)
+
     if (!apiKey || !merchantId) {
       return new Response(
         JSON.stringify({ error: 'Clover credentials not configured' }),
