@@ -68,15 +68,6 @@ const bundles: BundleItem[] = [
     category: "Sets",
   },
   {
-    id: "selfcare-large",
-    name: "Luxury Ohh Honey Self Care Set — Large",
-    price: 120,
-    savings: "Save $10",
-    image: glowTopview,
-    includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bath bar"],
-    category: "Sets",
-  },
-  {
     id: "myrtille-chamomile-bundle",
     name: "Luxury Myrtille Chamomile Set",
     price: 95,
