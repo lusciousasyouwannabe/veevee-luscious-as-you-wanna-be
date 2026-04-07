@@ -60,12 +60,12 @@ const bundles: BundleItem[] = [
   // Self Care Sets
   {
     id: "selfcare-medium",
-    name: "The Luxury Gentlemen's Self Care Set",
+    name: "The Luxury Gentlemen's Self Care Collection",
     price: 102,
     savings: "Save $10",
     image: selfcareSet,
     includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bath bar"],
-    category: "Sets",
+    category: "Collections",
   },
   {
     id: "myrtille-chamomile-bundle",
