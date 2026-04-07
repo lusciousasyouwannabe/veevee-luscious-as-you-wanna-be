@@ -120,9 +120,17 @@ const Cart = () => {
             </div>
             <button
               onClick={handleCheckout}
-              className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 hover:bg-primary/90 transition-all duration-300"
+              disabled={isCheckingOut}
+              className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Proceed to Checkout
+              {isCheckingOut ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                "Proceed to Checkout"
+              )}
             </button>
             <p className="font-body text-[10px] text-muted-foreground text-center mt-3">Secure checkout powered by Clover</p>
           </div>
