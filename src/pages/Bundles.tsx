@@ -79,13 +79,13 @@ const bundles: BundleItem[] = [
   },
   {
     id: "creme-brulee-bundle",
-    name: "Luxury Crème Brûlée Set",
+    name: "Luxury Crème Brûlée Collection",
     price: 95,
     originalPrice: 107,
     savings: "Save $12",
     image: cremeBruleeBundle,
     includes: ["Body butter", "Body scrub", "Bath soak", "Bath bar", "Massage oil"],
-    category: "Sets",
+    category: "Collections",
   },
   {
     id: "classic-man-set",
