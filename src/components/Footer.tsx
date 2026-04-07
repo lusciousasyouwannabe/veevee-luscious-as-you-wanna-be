@@ -16,9 +16,12 @@ const Footer = () => {
             Connect
           </h4>
           <div className="flex justify-center gap-6">
-            {["Instagram", "TikTok"].map((s) => (
-              <a key={s} href="#" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors">
-                {s}
+            {[
+              { name: "Instagram", url: "https://www.instagram.com/lusciousasyouwannabe?igsh=c2Q1czFxMDVobGpo&utm_source=qr" },
+              { name: "TikTok", url: "#" },
+            ].map((s) => (
+              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors">
+                {s.name}
               </a>
             ))}
           </div>
