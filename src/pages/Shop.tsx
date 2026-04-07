@@ -35,6 +35,7 @@ import frenchVanillaScrub from "@/assets/product-french-vanilla-bodyscrub.jpg";
 import goodGirlScrub from "@/assets/product-good-girl-scrub.jpg";
 import beachBoysScrub from "@/assets/product-beach-boys-scrub.jpg";
 import ohHoneyBathbar from "@/assets/product-oh-honey-bathbar.jpg";
+import cremeBruleeButter from "@/assets/product-creme-brulee-butter.png";
 
 const products = [
   { id: "oh-honey-bathbar", name: "Ohh Honey Luxury Bath Bar", category: "Bath Bars", price: 15, image: ohHoneyBathbar },
