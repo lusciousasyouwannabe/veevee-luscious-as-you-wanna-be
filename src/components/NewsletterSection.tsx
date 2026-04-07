@@ -19,13 +19,18 @@ const NewsletterSection = () => {
 
       if (error) throw error;
 
-      // Notify the owner via edge function
+      // Send branded welcome email with 10% off code
+      const signupId = crypto.randomUUID();
       try {
-        await supabase.functions.invoke("notify-newsletter-signup", {
-          body: { email: email.trim() },
+        await supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "newsletter-welcome",
+            recipientEmail: email.trim(),
+            idempotencyKey: `newsletter-welcome-${signupId}`,
+          },
         });
       } catch {
-        // Notification failure shouldn't block the signup
+        // Email failure shouldn't block the signup
       }
 
       setSubmitted(true);
