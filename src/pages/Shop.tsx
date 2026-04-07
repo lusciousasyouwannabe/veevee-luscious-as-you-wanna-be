@@ -35,6 +35,7 @@ import frenchVanillaScrub from "@/assets/product-french-vanilla-bodyscrub.jpg";
 import goodGirlScrub from "@/assets/product-good-girl-scrub.jpg";
 import beachBoysScrub from "@/assets/product-beach-boys-scrub.jpg";
 import ohHoneyBathbar from "@/assets/product-oh-honey-bathbar.jpg";
+import cremeBruleeButter from "@/assets/product-creme-brulee-butter.png";
 
 const products = [
   { id: "oh-honey-bathbar", name: "Ohh Honey Luxury Bath Bar", category: "Bath Bars", price: 15, image: ohHoneyBathbar },
@@ -58,6 +59,7 @@ const products = [
   { id: "cool-citronella-butter", name: "Cool Citronella Luxury Body Butter", category: "Body Butters", price: 25, image: coolCitronellaButter, hasVariants: true, variantKey: "cool-citronella-butter" },
   { id: "gentleman-butter", name: "The Gentleman Luxury Body Butter", category: "Body Butters", price: 25, image: gentlemanButter, hasVariants: true, variantKey: "gentleman-butter" },
   { id: "oh-honey-butter", name: "Ohh Honey Luxury Body Butter", category: "Body Butters", price: 25, image: ohHoneyButter, hasVariants: true, variantKey: "oh-honey-butter" },
+  { id: "creme-brulee-butter", name: "Crème Brûlée Body Butter", category: "Body Butters", price: 25, image: cremeBruleeButter, hasVariants: true, variantKey: "creme-brulee-butter" },
   { id: "creme-brulee-scrub", name: "Crème Brûlée Sugar Scrub", category: "Body Scrubs", price: 25, image: cremeBruleeScrub, hasVariants: true, variantKey: "creme-brulee-scrub" },
   { id: "lux-myrtille-scrub", name: "Luxury Myrtille Body Scrub 4oz", category: "Body Scrubs", price: 25, image: luxMyrtilleScrub },
   { id: "very-berry-scrub", name: "Luxe Very Berry Body Scrub", category: "Body Scrubs", price: 25, image: veryBerryScrub4oz, hasVariants: true, variantKey: "very-berry-scrub" },
@@ -97,6 +99,14 @@ const variantProducts: Record<string, { name: string; category: string; sizes: {
     sizes: [
       { size: "4oz", price: 25, image: ohHoneyButter, id: "oh-honey-butter-4oz" },
       { size: "8oz", price: 35, image: ohHoneyButter, id: "oh-honey-butter-8oz" },
+    ],
+  },
+  "creme-brulee-butter": {
+    name: "Crème Brûlée Body Butter",
+    category: "Body Butters",
+    sizes: [
+      { size: "4oz", price: 25, image: cremeBruleeButter, id: "creme-brulee-butter-4oz" },
+      { size: "8oz", price: 35, image: cremeBruleeButter, id: "creme-brulee-butter-8oz" },
     ],
   },
   "lovely-lotus-bathsoak": {
