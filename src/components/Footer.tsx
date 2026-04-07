@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="flex justify-center gap-6">
             {[
               { name: "Instagram", url: "https://www.instagram.com/lusciousasyouwannabe?igsh=c2Q1czFxMDVobGpo&utm_source=qr" },
-              { name: "TikTok", url: "#" },
+              { name: "TikTok", url: "https://www.tiktok.com/@vee_vee_luscious?is_from_webapp=1&sender_device=pc" },
             ].map((s) => (
               <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-muted-foreground hover:text-primary transition-colors">
                 {s.name}
