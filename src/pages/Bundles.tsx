@@ -51,49 +51,49 @@ const bundles: BundleItem[] = [
   },
   {
     id: "beach-boy-collection",
-    name: "The Beach Boy Set",
+    name: "The Beach Boy Collection",
     price: 40,
     image: gentlemanSet,
     includes: ["Creamy body scrub", "Bath bar"],
-    category: "Sets",
+    category: "Collections",
   },
   // Self Care Sets
   {
     id: "selfcare-medium",
-    name: "The Luxury Gentlemen's Self Care Set",
+    name: "The Luxury Gentlemen's Self Care Collection",
     price: 102,
     savings: "Save $10",
     image: selfcareSet,
     includes: ["Massage oil", "Body butter", "Scrub", "Bath soak", "Bath bar"],
-    category: "Sets",
+    category: "Collections",
   },
   {
     id: "myrtille-chamomile-bundle",
-    name: "Luxury Myrtille Chamomile Set",
+    name: "Luxury Myrtille Chamomile Collection",
     price: 95,
     originalPrice: 107,
     savings: "Save $12",
     image: myrtilleChamomileBundle,
     includes: ["Body scrub", "Bath soak", "Body butter", "Massage oil"],
-    category: "Sets",
+    category: "Collections",
   },
   {
     id: "creme-brulee-bundle",
-    name: "Luxury Crème Brûlée Set",
+    name: "Luxury Crème Brûlée Collection",
     price: 95,
     originalPrice: 107,
     savings: "Save $12",
     image: cremeBruleeBundle,
     includes: ["Body butter", "Body scrub", "Bath soak", "Bath bar", "Massage oil"],
-    category: "Sets",
+    category: "Collections",
   },
   {
     id: "classic-man-set",
-    name: "Classic Man Set",
+    name: "Classic Man Collection",
     price: 120,
     image: classicManSet,
     includes: ["Body butter", "Body scrub", "Body butter", "Massage oil", "Bath bar"],
-    category: "Sets",
+    category: "Collections",
   },
 ];
 
@@ -120,8 +120,7 @@ const Bundles = () => {
   const [filter, setFilter] = useState(searchParams.get("tab") || "All");
   const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
-  const categories = ["All", "Collections", "Sets"];
-  const filtered = filter === "All" ? bundles : bundles.filter((b) => b.category === filter);
+  const filtered = bundles;
 
   const handleAdd = (item: BundleItem) => {
     addToCart({ id: item.id, name: item.name, price: item.price, originalPrice: item.originalPrice, image: item.image, category: item.category });
@@ -180,20 +179,6 @@ const Bundles = () => {
             </div>
           </div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`font-body text-[11px] tracking-[0.2em] uppercase px-5 py-2 border transition-all duration-300 ${
-                  filter === cat ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
 
           {/* Bundle Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
