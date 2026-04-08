@@ -3,11 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import TemplateEditor from "@/components/TemplateEditor";
 
 interface Signup {
   id: string;
   email: string;
   created_at: string;
+}
+
+interface EditableField {
+  key: string;
+  label: string;
+  type: "text" | "textarea";
 }
 
 interface TemplatePreview {
@@ -17,6 +24,9 @@ interface TemplatePreview {
   html: string;
   status: "ready" | "preview_data_required" | "render_failed";
   errorMessage?: string;
+  editableFields?: EditableField[];
+  defaults?: Record<string, any>;
+  savedSettings?: Record<string, any>;
 }
 
 const AdminDashboard = () => {
@@ -25,6 +35,7 @@ const AdminDashboard = () => {
   const [templates, setTemplates] = useState<TemplatePreview[]>([]);
   const [templatesLoading, setTemplatesLoading] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
+  const [showEditor, setShowEditor] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,8 +69,8 @@ const AdminDashboard = () => {
     setLoading(false);
   };
 
-  const fetchTemplates = async () => {
-    if (templates.length > 0) return;
+  const fetchTemplates = async (force = false) => {
+    if (!force && templates.length > 0) return;
     setTemplatesLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("preview-transactional-email", {
@@ -70,7 +81,7 @@ const AdminDashboard = () => {
 
       const list = data?.templates || [];
       setTemplates(list);
-      if (list.length > 0) setSelectedTemplate(list[0].templateName);
+      if (list.length > 0 && !selectedTemplate) setSelectedTemplate(list[0].templateName);
     } catch (err) {
       console.error("Failed to fetch templates", err);
       toast.error("Failed to load email templates");
@@ -101,7 +112,7 @@ const AdminDashboard = () => {
         </button>
       </header>
 
-      <main className="container max-w-5xl mx-auto px-6 py-10">
+      <main className="container max-w-6xl mx-auto px-6 py-10">
         <Tabs defaultValue="subscribers" onValueChange={(v) => v === "templates" && fetchTemplates()}>
           <TabsList className="mb-6">
             <TabsTrigger value="subscribers">Subscribers</TabsTrigger>
@@ -162,11 +173,14 @@ const AdminDashboard = () => {
             ) : (
               <div className="flex gap-6">
                 {/* Template list */}
-                <div className="w-56 shrink-0 space-y-1">
+                <div className="w-48 shrink-0 space-y-1">
                   {templates.map((t) => (
                     <button
                       key={t.templateName}
-                      onClick={() => setSelectedTemplate(t.templateName)}
+                      onClick={() => {
+                        setSelectedTemplate(t.templateName);
+                        setShowEditor(false);
+                      }}
                       className={`w-full text-left px-4 py-3 rounded-md text-sm font-body transition-colors ${
                         selectedTemplate === t.templateName
                           ? "bg-primary text-primary-foreground"
@@ -178,31 +192,55 @@ const AdminDashboard = () => {
                   ))}
                 </div>
 
-                {/* Preview pane */}
-                <div className="flex-1 border border-border rounded-md overflow-hidden">
-                  {active?.status === "ready" ? (
-                    <>
-                      <div className="bg-secondary px-4 py-2 border-b border-border">
-                        <p className="font-body text-xs text-muted-foreground">
-                          Subject: <span className="text-foreground font-medium">{active.subject}</span>
-                        </p>
-                      </div>
-                      <iframe
-                        srcDoc={active.html}
-                        title="Email preview"
-                        className="w-full bg-white"
-                        style={{ height: "700px", border: "none" }}
-                        sandbox=""
+                {/* Preview + Edit pane */}
+                <div className="flex-1 flex gap-4">
+                  {/* Preview */}
+                  <div className={`border border-border rounded-md overflow-hidden ${showEditor ? "flex-1" : "w-full"}`}>
+                    {active?.status === "ready" ? (
+                      <>
+                        <div className="bg-secondary px-4 py-2 border-b border-border flex items-center justify-between">
+                          <p className="font-body text-xs text-muted-foreground">
+                            Subject: <span className="text-foreground font-medium">{active.subject}</span>
+                          </p>
+                          {active.editableFields && active.editableFields.length > 0 && (
+                            <button
+                              onClick={() => setShowEditor(!showEditor)}
+                              className="font-body text-xs px-3 py-1 rounded border border-border text-foreground hover:bg-secondary transition-colors"
+                            >
+                              {showEditor ? "Hide Editor" : "✏️ Edit Content"}
+                            </button>
+                          )}
+                        </div>
+                        <iframe
+                          srcDoc={active.html}
+                          title="Email preview"
+                          className="w-full bg-white"
+                          style={{ height: "700px", border: "none" }}
+                          sandbox=""
+                        />
+                      </>
+                    ) : active?.status === "render_failed" ? (
+                      <p className="font-body text-destructive text-center py-10 px-4">
+                        Render failed: {active.errorMessage}
+                      </p>
+                    ) : (
+                      <p className="font-body text-muted-foreground text-center py-10">
+                        Select a template to preview
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Editor panel */}
+                  {showEditor && active?.editableFields && active.defaults && (
+                    <div className="w-[380px] shrink-0 border border-border rounded-md overflow-hidden">
+                      <TemplateEditor
+                        templateName={active.templateName}
+                        editableFields={active.editableFields}
+                        defaults={active.defaults}
+                        savedSettings={active.savedSettings || {}}
+                        onSaved={() => fetchTemplates(true)}
                       />
-                    </>
-                  ) : active?.status === "render_failed" ? (
-                    <p className="font-body text-destructive text-center py-10 px-4">
-                      Render failed: {active.errorMessage}
-                    </p>
-                  ) : (
-                    <p className="font-body text-muted-foreground text-center py-10">
-                      Select a template to preview
-                    </p>
+                    </div>
                   )}
                 </div>
               </div>
