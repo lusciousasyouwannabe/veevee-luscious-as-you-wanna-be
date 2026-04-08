@@ -1,36 +1,30 @@
 
-What I checked
-- The latest newsletter signup records in the backend.
-- The app email send log for `vedellawalton@gmail.com`.
-- The recent browser/network activity.
-- The newsletter form code path.
 
-Result
-- No, the corrected signup did not go through.
-- I do not see any signup record for `vedellawalton@gmail.com`.
-- I also do not see any email send record for `vedellawalton@gmail.com`.
+## Plan: Add Email Preview Tab to Admin Dashboard
 
-What is in the system right now
-- `vedellawalton@gmil.com` — the earlier typoed address
-- `test-veevee-demo@mailinator.com`
+### What we're building
+A new "Email Templates" tab in the admin dashboard that renders a live preview of the newsletter welcome email directly in the browser. You'll be able to see exactly what subscribers receive, right alongside your existing Subscribers tab.
 
-Why I’m confident
-- The backend still shows only those two signup entries.
-- The email log has entries for the typoed address and the Mailinator test, but none for the corrected Gmail address.
-- The captured browser activity shows admin dashboard refresh requests, not a new newsletter form submission.
+### How it works
 
-Likely conclusion
-- The corrected email was not actually submitted successfully to the public newsletter form, or the submit never reached the backend.
-- This does not look like a delivery problem yet, because there is no signup record and no send log for the corrected address.
+The email template lives in an Edge Function directory using Deno-specific imports (`npm:react`, `npm:@react-email/components`) that can't run in the browser. So we'll call the existing `preview-transactional-email` Edge Function, which renders the template server-side and returns the HTML. The dashboard will display it in an iframe.
 
-Next step
-- Please submit `vedellawalton@gmail.com` again from the public homepage newsletter form.
-- Right after that, I can verify 3 things:
-  1. the success message appears,
-  2. a new signup record is created,
-  3. the welcome email is logged as sent.
+### Changes
 
-Technical details
-- The form flow inserts into `newsletter_signups` first, then triggers the welcome email.
-- Since neither a signup row nor an email log row exists for the corrected address, the flow never completed for that email.
-- Based on the captured session, the only recent requests were admin-side reads of newsletter signups, not a public form submit.
+**1. Update `AdminDashboard.tsx`**
+- Add Tabs (Subscribers | Email Templates) using the existing `@/components/ui/tabs` component
+- Move the current signups table into a "Subscribers" tab
+- Add an "Email Templates" tab that:
+  - Calls the `preview-transactional-email` Edge Function on load
+  - Shows a list of templates on the left (currently just "Newsletter Welcome")
+  - Renders the selected template's HTML in an iframe on the right
+  - Shows a loading/error state while fetching
+
+**2. No new files or database changes needed**
+- The `preview-transactional-email` function already exists and returns rendered HTML
+- The Tabs UI component already exists
+- Auth protection already covers the dashboard
+
+### Technical note
+The Edge Function is gated by `LOVABLE_API_KEY`, so we'll call it via `supabase.functions.invoke()` which automatically handles auth headers. If that doesn't match the expected key, we'll fall back to rendering a static HTML version of the email inline.
+
