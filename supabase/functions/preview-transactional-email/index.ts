@@ -8,9 +8,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 }
 
-// Renders all registered templates with their previewData.
-// Gated by LOVABLE_API_KEY — only the Go API calls this.
-
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders })
@@ -20,17 +17,12 @@ Deno.serve(async (req) => {
   if (!apiKey) {
     return new Response(
       JSON.stringify({ error: 'Server configuration error' }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     )
   }
 
-  // Allow access via LOVABLE_API_KEY or authenticated Supabase user
   const authHeader = req.headers.get('Authorization')
   const token = authHeader?.replace(/^Bearer\s+/i, '')
-
   let authorized = token === apiKey
 
   if (!authorized && token) {
@@ -52,6 +44,22 @@ Deno.serve(async (req) => {
     })
   }
 
+  // Read saved settings from DB
+  const sbUrl = Deno.env.get('SUPABASE_URL')!
+  const sbServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  const adminSb = createClient(sbUrl, sbServiceKey)
+
+  const { data: allSettings } = await adminSb
+    .from('email_template_settings')
+    .select('template_name, settings')
+
+  const settingsMap: Record<string, Record<string, any>> = {}
+  if (allSettings) {
+    for (const row of allSettings) {
+      settingsMap[row.template_name] = row.settings as Record<string, any>
+    }
+  }
+
   const templateNames = Object.keys(TEMPLATES)
   const results: Array<{
     templateName: string
@@ -60,30 +68,26 @@ Deno.serve(async (req) => {
     html: string
     status: 'ready' | 'preview_data_required' | 'render_failed'
     errorMessage?: string
+    editableFields?: Array<{ key: string; label: string; type: string }>
+    defaults?: Record<string, any>
+    savedSettings?: Record<string, any>
   }> = []
 
   for (const name of templateNames) {
     const entry = TEMPLATES[name]
     const displayName = entry.displayName || name
+    const savedSettings = settingsMap[name] || {}
 
-    if (!entry.previewData) {
-      results.push({
-        templateName: name,
-        displayName,
-        subject: '',
-        html: '',
-        status: 'preview_data_required',
-      })
-      continue
-    }
+    // Merge defaults with saved settings for rendering
+    const renderData = { ...(entry.previewData || {}), ...savedSettings }
 
     try {
       const html = await renderAsync(
-        React.createElement(entry.component, entry.previewData)
+        React.createElement(entry.component, renderData)
       )
       const resolvedSubject =
         typeof entry.subject === 'function'
-          ? entry.subject(entry.previewData)
+          ? entry.subject(renderData)
           : entry.subject
 
       results.push({
@@ -92,12 +96,12 @@ Deno.serve(async (req) => {
         subject: resolvedSubject,
         html,
         status: 'ready',
+        editableFields: entry.editableFields,
+        defaults: entry.defaults,
+        savedSettings,
       })
     } catch (err) {
-      console.error('Failed to render template for preview', {
-        template: name,
-        error: err,
-      })
+      console.error('Failed to render template for preview', { template: name, error: err })
       results.push({
         templateName: name,
         displayName,
@@ -105,6 +109,9 @@ Deno.serve(async (req) => {
         html: '',
         status: 'render_failed',
         errorMessage: err instanceof Error ? err.message : String(err),
+        editableFields: entry.editableFields,
+        defaults: entry.defaults,
+        savedSettings,
       })
     }
   }

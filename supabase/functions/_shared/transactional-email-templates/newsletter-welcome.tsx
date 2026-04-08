@@ -6,72 +6,104 @@ import {
 import type { TemplateEntry } from './registry.ts'
 
 const SITE_NAME = "VeeVee Luscious"
-const DISCOUNT_CODE = "LUSCIOUS10"
 
-const NewsletterWelcomeEmail = () => (
-  <Html lang="en" dir="ltr">
-    <Head />
-    <Preview>Welcome to the VeeVee Luscious family — here's your 10% off code ✨</Preview>
-    <Body style={main}>
-      <Container style={container}>
-        {/* Logo */}
-        <Section style={logoSection}>
-          <Img
-            src="https://jpujaqqvbfwvtzsxvxap.supabase.co/storage/v1/object/public/email-assets/veevee-logo.png"
-            width="180"
-            height="auto"
-            alt="VeeVee Luscious"
-            style={logo}
-          />
-        </Section>
+// Default values — overridden by DB settings when available
+const DEFAULTS = {
+  subject: "Welcome to VeeVee Luscious — Here's Your 10% Off ✨",
+  previewText: "Welcome to the VeeVee Luscious family — here's your 10% off code ✨",
+  heading: "Welcome to the Family ✨",
+  heroBody: "You've just taken the first step toward a more luscious you. We're so glad you're here.",
+  discountLabel: "Your Exclusive 10% Off Code",
+  discountCode: "LUSCIOUS10",
+  discountNote: "Use this code at checkout on your first order. Because you deserve something beautiful.",
+  bodyParagraph1: "At VeeVee Luscious, we believe self-care isn't a luxury — it's a love language. Our handcrafted bath and body products are designed to nourish your skin and calm your spirit.",
+  bodyParagraph2: "As part of our inner circle, you'll be the first to know about new launches, VIP offers, and exclusive collections.",
+  signoff: "Stay luscious,",
+  signoffName: "The VeeVee Luscious Team",
+}
 
-        <Section style={heroSection}>
-          <Heading style={h1}>Welcome to the Family ✨</Heading>
-          <Text style={heroText}>
-            You've just taken the first step toward a more luscious you.
-            We're so glad you're here.
-          </Text>
-        </Section>
+export interface NewsletterWelcomeProps {
+  subject?: string
+  previewText?: string
+  heading?: string
+  heroBody?: string
+  discountLabel?: string
+  discountCode?: string
+  discountNote?: string
+  bodyParagraph1?: string
+  bodyParagraph2?: string
+  signoff?: string
+  signoffName?: string
+}
 
-        <Hr style={divider} />
+const NewsletterWelcomeEmail = (props: NewsletterWelcomeProps) => {
+  const d = { ...DEFAULTS, ...props }
+  return (
+    <Html lang="en" dir="ltr">
+      <Head />
+      <Preview>{d.previewText}</Preview>
+      <Body style={main}>
+        <Container style={container}>
+          {/* Logo */}
+          <Section style={logoSection}>
+            <Img
+              src="https://jpujaqqvbfwvtzsxvxap.supabase.co/storage/v1/object/public/email-assets/veevee-logo.png"
+              width="180"
+              height="auto"
+              alt="VeeVee Luscious"
+              style={logo}
+            />
+          </Section>
 
-        <Section style={discountSection}>
-          <Text style={discountLabel}>Your Exclusive 10% Off Code</Text>
-          <Text style={discountCode}>{DISCOUNT_CODE}</Text>
-          <Text style={discountNote}>
-            Use this code at checkout on your first order. Because you deserve
-            something beautiful.
-          </Text>
-        </Section>
+          <Section style={heroSection}>
+            <Heading style={h1}>{d.heading}</Heading>
+            <Text style={heroText}>{d.heroBody}</Text>
+          </Section>
 
-        <Hr style={divider} />
+          <Hr style={divider} />
 
-        <Section style={bodySection}>
-          <Text style={text}>
-            At VeeVee Luscious, we believe self-care isn't a luxury — it's a
-            love language. Our handcrafted bath and body products are designed
-            to nourish your skin and calm your spirit.
-          </Text>
-          <Text style={text}>
-            As part of our inner circle, you'll be the first to know about new
-            launches, VIP offers, and exclusive collections.
-          </Text>
-        </Section>
+          <Section style={discountSection}>
+            <Text style={discountLabelStyle}>{d.discountLabel}</Text>
+            <Text style={discountCodeStyle}>{d.discountCode}</Text>
+            <Text style={discountNoteStyle}>{d.discountNote}</Text>
+          </Section>
 
-        <Section style={signoffSection}>
-          <Text style={signoff}>Stay luscious,</Text>
-          <Text style={signoffName}>The VeeVee Luscious Team</Text>
-        </Section>
-      </Container>
-    </Body>
-  </Html>
-)
+          <Hr style={divider} />
+
+          <Section style={bodySection}>
+            <Text style={text}>{d.bodyParagraph1}</Text>
+            <Text style={text}>{d.bodyParagraph2}</Text>
+          </Section>
+
+          <Section style={signoffSection}>
+            <Text style={signoffStyle}>{d.signoff}</Text>
+            <Text style={signoffNameStyle}>{d.signoffName}</Text>
+          </Section>
+        </Container>
+      </Body>
+    </Html>
+  )
+}
 
 export const template = {
   component: NewsletterWelcomeEmail,
-  subject: 'Welcome to VeeVee Luscious — Here\'s Your 10% Off ✨',
+  subject: (data: Record<string, any>) => data?.subject || DEFAULTS.subject,
   displayName: 'Newsletter welcome',
-  previewData: {},
+  previewData: { ...DEFAULTS },
+  editableFields: [
+    { key: 'subject', label: 'Subject Line', type: 'text' },
+    { key: 'previewText', label: 'Preview Text', type: 'text' },
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'heroBody', label: 'Hero Body Text', type: 'textarea' },
+    { key: 'discountLabel', label: 'Discount Label', type: 'text' },
+    { key: 'discountCode', label: 'Discount Code', type: 'text' },
+    { key: 'discountNote', label: 'Discount Note', type: 'textarea' },
+    { key: 'bodyParagraph1', label: 'Body Paragraph 1', type: 'textarea' },
+    { key: 'bodyParagraph2', label: 'Body Paragraph 2', type: 'textarea' },
+    { key: 'signoff', label: 'Sign-off', type: 'text' },
+    { key: 'signoffName', label: 'Sign-off Name', type: 'text' },
+  ],
+  defaults: DEFAULTS,
 } satisfies TemplateEntry
 
 // ── Styles ──────────────────────────────────────────────────────────────
@@ -132,7 +164,7 @@ const discountSection: React.CSSProperties = {
   padding: '16px 0',
 }
 
-const discountLabel: React.CSSProperties = {
+const discountLabelStyle: React.CSSProperties = {
   fontSize: '12px',
   letterSpacing: '0.15em',
   textTransform: 'uppercase' as const,
@@ -141,7 +173,7 @@ const discountLabel: React.CSSProperties = {
   margin: '0 0 12px',
 }
 
-const discountCode: React.CSSProperties = {
+const discountCodeStyle: React.CSSProperties = {
   fontFamily: "'Playfair Display', Georgia, serif",
   fontSize: '36px',
   fontWeight: '700',
@@ -153,7 +185,7 @@ const discountCode: React.CSSProperties = {
   display: 'inline-block',
 }
 
-const discountNote: React.CSSProperties = {
+const discountNoteStyle: React.CSSProperties = {
   fontSize: '13px',
   color: mutedText,
   lineHeight: '1.5',
@@ -175,14 +207,14 @@ const signoffSection: React.CSSProperties = {
   marginTop: '16px',
 }
 
-const signoff: React.CSSProperties = {
+const signoffStyle: React.CSSProperties = {
   fontSize: '14px',
   color: darkText,
   fontStyle: 'italic',
   margin: '0 0 4px',
 }
 
-const signoffName: React.CSSProperties = {
+const signoffNameStyle: React.CSSProperties = {
   fontSize: '14px',
   fontWeight: '600',
   color: goldColor,

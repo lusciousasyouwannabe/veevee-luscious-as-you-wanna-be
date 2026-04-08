@@ -77,6 +77,27 @@ export type Database = {
         }
         Relationships: []
       }
+      email_template_settings: {
+        Row: {
+          id: string
+          settings: Json
+          template_name: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          settings?: Json
+          template_name: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          settings?: Json
+          template_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       email_unsubscribe_tokens: {
         Row: {
           created_at: string

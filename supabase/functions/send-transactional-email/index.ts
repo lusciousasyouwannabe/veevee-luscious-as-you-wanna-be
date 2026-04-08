@@ -282,19 +282,29 @@ Deno.serve(async (req) => {
     )
   }
 
-  // 4. Render React Email template to HTML and plain text
+  // 4. Read saved template settings from DB and merge with request data
+  const { data: savedRow } = await supabase
+    .from('email_template_settings')
+    .select('settings')
+    .eq('template_name', templateName)
+    .maybeSingle()
+
+  const savedSettings = (savedRow?.settings as Record<string, any>) || {}
+  const mergedData = { ...savedSettings, ...templateData }
+
+  // Render React Email template to HTML and plain text
   const html = await renderAsync(
-    React.createElement(template.component, templateData)
+    React.createElement(template.component, mergedData)
   )
   const plainText = await renderAsync(
-    React.createElement(template.component, templateData),
+    React.createElement(template.component, mergedData),
     { plainText: true }
   )
 
   // Resolve subject — supports static string or dynamic function
   const resolvedSubject =
     typeof template.subject === 'function'
-      ? template.subject(templateData)
+      ? template.subject(mergedData)
       : template.subject
 
   // 5. Enqueue the pre-rendered email for async processing by the dispatcher.
