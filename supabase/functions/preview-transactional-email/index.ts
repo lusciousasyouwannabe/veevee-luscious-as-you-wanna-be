@@ -27,10 +27,25 @@ Deno.serve(async (req) => {
     )
   }
 
-  // Verify the caller is authorized with LOVABLE_API_KEY
+  // Allow access via LOVABLE_API_KEY or authenticated Supabase user
   const authHeader = req.headers.get('Authorization')
   const token = authHeader?.replace(/^Bearer\s+/i, '')
-  if (token !== apiKey) {
+
+  let authorized = token === apiKey
+
+  if (!authorized && token) {
+    try {
+      const sbUrl = Deno.env.get('SUPABASE_URL')!
+      const sbKey = Deno.env.get('SUPABASE_ANON_KEY')!
+      const sb = createClient(sbUrl, sbKey, {
+        global: { headers: { Authorization: `Bearer ${token}` } },
+      })
+      const { data: { user } } = await sb.auth.getUser()
+      if (user) authorized = true
+    } catch { /* not a valid JWT */ }
+  }
+
+  if (!authorized) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
