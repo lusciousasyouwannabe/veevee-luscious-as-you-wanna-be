@@ -202,14 +202,27 @@ const AdminDashboard = () => {
                           <p className="font-body text-xs text-muted-foreground">
                             Subject: <span className="text-foreground font-medium">{active.subject}</span>
                           </p>
-                          {active.editableFields && active.editableFields.length > 0 && (
+                          <div className="flex items-center gap-2">
                             <button
-                              onClick={() => setShowEditor(!showEditor)}
+                              onClick={() => {
+                                if (active?.html) {
+                                  navigator.clipboard.writeText(active.html);
+                                  toast.success("HTML copied to clipboard");
+                                }
+                              }}
                               className="font-body text-xs px-3 py-1 rounded border border-border text-foreground hover:bg-secondary transition-colors"
                             >
-                              {showEditor ? "Hide Editor" : "✏️ Edit Content"}
+                              📋 Copy HTML
                             </button>
-                          )}
+                            {active.editableFields && active.editableFields.length > 0 && (
+                              <button
+                                onClick={() => setShowEditor(!showEditor)}
+                                className="font-body text-xs px-3 py-1 rounded border border-border text-foreground hover:bg-secondary transition-colors"
+                              >
+                                {showEditor ? "Hide Editor" : "✏️ Edit Content"}
+                              </button>
+                            )}
+                          </div>
                         </div>
                         <iframe
                           srcDoc={active.html}
