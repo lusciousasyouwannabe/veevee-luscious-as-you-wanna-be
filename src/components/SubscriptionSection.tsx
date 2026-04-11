@@ -1,6 +1,50 @@
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import subscriptionImage from "@/assets/product-presale-bundle.jpg";
 
 const SubscriptionSection = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleJoinSubscription = async () => {
+    setIsLoading(true);
+    try {
+      const successUrl = `${window.location.origin}/checkout/success`;
+
+      const { data, error } = await supabase.functions.invoke("clover-checkout", {
+        body: {
+          items: [
+            {
+              name: "Luscious Monthly Subscription — Pre-Sale",
+              price: 55,
+              quantity: 1,
+            },
+          ],
+          redirectUrl: successUrl,
+        },
+      });
+
+      if (error) {
+        console.error("Checkout error:", error);
+        toast.error("Checkout failed. Please try again.");
+        return;
+      }
+
+      if (data?.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        toast.error("Unable to create checkout session. Please try again.");
+        console.error("No checkout URL returned:", data);
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section id="subscription" className="py-24 px-6 bg-secondary">
       <div className="container max-w-6xl mx-auto">
@@ -37,8 +81,19 @@ const SubscriptionSection = () => {
               <p className="font-body text-sm text-muted-foreground">
                 After pre-sale ends, monthly subscription returns to $75.
               </p>
-              <button className="mt-2 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                Join Pre-Sale Subscription
+              <button
+                onClick={handleJoinSubscription}
+                disabled={isLoading}
+                className="mt-2 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 size={14} className="animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  "Join Pre-Sale Subscription"
+                )}
               </button>
             </div>
           </div>
