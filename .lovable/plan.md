@@ -1,30 +1,28 @@
 
 
-## Plan: Add Email Preview Tab to Admin Dashboard
+## Plan: Add $10 Flat Rate Shipping to Checkout
 
-### What we're building
-A new "Email Templates" tab in the admin dashboard that renders a live preview of the newsletter welcome email directly in the browser. You'll be able to see exactly what subscribers receive, right alongside your existing Subscribers tab.
+### What changes
 
-### How it works
+**1. Update `src/pages/Cart.tsx`**
+- Add a `SHIPPING_RATE = 10.00` constant
+- Show a "Shipping" line item in the order summary below the subtotal
+- Update the displayed total to include shipping
+- Pass the shipping fee to the Edge Function
 
-The email template lives in an Edge Function directory using Deno-specific imports (`npm:react`, `npm:@react-email/components`) that can't run in the browser. So we'll call the existing `preview-transactional-email` Edge Function, which renders the template server-side and returns the HTML. The dashboard will display it in an iframe.
+**2. Update `supabase/functions/clover-checkout/index.ts`**
+- Add a "Flat Rate Shipping" line item ($10.00 / 1000 cents) to the `lineItems` array sent to Clover
+- Include it in the `totalAmount` calculation
+- No schema changes needed — shipping is added server-side so it can't be bypassed
 
-### Changes
+### How it will look in the cart summary
 
-**1. Update `AdminDashboard.tsx`**
-- Add Tabs (Subscribers | Email Templates) using the existing `@/components/ui/tabs` component
-- Move the current signups table into a "Subscribers" tab
-- Add an "Email Templates" tab that:
-  - Calls the `preview-transactional-email` Edge Function on load
-  - Shows a list of templates on the left (currently just "Newsletter Welcome")
-  - Renders the selected template's HTML in an iframe on the right
-  - Shows a loading/error state while fetching
+```text
+Subtotal        $45.00
+Shipping        $10.00
+─────────────────────
+Total           $55.00
+```
 
-**2. No new files or database changes needed**
-- The `preview-transactional-email` function already exists and returns rendered HTML
-- The Tabs UI component already exists
-- Auth protection already covers the dashboard
-
-### Technical note
-The Edge Function is gated by `LOVABLE_API_KEY`, so we'll call it via `supabase.functions.invoke()` which automatically handles auth headers. If that doesn't match the expected key, we'll fall back to rendering a static HTML version of the email inline.
+### No database changes needed
 
