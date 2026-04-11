@@ -45,11 +45,20 @@ Deno.serve(async (req) => {
     }
 
     // Build line items for Clover Hosted Checkout
+    const SHIPPING_RATE_CENTS = 1000 // $10.00
+
     const lineItems = items.map((item) => ({
       name: item.name,
       unitQty: item.quantity,
       price: Math.round(item.price * 100), // Clover uses cents
     }))
+
+    // Add flat rate shipping as a line item
+    lineItems.push({
+      name: 'Flat Rate Shipping',
+      unitQty: 1,
+      price: SHIPPING_RATE_CENTS,
+    })
 
     const totalAmount = lineItems.reduce((sum, li) => sum + li.price * li.unitQty, 0)
 
