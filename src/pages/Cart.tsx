@@ -7,8 +7,11 @@ import { useCart } from "@/contexts/CartContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+const SHIPPING_RATE = 10.0;
+
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, totalPrice, totalItems } = useCart();
+  const orderTotal = totalPrice + SHIPPING_RATE;
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const handleCheckout = async () => {
@@ -114,9 +117,17 @@ const Cart = () => {
 
           {/* Summary */}
           <div className="mt-10 bg-card border border-border p-6">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-body text-sm text-muted-foreground">Subtotal</span>
+              <span className="font-body text-sm text-foreground">${totalPrice.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between items-center mb-4">
+              <span className="font-body text-sm text-muted-foreground">Shipping</span>
+              <span className="font-body text-sm text-foreground">${SHIPPING_RATE.toFixed(2)}</span>
+            </div>
+            <div className="border-t border-border pt-4 flex justify-between items-center mb-6">
               <span className="font-display text-lg font-semibold text-foreground">Total</span>
-              <span className="font-display text-2xl font-bold text-primary">${totalPrice.toFixed(2)}</span>
+              <span className="font-display text-2xl font-bold text-primary">${orderTotal.toFixed(2)}</span>
             </div>
             <button
               onClick={handleCheckout}
