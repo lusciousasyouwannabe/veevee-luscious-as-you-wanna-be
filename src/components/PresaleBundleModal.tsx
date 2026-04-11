@@ -27,6 +27,9 @@ const bodyScrubs = [
   "French Vanilla Body Scrub",
   "Good Girl Body Scrub",
   "Beach Boys Body Scrub",
+  "Ohh Honey Body Scrub",
+  "The Gentleman Body Scrub",
+  "Classic Man Body Scrub",
 ];
 
 const bathBars = [
