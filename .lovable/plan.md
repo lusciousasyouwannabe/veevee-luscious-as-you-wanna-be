@@ -1,28 +1,24 @@
 
 
-## Plan: Add $10 Flat Rate Shipping to Checkout
+## Plan: Edit Product Image in VeeVee Luscious Style
 
-### What changes
+### What will happen
 
-**1. Update `src/pages/Cart.tsx`**
-- Add a `SHIPPING_RATE = 10.00` constant
-- Show a "Shipping" line item in the order summary below the subtotal
-- Update the displayed total to include shipping
-- Pass the shipping fee to the Edge Function
+1. Copy the uploaded image (IMG_1286.jpeg) to a working directory
+2. Use the AI image editing script to transform the background to match VeeVee Luscious brand aesthetics:
+   - Dark black marble surface with gold veins
+   - Warm studio lighting
+   - Product placed directly on the flat surface
+   - No text, labels, pedestals, or props
+   - Preserve the exact physical characteristics of the product
+3. Save the edited image to `/mnt/documents/` for download
 
-**2. Update `supabase/functions/clover-checkout/index.ts`**
-- Add a "Flat Rate Shipping" line item ($10.00 / 1000 cents) to the `lineItems` array sent to Clover
-- Include it in the `totalAmount` calculation
-- No schema changes needed — shipping is added server-side so it can't be bypassed
+### Technical approach
 
-### How it will look in the cart summary
+- Use `google/gemini-2.5-flash-image` model via the AI gateway script
+- Prompt focuses on background transformation only, preserving product details
 
-```text
-Subtotal        $45.00
-Shipping        $10.00
-─────────────────────
-Total           $55.00
-```
+### Output
 
-### No database changes needed
+One edited product photo as a downloadable PNG file.
 
