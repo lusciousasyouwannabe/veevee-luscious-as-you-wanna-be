@@ -75,16 +75,16 @@ const PresaleBundleModal = ({ open, onClose, bundleImage, presalePrice, regularP
       return;
     }
 
-    const customName = `Presale Bundle: ${selectedJars.join(" + ")} + ${selectedSoap}`;
+    const customName = `Mother's Day Bundle: ${selectedJars.join(" + ")} + ${selectedSoap}`;
     addToCart({
-      id: `presale-custom-${selectedJars.join("-")}-${selectedSoap}`.replace(/\s+/g, "-").toLowerCase(),
+      id: `mothers-day-custom-${selectedJars.join("-")}-${selectedSoap}`.replace(/\s+/g, "-").toLowerCase(),
       name: customName,
       price: presalePrice,
       originalPrice: regularPrice,
       image: bundleImage,
       category: "Special Offer",
     });
-    toast.success("Presale Bundle added to cart!");
+    toast.success("Mother's Day Bundle added to cart!");
     setSelectedJars([]);
     setSelectedSoap("");
     onClose();
