@@ -75,16 +75,16 @@ const PresaleBundleModal = ({ open, onClose, bundleImage, presalePrice, regularP
       return;
     }
 
-    const customName = `Presale Bundle: ${selectedJars.join(" + ")} + ${selectedSoap}`;
+    const customName = `Mother's Day Bundle: ${selectedJars.join(" + ")} + ${selectedSoap}`;
     addToCart({
-      id: `presale-custom-${selectedJars.join("-")}-${selectedSoap}`.replace(/\s+/g, "-").toLowerCase(),
+      id: `mothers-day-custom-${selectedJars.join("-")}-${selectedSoap}`.replace(/\s+/g, "-").toLowerCase(),
       name: customName,
       price: presalePrice,
       originalPrice: regularPrice,
       image: bundleImage,
       category: "Special Offer",
     });
-    toast.success("Presale Bundle added to cart!");
+    toast.success("Mother's Day Bundle added to cart!");
     setSelectedJars([]);
     setSelectedSoap("");
     onClose();
@@ -101,7 +101,7 @@ const PresaleBundleModal = ({ open, onClose, bundleImage, presalePrice, regularP
         {/* Header */}
         <div className="sticky top-0 bg-card border-b border-border p-6 flex items-center justify-between z-10">
           <div>
-            <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary">Build Your Presale Bundle</p>
+            <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary">Build Your Mother's Day Bundle</p>
             <h2 className="font-display text-2xl font-bold text-foreground mt-1">Choose Your Products</h2>
             <p className="font-body text-xs text-muted-foreground mt-1">
               Select 2 jars (4oz) + 1 bath bar •{" "}

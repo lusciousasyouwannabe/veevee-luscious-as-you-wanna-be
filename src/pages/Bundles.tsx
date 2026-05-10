@@ -106,8 +106,8 @@ const subscriptions = [
 const subscriptionIncludes = ["Bath bar", "Body scrub", "Body butter", "Massage oil"];
 
 const specialOffer = {
-  id: "special-48hr",
-  name: "Presale Bundle",
+  id: "mothers-day-bundle",
+  name: "Mother's Day Bundle",
   presalePrice: 55,
   regularPrice: 65,
   image: presaleBundle,
@@ -152,7 +152,7 @@ const Bundles = () => {
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-2 text-primary mb-3">
                   <Clock size={16} />
-                  <span className="font-body text-xs tracking-[0.3em] uppercase font-semibold">48-Hour Pre-Sale</span>
+                  <span className="font-body text-xs tracking-[0.3em] uppercase font-semibold">Limited Edition</span>
                 </div>
                 <h2 className="font-display text-3xl font-bold text-foreground">{specialOffer.name}</h2>
                 <div className="flex items-baseline gap-3 mt-4">
