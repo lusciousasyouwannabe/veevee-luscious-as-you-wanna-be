@@ -101,7 +101,7 @@ const PresaleBundleModal = ({ open, onClose, bundleImage, presalePrice, regularP
         {/* Header */}
         <div className="sticky top-0 bg-card border-b border-border p-6 flex items-center justify-between z-10">
           <div>
-            <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary">Build Your Presale Bundle</p>
+            <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary">Build Your Mother's Day Bundle</p>
             <h2 className="font-display text-2xl font-bold text-foreground mt-1">Choose Your Products</h2>
             <p className="font-body text-xs text-muted-foreground mt-1">
               Select 2 jars (4oz) + 1 bath bar •{" "}
