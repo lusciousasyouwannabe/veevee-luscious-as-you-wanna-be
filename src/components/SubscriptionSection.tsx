@@ -10,13 +10,13 @@ const SubscriptionSection = () => {
 
   const handleJoinSubscription = () => {
     addToCart({
-      id: "presale-subscription",
-      name: "Luscious Monthly Subscription — Pre-Sale",
+      id: "mothers-day-subscription",
+      name: "Luscious Monthly Subscription — Mother's Day",
       price: 55,
       image: subscriptionImage,
       category: "Subscription",
     });
-    toast.success("Pre-Sale Subscription added to cart");
+    toast.success("Mother's Day Subscription added to cart");
     setPresaleModalOpen(true);
   };
 
@@ -40,10 +40,10 @@ const SubscriptionSection = () => {
                 Monthly Ritual Box
               </p>
               <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 text-foreground leading-tight">
-                This Weekend Only — 48-Hour Sale
+                Limited Edition — Mother's Day Bundle
               </h2>
               <p className="font-body text-muted-foreground mt-4 max-w-lg">
-                Join the curated monthly box subscription and get handpicked VeeVee Luscious self-care favorites delivered every month. Don't miss this weekend-only deal!
+                Join the curated monthly box subscription and get handpicked VeeVee Luscious self-care favorites delivered every month. Don't miss this Mother's Day special!
               </p>
 
               <div className="mt-8 p-6 bg-card border border-border space-y-4">
@@ -52,16 +52,16 @@ const SubscriptionSection = () => {
                   <p className="font-body text-sm text-muted-foreground line-through">$75/mo</p>
                 </div>
                 <p className="font-body text-sm text-foreground uppercase tracking-[0.15em]">
-                  This weekend only — 48-hour sale pricing
+                  Limited edition — Mother's Day pricing
                 </p>
                 <p className="font-body text-sm text-muted-foreground">
-                  After pre-sale ends, monthly subscription returns to $75.
+                  After Mother's Day ends, monthly subscription returns to $75.
                 </p>
                 <button
                   onClick={handleJoinSubscription}
                   className="mt-2 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  Join Pre-Sale Subscription
+                  Join Mother's Day Subscription
                 </button>
               </div>
             </div>
