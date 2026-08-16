@@ -1,43 +1,26 @@
+# Inventory Management Module
 
+Move product data out of hardcoded lists and into a database-backed inventory the admin controls, then hide the eight named Bath Bars from the public Shop.
 
-## Plan: Regenerate All 6 Labels to Match Beach Boys Style
+## What changes for you
 
-### What will change
+- The Shop page keeps showing products exactly as it does today, but the list now comes from your backend instead of code.
+- A new **Inventory** tab in the Admin Dashboard lists every product (Bath Bars, Bath Soaks, Body Butters, Body Scrubs) with: name, category, size/variant, price, stock quantity, and a Published switch.
+- The eight bath bars you named (Ohh Honey, Cool Citronella, Crème Brûlée, The Gentleman, Classic Man, Beach Boys, Strawberry & Cream, Mardi Gras) start as **unpublished** — they disappear from the Shop but stay fully editable in Inventory so you can bring any of them back with one toggle.
+- Good Girl Luxury Bath Bar stays live, so the Bath Bars category still appears in the Shop.
+- Admin can edit price, stock, and published state inline; changes appear on the storefront on next load.
 
-Use the **Beach Boys label** (`veevee-label-beach-boys.pdf`) as the new master reference and regenerate the other 5 labels so all 6 are visually identical except for the product name. Specifically:
+## Build steps
 
-1. **Logo**: All labels use the exact VeeVee monogram/logo as it appears on the Beach Boys label (same shape, weight, gold finish, ornament).
-2. **Remove copy**: Strip the "MADE FOR YOUR MOMENT" heading and the paragraph beneath it from the left panel on every label.
-3. **Keep everything else** identical to Beach Boys: black marble background, gold veining, "LUSCIOUS AS YOU WANNA BE" tagline, "[NAME] SUGAR SCRUB", "GENTLY EXFOLIATES • SMOOTHES • RENEWS", "Net Wt. 4 OZ (113g)", barcode, Galveston TX, veeveeluscious.com, @veeveeluscious, ingredients panel, "FOR EXTERNAL USE ONLY", and the 12M / recycle icons.
+1. **Database**: create `public.products` with `slug` (unique), `name`, `category`, `price`, `size` (nullable), `variant_key` (nullable), `image_key`, `stock_quantity`, `is_published`, `sort_order`, timestamps. Grant read to anon/authenticated for published rows; full write restricted to the admin email used by the existing email-template policies. Add an `updated_at` trigger.
+2. **Seed**: insert every current product and variant from `Shop.tsx` (28 base products plus their 4oz/8oz variants), with the eight named bath bars set to `is_published = false`.
+3. **Image mapping**: keep the existing imported image assets in a small `src/data/productImages.ts` map keyed by `image_key`, so the database stores a key and the app resolves the bundled asset — no image re-upload needed.
+4. **Shop page**: replace the hardcoded `products` / `variantProducts` constants with a fetch of published rows, grouped into the same category filter and variant modal shapes. Loading and empty states included; cart behaviour unchanged.
+5. **Admin Inventory tab**: new `src/components/InventoryManager.tsx` added as a third tab in `AdminDashboard.tsx` — category-grouped table, inline price/stock editing, publish toggle, and a filter for unpublished items.
+6. **Product list page**: `/product-list` reads the same inventory so the copyable lists stay in sync, with unpublished items shown but marked.
 
-### Products regenerated
+## Technical notes
 
-1. Good Girl Sugar Scrub
-2. Beach Boys Sugar Scrub *(re-rendered for consistency)*
-3. Very Berry Sugar Scrub
-4. French Vanilla Sugar Scrub
-5. Creme Brulee Sugar Scrub
-6. Myrtille Sugar Scrub
-
-### Technical approach
-
-1. Extract the Beach Boys label PNG from the existing PDF and use it as the visual reference image passed to `google/gemini-3-pro-image-preview`.
-2. For each product, prompt the model to reproduce the reference 1:1 — only swapping the product name in the headline and removing the "MADE FOR YOUR MOMENT" block (filling that space cleanly with the marble background so the left panel rebalances).
-3. Re-render at 7.4" × 2.0" @ 300 DPI (2220 × 600 px).
-4. Place each label centered on an 8.5" × 11" sheet with crop marks using `reportlab`.
-5. Overwrite the existing PDFs in `/mnt/documents/`:
-   - `veevee-label-good-girl.pdf`
-   - `veevee-label-beach-boys.pdf`
-   - `veevee-label-very-berry.pdf`
-   - `veevee-label-french-vanilla.pdf`
-   - `veevee-label-creme-brulee.pdf`
-   - `veevee-label-myrtille.pdf`
-   - `veevee-scrub-labels-all.pdf` (combined)
-6. QA each PDF by rendering to image and visually verifying: matching logo, identical layout, correct product name, "MADE FOR YOUR MOMENT" block removed, no third-party branding, clean crop marks.
-
-### Output
-
-- 6 updated single-page PDFs (one label per sheet)
-- 1 updated combined 6-page PDF
-- All downloadable from the documents panel
-
+- Data access uses the existing Supabase client; the admin write policies mirror the pattern already used by `email_template_settings` (JWT email match).
+- Stock quantity is recorded and displayed but does not block checkout in this pass; out-of-stock enforcement can be added later.
+- Clover checkout and cart logic are untouched — they receive the same product shape they do today.
