@@ -5,6 +5,8 @@ import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TemplateEditor from "@/components/TemplateEditor";
 import InventoryManager from "@/components/InventoryManager";
+import InventoryStats from "@/components/inventory/InventoryStats";
+import { useProducts } from "@/hooks/useProducts";
 
 interface Signup {
   id: string;
@@ -38,6 +40,7 @@ const AdminDashboard = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [showEditor, setShowEditor] = useState(false);
   const navigate = useNavigate();
+  const { rows: inventoryRows } = useProducts(false);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -114,6 +117,10 @@ const AdminDashboard = () => {
       </header>
 
       <main className="container max-w-6xl mx-auto px-6 py-10">
+        <div className="mb-8">
+          <InventoryStats rows={inventoryRows} />
+        </div>
+
         <Tabs defaultValue="subscribers" onValueChange={(v) => v === "templates" && fetchTemplates()}>
           <TabsList className="mb-6">
             <TabsTrigger value="subscribers">Subscribers</TabsTrigger>
