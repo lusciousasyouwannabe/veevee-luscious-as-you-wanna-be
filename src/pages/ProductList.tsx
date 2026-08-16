@@ -1,71 +1,40 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Copy, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
+import { useProducts } from "@/hooks/useProducts";
 
-const categories: { title: string; items: string[] }[] = [
-  {
-    title: "Bath Bars",
-    items: [
-      "Ohh Honey Luxury Bath Bar",
-      "Cool Citronella Luxury Bath Bar",
-      "Crème Brûlée Luxury Bath Bar",
-      "The Gentleman Luxury Bath Bar",
-      "Classic Man Luxury Bath Bar",
-      "Beach Boys Luxury Bath Bar",
-      "Good Girl Luxury Bath Bar",
-      "Strawberry & Cream Luxury Bath Bar",
-      "Mardi Gras Luxury Bath Bar",
-    ],
-  },
-  {
-    title: "Bath Soaks",
-    items: [
-      "Lovely Lotus Luxury Bath Soak",
-      "French Vanilla & Oatmeal Luxury Bath Soak",
-      "Classic Man Luxury Bath Soak",
-      "Crème Brûlée Cream & Butter Botanical Bath Soak",
-      "The Gentleman Luxury Bath Soak",
-      "Very Berry Luxury Bath Soak",
-      "Amber Luxury Bath Soak",
-      "Luxury Myrtille Bath Soak",
-    ],
-  },
-  {
-    title: "Body Butters",
-    items: [
-      "Luxury Myrtille Body Butter",
-      "Cool Citronella Luxury Body Butter",
-      "The Gentleman Luxury Body Butter",
-      "Ohh Honey Luxury Body Butter",
-      "Crème Brûlée Body Butter",
-    ],
-  },
-  {
-    title: "Body Scrubs",
-    items: [
-      "Crème Brûlée Sugar Scrub",
-      "Luxury Myrtille Body Scrub",
-      "Luxe Very Berry Body Scrub",
-      "French Vanilla Luxury Body Scrub",
-      "Good Girl Luxury Body Scrub",
-      "Beach Boys Luxury Body Scrub",
-    ],
-  },
-];
+interface CategoryList {
+  title: string;
+  items: { name: string; published: boolean }[];
+}
 
-const buildFullText = () =>
+const buildFullText = (categories: CategoryList[]) =>
   categories
     .map(
       (c) =>
         `${c.title}\n${"-".repeat(c.title.length)}\n${c.items
-          .map((n, i) => `${i + 1}. ${n}`)
+          .map((n, i) => `${i + 1}. ${n.name}`)
           .join("\n")}`
     )
     .join("\n\n");
 
 const ProductList = () => {
+  const { rows, loading } = useProducts(false);
+  const categories = useMemo<CategoryList[]>(() => {
+    const map = new Map<string, Map<string, boolean>>();
+    for (const row of rows) {
+      if (!map.has(row.category)) map.set(row.category, new Map());
+      const items = map.get(row.category)!;
+      items.set(row.name, (items.get(row.name) ?? false) || row.is_published);
+    }
+    return Array.from(map.entries()).map(([title, items]) => ({
+      title,
+      items: Array.from(items.entries()).map(([name, published]) => ({ name, published })),
+    }));
+  }, [rows]);
+
   const [copiedAll, setCopiedAll] = useState(false);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
@@ -101,7 +70,7 @@ const ProductList = () => {
 
           <div className="flex justify-center mb-12">
             <button
-              onClick={() => copy(buildFullText(), "all")}
+              onClick={() => copy(buildFullText(categories), "all")}
               className="inline-flex items-center gap-2 border border-primary text-primary font-body text-xs tracking-[0.2em] uppercase px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               {copiedAll ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
@@ -109,10 +78,14 @@ const ProductList = () => {
             </button>
           </div>
 
+          {loading && (
+            <p className="font-body text-center text-muted-foreground py-10">Loading catalog...</p>
+          )}
+
           <div className="space-y-12">
             {categories.map((cat) => {
               const text = `${cat.title}\n${cat.items
-                .map((n, i) => `${i + 1}. ${n}`)
+                .map((n, i) => `${i + 1}. ${n.name}`)
                 .join("\n")}`;
               const isCopied = copiedKey === cat.title;
               return (
@@ -133,9 +106,14 @@ const ProductList = () => {
                     </button>
                   </div>
                   <ol className="space-y-2 font-body text-foreground list-decimal list-inside">
-                    {cat.items.map((name) => (
-                      <li key={name} className="leading-relaxed">
-                        {name}
+                    {cat.items.map((item) => (
+                      <li key={item.name} className="leading-relaxed">
+                        {item.name}
+                        {!item.published && (
+                          <span className="ml-2 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+                            Hidden
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ol>
