@@ -104,7 +104,10 @@ const InventoryManager = () => {
   const toggleSort = (key: SortKey) =>
     setSort((s) => ({ key, dir: s.key === key && s.dir === "asc" ? "desc" : "asc" }));
 
-  const run = async (fn: () => Promise<{ error: { message: string } | null }>, successMsg: string) => {
+  const run = async (
+    fn: () => PromiseLike<{ error: { message: string } | null }>,
+    successMsg: string
+  ) => {
     setBusy(true);
     const { error } = await fn();
     setBusy(false);
