@@ -65,5 +65,10 @@ export const productImages: Record<string, string> = {
   "beach-boys-scrub": beachBoysScrub,
 };
 
-export const resolveProductImage = (key: string | null | undefined) =>
-  (key && productImages[key]) || "/placeholder.svg";
+export const resolveProductImage = (key: string | null | undefined) => {
+  if (!key) return "/placeholder.svg";
+  if (/^(https?:)?\/\//.test(key) || key.startsWith("/")) return key;
+  return productImages[key] || "/placeholder.svg";
+};
+
+export const productImageKeys = Object.keys(productImages).sort();

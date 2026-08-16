@@ -27,7 +27,7 @@ const ProductList = () => {
     for (const row of rows) {
       if (!map.has(row.category)) map.set(row.category, new Map());
       const items = map.get(row.category)!;
-      items.set(row.name, (items.get(row.name) ?? false) || row.is_published);
+      items.set(row.name, (items.get(row.name) ?? false) || row.is_visible);
     }
     return Array.from(map.entries()).map(([title, items]) => ({
       title,

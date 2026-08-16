@@ -11,8 +11,21 @@ export interface ProductRow {
   size: string | null;
   variant_key: string | null;
   image_key: string;
-  stock_quantity: number;
-  is_published: boolean;
+  quantity: number;
+  is_visible: boolean;
+  status: string;
+  archived: boolean;
+  manual_hidden: boolean;
+  sku: string | null;
+  description: string | null;
+  ingredients: string | null;
+  tags: string[];
+  notes: string | null;
+  seo_title: string | null;
+  seo_description: string | null;
+  sold_out_at: string | null;
+  restocked_at: string | null;
+  last_production_date: string | null;
   sort_order: number;
 }
 
@@ -32,10 +45,10 @@ export interface VariantGroup {
   sizes: { size: string; price: number; image: string; id: string }[];
 }
 
-const mapRow = (r: any): ProductRow => ({ ...r, price: Number(r.price) });
+const mapRow = (r: any): ProductRow => ({ ...r, price: Number(r.price), tags: r.tags || [] });
 
-/** Fetches inventory rows. `publishedOnly` powers the storefront. */
-export const useProducts = (publishedOnly = true) => {
+/** Fetches inventory rows. `visibleOnly` powers the storefront. */
+export const useProducts = (visibleOnly = true) => {
   const [rows, setRows] = useState<ProductRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +56,7 @@ export const useProducts = (publishedOnly = true) => {
   const refetch = useCallback(async () => {
     setLoading(true);
     let query = supabase.from("products").select("*").order("sort_order", { ascending: true });
-    if (publishedOnly) query = query.eq("is_published", true);
+    if (visibleOnly) query = query.eq("is_visible", true).gt("quantity", 0);
     const { data, error } = await query;
     if (error) setError(error.message);
     else {
@@ -51,7 +64,7 @@ export const useProducts = (publishedOnly = true) => {
       setRows((data || []).map(mapRow));
     }
     setLoading(false);
-  }, [publishedOnly]);
+  }, [visibleOnly]);
 
   useEffect(() => {
     refetch();

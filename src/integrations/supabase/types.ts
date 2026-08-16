@@ -122,6 +122,65 @@ export type Database = {
         }
         Relationships: []
       }
+      inventory_log: {
+        Row: {
+          action: string
+          changed_by: string | null
+          changed_by_email: string | null
+          created_at: string
+          id: string
+          note: string | null
+          product_id: string | null
+          product_name: string
+          quantity_added: number
+          quantity_after: number | null
+          quantity_before: number | null
+          quantity_sold: number
+          sku: string | null
+          status_after: string | null
+        }
+        Insert: {
+          action: string
+          changed_by?: string | null
+          changed_by_email?: string | null
+          created_at?: string
+          id?: string
+          note?: string | null
+          product_id?: string | null
+          product_name: string
+          quantity_added?: number
+          quantity_after?: number | null
+          quantity_before?: number | null
+          quantity_sold?: number
+          sku?: string | null
+          status_after?: string | null
+        }
+        Update: {
+          action?: string
+          changed_by?: string | null
+          changed_by_email?: string | null
+          created_at?: string
+          id?: string
+          note?: string | null
+          product_id?: string | null
+          product_name?: string
+          quantity_added?: number
+          quantity_after?: number | null
+          quantity_before?: number | null
+          quantity_sold?: number
+          sku?: string | null
+          status_after?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inventory_log_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_signups: {
         Row: {
           created_at: string
@@ -142,47 +201,86 @@ export type Database = {
       }
       products: {
         Row: {
+          archived: boolean
           category: string
           created_at: string
+          description: string | null
           id: string
           image_key: string
-          is_published: boolean
+          ingredients: string | null
+          is_visible: boolean
+          last_production_date: string | null
+          manual_hidden: boolean
           name: string
+          notes: string | null
           price: number
+          quantity: number
+          restocked_at: string | null
+          seo_description: string | null
+          seo_title: string | null
           size: string | null
+          sku: string | null
           slug: string
+          sold_out_at: string | null
           sort_order: number
-          stock_quantity: number
+          status: string
+          tags: string[]
           updated_at: string
           variant_key: string | null
         }
         Insert: {
+          archived?: boolean
           category: string
           created_at?: string
+          description?: string | null
           id?: string
           image_key: string
-          is_published?: boolean
+          ingredients?: string | null
+          is_visible?: boolean
+          last_production_date?: string | null
+          manual_hidden?: boolean
           name: string
+          notes?: string | null
           price?: number
+          quantity?: number
+          restocked_at?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
           size?: string | null
+          sku?: string | null
           slug: string
+          sold_out_at?: string | null
           sort_order?: number
-          stock_quantity?: number
+          status?: string
+          tags?: string[]
           updated_at?: string
           variant_key?: string | null
         }
         Update: {
+          archived?: boolean
           category?: string
           created_at?: string
+          description?: string | null
           id?: string
           image_key?: string
-          is_published?: boolean
+          ingredients?: string | null
+          is_visible?: boolean
+          last_production_date?: string | null
+          manual_hidden?: boolean
           name?: string
+          notes?: string | null
           price?: number
+          quantity?: number
+          restocked_at?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
           size?: string | null
+          sku?: string | null
           slug?: string
+          sold_out_at?: string | null
           sort_order?: number
-          stock_quantity?: number
+          status?: string
+          tags?: string[]
           updated_at?: string
           variant_key?: string | null
         }
