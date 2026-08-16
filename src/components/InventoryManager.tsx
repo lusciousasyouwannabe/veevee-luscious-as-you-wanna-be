@@ -24,7 +24,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import InventoryStats from "@/components/inventory/InventoryStats";
 import InventoryHistory from "@/components/inventory/InventoryHistory";
 import RestockDialog from "@/components/inventory/RestockDialog";
 import ProductEditDialog from "@/components/inventory/ProductEditDialog";
@@ -226,8 +225,6 @@ const InventoryManager = () => {
 
   return (
     <div className="space-y-6">
-      <InventoryStats rows={rows} />
-
       <Tabs defaultValue="items">
         <TabsList>
           <TabsTrigger value="items">Products</TabsTrigger>
