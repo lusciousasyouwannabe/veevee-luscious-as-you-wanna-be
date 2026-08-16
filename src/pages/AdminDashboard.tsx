@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TemplateEditor from "@/components/TemplateEditor";
+import InventoryManager from "@/components/InventoryManager";
 
 interface Signup {
   id: string;
@@ -116,6 +117,7 @@ const AdminDashboard = () => {
         <Tabs defaultValue="subscribers" onValueChange={(v) => v === "templates" && fetchTemplates()}>
           <TabsList className="mb-6">
             <TabsTrigger value="subscribers">Subscribers</TabsTrigger>
+            <TabsTrigger value="inventory">Inventory</TabsTrigger>
             <TabsTrigger value="templates">Email Templates</TabsTrigger>
           </TabsList>
 
