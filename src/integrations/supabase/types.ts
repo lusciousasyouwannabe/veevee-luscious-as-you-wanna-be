@@ -140,6 +140,54 @@ export type Database = {
         }
         Relationships: []
       }
+      products: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          image_key: string
+          is_published: boolean
+          name: string
+          price: number
+          size: string | null
+          slug: string
+          sort_order: number
+          stock_quantity: number
+          updated_at: string
+          variant_key: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          image_key: string
+          is_published?: boolean
+          name: string
+          price?: number
+          size?: string | null
+          slug: string
+          sort_order?: number
+          stock_quantity?: number
+          updated_at?: string
+          variant_key?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          image_key?: string
+          is_published?: boolean
+          name?: string
+          price?: number
+          size?: string | null
+          slug?: string
+          sort_order?: number
+          stock_quantity?: number
+          updated_at?: string
+          variant_key?: string | null
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string
