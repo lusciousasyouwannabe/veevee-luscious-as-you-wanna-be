@@ -102,6 +102,7 @@ const Shop = () => {
       </section>
       {activeVariant && (
         <ProductDetailModal
+          key={activeVariantKey}
           open={variantModalOpen}
           onOpenChange={setVariantModalOpen}
           product={activeVariant}
