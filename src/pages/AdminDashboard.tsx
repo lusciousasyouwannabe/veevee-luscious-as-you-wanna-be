@@ -167,6 +167,10 @@ const AdminDashboard = () => {
           </TabsContent>
 
           {/* ── Email Templates Tab ── */}
+          <TabsContent value="inventory">
+            <InventoryManager />
+          </TabsContent>
+
           <TabsContent value="templates">
             {templatesLoading ? (
               <p className="font-body text-muted-foreground text-center py-10">Loading templates...</p>
