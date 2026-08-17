@@ -20,7 +20,7 @@ const SubstitutionGroups = ({ groups, products, refetch }: Props) => {
   const [busy, setBusy] = useState(false);
   const byId = (id: string) => products.find((p) => p.id === id);
 
-  const run = async (fn: () => Promise<{ error: unknown }>, msg: string) => {
+  const run = async (fn: () => PromiseLike<{ error: unknown }>, msg: string) => {
     setBusy(true);
     const { error } = await fn();
     setBusy(false);

@@ -41,7 +41,7 @@ const BundleManager = ({ products }: { products: ProductRow[] }) => {
     [bundles]
   );
 
-  const run = async (fn: () => Promise<{ error: unknown }>, msg: string) => {
+  const run = async (fn: () => PromiseLike<{ error: unknown }>, msg: string) => {
     setBusy(true);
     const { error: err } = await fn();
     setBusy(false);
