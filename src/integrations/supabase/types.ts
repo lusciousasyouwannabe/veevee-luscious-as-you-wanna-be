@@ -191,6 +191,170 @@ export type Database = {
         }
         Relationships: []
       }
+      customer_profiles: {
+        Row: {
+          billing_address: string | null
+          completed_orders: number
+          created_at: string
+          email: string
+          first_order_date: string | null
+          flag_reason: string | null
+          flagged_for_review: boolean
+          id: string
+          newsletter_subscriber: boolean
+          phone: string | null
+          redemption_date: string | null
+          shipping_address: string | null
+          updated_at: string
+          user_id: string | null
+          welcome_discount_sent: boolean
+          welcome_discount_sent_at: string | null
+        }
+        Insert: {
+          billing_address?: string | null
+          completed_orders?: number
+          created_at?: string
+          email: string
+          first_order_date?: string | null
+          flag_reason?: string | null
+          flagged_for_review?: boolean
+          id?: string
+          newsletter_subscriber?: boolean
+          phone?: string | null
+          redemption_date?: string | null
+          shipping_address?: string | null
+          updated_at?: string
+          user_id?: string | null
+          welcome_discount_sent?: boolean
+          welcome_discount_sent_at?: string | null
+        }
+        Update: {
+          billing_address?: string | null
+          completed_orders?: number
+          created_at?: string
+          email?: string
+          first_order_date?: string | null
+          flag_reason?: string | null
+          flagged_for_review?: boolean
+          id?: string
+          newsletter_subscriber?: boolean
+          phone?: string | null
+          redemption_date?: string | null
+          shipping_address?: string | null
+          updated_at?: string
+          user_id?: string | null
+          welcome_discount_sent?: boolean
+          welcome_discount_sent_at?: string | null
+        }
+        Relationships: []
+      }
+      discount_codes: {
+        Row: {
+          active: boolean
+          amount: number
+          code: string
+          created_at: string
+          description: string | null
+          discount_type: string
+          eligible_categories: string[]
+          excluded_slugs: string[]
+          expires_at: string | null
+          first_order_only: boolean
+          id: string
+          min_purchase: number
+          stackable: boolean
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          amount?: number
+          code: string
+          created_at?: string
+          description?: string | null
+          discount_type?: string
+          eligible_categories?: string[]
+          excluded_slugs?: string[]
+          expires_at?: string | null
+          first_order_only?: boolean
+          id?: string
+          min_purchase?: number
+          stackable?: boolean
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          amount?: number
+          code?: string
+          created_at?: string
+          description?: string | null
+          discount_type?: string
+          eligible_categories?: string[]
+          excluded_slugs?: string[]
+          expires_at?: string | null
+          first_order_only?: boolean
+          id?: string
+          min_purchase?: number
+          stackable?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      discount_redemptions: {
+        Row: {
+          billing_address: string | null
+          code: string
+          created_at: string
+          customer_id: string | null
+          discount_amount: number
+          email: string
+          flag_reason: string | null
+          flagged: boolean
+          id: string
+          order_reference: string | null
+          order_subtotal: number
+          phone: string | null
+          shipping_address: string | null
+        }
+        Insert: {
+          billing_address?: string | null
+          code: string
+          created_at?: string
+          customer_id?: string | null
+          discount_amount?: number
+          email: string
+          flag_reason?: string | null
+          flagged?: boolean
+          id?: string
+          order_reference?: string | null
+          order_subtotal?: number
+          phone?: string | null
+          shipping_address?: string | null
+        }
+        Update: {
+          billing_address?: string | null
+          code?: string
+          created_at?: string
+          customer_id?: string | null
+          discount_amount?: number
+          email?: string
+          flag_reason?: string | null
+          flagged?: boolean
+          id?: string
+          order_reference?: string | null
+          order_subtotal?: number
+          phone?: string | null
+          shipping_address?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "discount_redemptions_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customer_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_send_log: {
         Row: {
           created_at: string
