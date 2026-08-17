@@ -3,6 +3,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts'
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.58.0'
 
 const ItemSchema = z.object({
   name: z.string().min(1).max(255),
@@ -17,6 +18,14 @@ const BodySchema = z.object({
     .object({ label: z.string().min(1).max(120), amount: z.number().positive() })
     .optional(),
   customerEmail: z.string().email().optional(),
+})
+
+const OrderSchema = z.object({
+  orderReference: z.string().min(1).max(100),
+  lines: z.array(z.object({ slug: z.string().min(1).max(200), quantity: z.number().int().positive() })).min(1),
+  subtotal: z.number().nonnegative().optional(),
+  customer: z.record(z.string()).optional(),
+  discount: z.object({ code: z.string().max(40), amount: z.number() }).optional(),
 })
 
 Deno.serve(async (req) => {
