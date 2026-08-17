@@ -6,6 +6,7 @@ const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,25 +14,14 @@ const NewsletterSection = () => {
 
     setLoading(true);
     try {
-      const { error } = await supabase
-        .from("newsletter_signups")
-        .insert({ email: email.trim() });
+      // One merged customer profile per email — the same welcome code is sent
+      // once, no matter which signup form it came from.
+      const { data, error } = await supabase.functions.invoke("newsletter-subscribe", {
+        body: { email: email.trim(), source: "newsletter" },
+      });
 
       if (error) throw error;
-
-      // Send branded welcome email with 10% off code
-      const signupId = crypto.randomUUID();
-      try {
-        await supabase.functions.invoke("send-transactional-email", {
-          body: {
-            templateName: "newsletter-welcome",
-            recipientEmail: email.trim(),
-            idempotencyKey: `newsletter-welcome-${signupId}`,
-          },
-        });
-      } catch {
-        // Email failure shouldn't block the signup
-      }
+      setAlreadySubscribed(!!data?.alreadySubscribed);
 
       setSubmitted(true);
       setEmail("");
@@ -61,7 +51,9 @@ const NewsletterSection = () => {
               ✨ Welcome to the family.
             </p>
             <p className="font-body text-sm text-muted-foreground mt-2">
-              Check your inbox for your 10% off code.
+              {alreadySubscribed
+                ? "You're already on the list — your welcome code LUSCIOUS10 is still waiting in your inbox."
+                : "Check your inbox for your 10% off code."}
             </p>
           </div>
         ) : (

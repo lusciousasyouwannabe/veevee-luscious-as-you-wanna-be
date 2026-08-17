@@ -13,6 +13,10 @@ const ItemSchema = z.object({
 const BodySchema = z.object({
   items: z.array(ItemSchema).min(1),
   redirectUrl: z.string().url(),
+  discount: z
+    .object({ label: z.string().min(1).max(120), amount: z.number().positive() })
+    .optional(),
+  customerEmail: z.string().email().optional(),
 })
 
 Deno.serve(async (req) => {
@@ -29,7 +33,7 @@ Deno.serve(async (req) => {
       )
     }
 
-    const { items, redirectUrl } = parsed.data
+    const { items, redirectUrl, discount, customerEmail } = parsed.data
 
     const apiKey = Deno.env.get('CLOVER_API_KEY')
     const merchantId = Deno.env.get('CLOVER_MERCHANT_ID')
@@ -60,12 +64,23 @@ Deno.serve(async (req) => {
       price: SHIPPING_RATE_CENTS,
     })
 
+    const itemsTotalCents = lineItems.reduce((sum, li) => sum + li.price * li.unitQty, 0)
+    if (discount) {
+      const discountCents = Math.min(
+        Math.round(discount.amount * 100),
+        itemsTotalCents - SHIPPING_RATE_CENTS
+      )
+      if (discountCents > 0) {
+        lineItems.push({ name: discount.label, unitQty: 1, price: -discountCents })
+      }
+    }
+
     const totalAmount = lineItems.reduce((sum, li) => sum + li.price * li.unitQty, 0)
 
     // Create a Clover Hosted Checkout session
     const checkoutPayload = {
       customer: {
-        email: '', // optional – Clover will collect on checkout page
+        email: customerEmail ?? '', // Clover collects/confirms on the checkout page
       },
       shoppingCart: {
         lineItems,

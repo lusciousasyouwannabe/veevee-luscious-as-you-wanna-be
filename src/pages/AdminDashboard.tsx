@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TemplateEditor from "@/components/TemplateEditor";
 import InventoryManager from "@/components/InventoryManager";
+import DiscountManager from "@/components/DiscountManager";
 import InventoryStats from "@/components/inventory/InventoryStats";
 import { useProducts } from "@/hooks/useProducts";
 import Seo from "@/components/Seo";
@@ -127,6 +128,7 @@ const AdminDashboard = () => {
           <TabsList className="mb-6">
             <TabsTrigger value="subscribers">Subscribers</TabsTrigger>
             <TabsTrigger value="inventory">Inventory</TabsTrigger>
+            <TabsTrigger value="discounts">Discounts</TabsTrigger>
             <TabsTrigger value="templates">Email Templates</TabsTrigger>
           </TabsList>
 
@@ -178,6 +180,11 @@ const AdminDashboard = () => {
           {/* ── Inventory Tab ── */}
           <TabsContent value="inventory">
             <InventoryManager />
+          </TabsContent>
+
+          {/* ── Discounts Tab ── */}
+          <TabsContent value="discounts">
+            <DiscountManager />
           </TabsContent>
 
           {/* ── Email Templates Tab ── */}
