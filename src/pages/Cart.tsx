@@ -84,6 +84,13 @@ const Cart = () => {
           discount: discount
             ? { label: `Discount (${discount.code})`, amount: discount.amount }
             : undefined,
+          order: {
+            orderReference,
+            lines: items.map((item) => ({ slug: item.id, quantity: item.quantity })),
+            subtotal: totalPrice,
+            customer: email ? { email } : undefined,
+            discount: discount ? { code: discount.code, amount: discount.amount } : undefined,
+          },
         },
       });
 
