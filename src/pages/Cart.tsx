@@ -13,8 +13,45 @@ export const PENDING_ORDER_KEY = "vv_pending_order";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, totalPrice, totalItems } = useCart();
-  const orderTotal = totalPrice + SHIPPING_RATE;
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+  const [applying, setApplying] = useState(false);
+  const [discount, setDiscount] = useState<{ code: string; amount: number; label: string } | null>(null);
+  const [codeError, setCodeError] = useState<string | null>(null);
+  const discountAmount = discount?.amount ?? 0;
+  const orderTotal = Math.max(0, totalPrice - discountAmount) + SHIPPING_RATE;
+
+  const handleApplyCode = async () => {
+    setApplying(true);
+    setCodeError(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("validate-discount", {
+        body: {
+          code,
+          email,
+          items: items.map((item) => ({
+            slug: item.id,
+            category: item.category,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+        },
+      });
+      if (error) throw error;
+      if (data?.valid) {
+        setDiscount({ code: data.code, amount: data.discountAmount, label: data.label });
+        toast.success(`${data.label} applied.`);
+      } else {
+        setDiscount(null);
+        setCodeError(data?.reason || "This discount code is not valid.");
+      }
+    } catch {
+      setCodeError("Could not check that code. Please try again.");
+    } finally {
+      setApplying(false);
+    }
+  };
 
   const handleCheckout = async () => {
     setIsCheckingOut(true);
@@ -29,6 +66,9 @@ const Cart = () => {
         JSON.stringify({
           orderReference,
           lines: items.map((item) => ({ slug: item.id, quantity: item.quantity })),
+          subtotal: totalPrice,
+          customer: email ? { email } : undefined,
+          discount: discount ? { code: discount.code, amount: discount.amount } : undefined,
         })
       );
 
@@ -40,6 +80,10 @@ const Cart = () => {
             quantity: item.quantity,
           })),
           redirectUrl: successUrl,
+          customerEmail: email || undefined,
+          discount: discount
+            ? { label: `Discount (${discount.code})`, amount: discount.amount }
+            : undefined,
         },
       });
 
@@ -132,10 +176,57 @@ const Cart = () => {
 
           {/* Summary */}
           <div className="mt-10 bg-card border border-border p-6">
+            {/* Discount code */}
+            <div className="mb-6 pb-6 border-b border-border">
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-3">
+                Welcome Offer
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email address"
+                  aria-label="Email address for discount code"
+                  className="flex-1 px-4 py-3 bg-background border border-border font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                />
+                <input
+                  type="text"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.toUpperCase())}
+                  placeholder="Discount code"
+                  aria-label="Discount code"
+                  className="sm:w-44 px-4 py-3 bg-background border border-border font-body text-sm tracking-widest text-foreground placeholder:text-muted-foreground placeholder:tracking-normal focus:outline-none focus:border-primary transition-colors"
+                />
+                <button
+                  type="button"
+                  onClick={handleApplyCode}
+                  disabled={applying || !code.trim() || !email.trim()}
+                  className="border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {applying ? "Checking..." : "Apply"}
+                </button>
+              </div>
+              {codeError && (
+                <p className="font-body text-xs text-destructive mt-3">{codeError}</p>
+              )}
+              {discount && (
+                <p className="font-body text-xs text-primary mt-3">
+                  {discount.code} applied — {discount.label}. One redemption per customer.
+                </p>
+              )}
+            </div>
+
             <div className="flex justify-between items-center mb-2">
               <span className="font-body text-sm text-muted-foreground">Subtotal</span>
               <span className="font-body text-sm text-foreground">${totalPrice.toFixed(2)}</span>
             </div>
+            {discountAmount > 0 && (
+              <div className="flex justify-between items-center mb-2">
+                <span className="font-body text-sm text-muted-foreground">Discount ({discount?.code})</span>
+                <span className="font-body text-sm text-primary">-${discountAmount.toFixed(2)}</span>
+              </div>
+            )}
             <div className="flex justify-between items-center mb-4">
               <span className="font-body text-sm text-muted-foreground">Shipping</span>
               <span className="font-body text-sm text-foreground">${SHIPPING_RATE.toFixed(2)}</span>
