@@ -147,7 +147,14 @@ const Bundles = () => {
     }));
   }, [liveBundles, groups, products]);
 
-  const filtered = [...dynamicBundles, ...bundles];
+  const categories = ["All", "Sets", "Collections"];
+
+  const filtered = useMemo(() => {
+    const allBundles = [...dynamicBundles, ...bundles];
+    if (filter === "All") return allBundles;
+    if (filter === "Sets") return allBundles.filter((b) => b.category === "Sets" || b.category === "Collections");
+    return allBundles.filter((b) => b.category === filter);
+  }, [dynamicBundles, bundles, filter]);
 
   const handleAdd = (item: BundleItem) => {
     addToCart({ id: item.id, name: item.name, price: item.price, originalPrice: item.originalPrice, image: item.image, category: item.category });
@@ -212,6 +219,23 @@ const Bundles = () => {
             </div>
           </div>
 
+
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`font-body text-[11px] tracking-[0.2em] uppercase px-5 py-2 border transition-all duration-300 ${
+                  filter === cat
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
           {/* Bundle Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
