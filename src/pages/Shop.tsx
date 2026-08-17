@@ -90,7 +90,7 @@ const Shop = () => {
                   </div>
                   <div className="p-5">
                     <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary mb-1">{product.category}</p>
-                    <h3 className="font-display text-lg font-semibold text-foreground">{product.name}</h3>
+                    <h2 className="font-display text-lg font-semibold text-foreground">{product.name}</h2>
                     <p className="font-body text-primary font-semibold mt-1 tracking-wider">
                       {product.hasVariants ? `From $${product.price}` : `$${product.price}`}
                     </p>
