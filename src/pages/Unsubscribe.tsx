@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import Seo from "@/components/Seo";
 
 type Status = "loading" | "valid" | "already_unsubscribed" | "invalid" | "success" | "error";
 
@@ -60,6 +61,7 @@ const Unsubscribe = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-6">
+    <Seo title="Email Preferences | VeeVee Luscious" description="Manage your VeeVee Luscious email preferences." path="/unsubscribe" noindex />
       <div className="max-w-md w-full text-center">
         <h1 className="font-display text-3xl font-bold text-foreground mb-4">
           Email Preferences

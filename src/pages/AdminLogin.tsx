@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import Seo from "@/components/Seo";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -46,6 +47,7 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-6">
+    <Seo title="Admin Access | VeeVee Luscious" description="Administrator sign in." path="/admin" noindex />
       <div className="w-full max-w-sm">
         <h1 className="font-display text-3xl font-bold text-foreground text-center mb-2">Admin Access</h1>
         <p className="font-body text-sm text-muted-foreground text-center mb-8">VeeVee Luscious</p>

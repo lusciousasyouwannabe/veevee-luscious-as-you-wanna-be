@@ -7,6 +7,7 @@ import TemplateEditor from "@/components/TemplateEditor";
 import InventoryManager from "@/components/InventoryManager";
 import InventoryStats from "@/components/inventory/InventoryStats";
 import { useProducts } from "@/hooks/useProducts";
+import Seo from "@/components/Seo";
 
 interface Signup {
   id: string;
@@ -103,6 +104,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
+    <Seo title="Admin Dashboard | VeeVee Luscious" description="Administrator dashboard." path="/admin/dashboard" noindex />
       <header className="border-b border-border px-6 py-4 flex items-center justify-between">
         <div>
           <h1 className="font-display text-2xl font-bold text-foreground">Admin Dashboard</h1>

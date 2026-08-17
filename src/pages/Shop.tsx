@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 import ProductDetailModal from "@/components/ProductDetailModal";
 import { useProducts, buildCatalog, type ShopCard } from "@/hooks/useProducts";
+import Seo, { SITE_URL } from "@/components/Seo";
 
 const Shop = () => {
   const { addToCart } = useCart();
@@ -35,6 +36,12 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-background">
+    <Seo
+      title="Shop Luxury Bath & Body Products | VeeVee Luscious"
+      description="Shop the VeeVee Luscious collection of whipped body butters, sugar body scrubs, handmade bath bars, massage oils and men's grooming essentials."
+      path="/shop"
+      jsonLd={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Shop VeeVee Luscious", url: `${SITE_URL}/shop`, description: "Luxury body butters, sugar scrubs, bath bars and massage oils." }}
+    />
       <Navbar />
       <section className="pt-32 pb-24 px-6">
         <div className="container max-w-6xl mx-auto">
