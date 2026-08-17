@@ -115,15 +115,15 @@ const Cart = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-8 h-8 border border-border flex items-center justify-center text-foreground hover:border-primary transition-colors">
+                  <button onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease quantity of ${item.name}`} className="w-8 h-8 border border-border flex items-center justify-center text-foreground hover:border-primary transition-colors">
                     <Minus size={14} />
                   </button>
                   <span className="font-body text-sm text-foreground w-8 text-center">{item.quantity}</span>
-                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-8 h-8 border border-border flex items-center justify-center text-foreground hover:border-primary transition-colors">
+                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase quantity of ${item.name}`} className="w-8 h-8 border border-border flex items-center justify-center text-foreground hover:border-primary transition-colors">
                     <Plus size={14} />
                   </button>
                 </div>
-                <button onClick={() => removeFromCart(item.id)} className="text-muted-foreground hover:text-destructive transition-colors shrink-0">
+                <button onClick={() => removeFromCart(item.id)} aria-label={`Remove ${item.name} from cart`} className="text-muted-foreground hover:text-destructive transition-colors shrink-0">
                   <Trash2 size={18} />
                 </button>
               </div>
