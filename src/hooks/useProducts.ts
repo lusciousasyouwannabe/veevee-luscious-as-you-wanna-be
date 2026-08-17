@@ -42,7 +42,7 @@ export interface ShopCard {
 export interface VariantGroup {
   name: string;
   category: string;
-  sizes: { size: string; price: number; image: string; id: string }[];
+  sizes: { size: string; price: number; image: string; id: string; soldOut: boolean; quantity: number }[];
 }
 
 const mapRow = (r: any): ProductRow => ({ ...r, price: Number(r.price), tags: r.tags || [] });
@@ -56,12 +56,16 @@ export const useProducts = (visibleOnly = true) => {
   const refetch = useCallback(async () => {
     setLoading(true);
     let query = supabase.from("products").select("*").order("sort_order", { ascending: true });
-    if (visibleOnly) query = query.eq("is_visible", true).gt("quantity", 0);
+    // Storefront: include sold-out variants so their siblings can still render
+    // them as disabled "Sold Out" options. Filtering of fully sold-out items
+    // happens in buildCatalog / below.
+    if (visibleOnly) query = query.eq("archived", false).eq("manual_hidden", false);
     const { data, error } = await query;
     if (error) setError(error.message);
     else {
       setError(null);
-      setRows((data || []).map(mapRow));
+      const mapped = (data || []).map(mapRow);
+      setRows(visibleOnly ? filterStorefrontRows(mapped) : mapped);
     }
     setLoading(false);
   }, [visibleOnly]);
@@ -71,6 +75,21 @@ export const useProducts = (visibleOnly = true) => {
   }, [refetch]);
 
   return { rows, loading, error, refetch, setRows };
+};
+
+/**
+ * Storefront visibility rules:
+ * - Single products: visible only when quantity > 0.
+ * - Variant products: the group stays visible while ANY variant has stock;
+ *   the sold-out variants are kept so they can render as disabled.
+ */
+export const filterStorefrontRows = (rows: ProductRow[]): ProductRow[] => {
+  const stockedGroups = new Set(
+    rows.filter((r) => r.variant_key && r.quantity > 0).map((r) => r.variant_key as string)
+  );
+  return rows.filter((r) =>
+    r.variant_key ? stockedGroups.has(r.variant_key) : r.quantity > 0
+  );
 };
 
 /** Turns flat inventory rows into shop cards + variant groups. */
@@ -109,7 +128,20 @@ export const buildCatalog = (rows: ProductRow[]) => {
       price: row.price,
       image,
       id: row.slug,
+      quantity: row.quantity,
+      soldOut: row.quantity <= 0,
     });
+  }
+
+  // Card price / image should reflect the cheapest AVAILABLE variant.
+  for (const card of cards) {
+    if (!card.variantKey) continue;
+    const available = groups[card.variantKey].sizes.filter((s) => !s.soldOut);
+    if (available.length) {
+      const cheapest = available.reduce((a, b) => (b.price < a.price ? b : a));
+      card.price = cheapest.price;
+      card.image = cheapest.image;
+    }
   }
 
   const categories = Array.from(new Set(cards.map((c) => c.category)));

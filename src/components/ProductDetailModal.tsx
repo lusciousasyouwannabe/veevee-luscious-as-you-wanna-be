@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
@@ -8,6 +8,7 @@ interface SizeOption {
   price: number;
   image: string;
   id: string;
+  soldOut?: boolean;
 }
 
 interface ProductDetailModalProps {
@@ -22,10 +23,16 @@ interface ProductDetailModalProps {
 
 const ProductDetailModal = ({ open, onOpenChange, product }: ProductDetailModalProps) => {
   const { addToCart } = useCart();
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = product.sizes[selectedIndex];
+  const firstAvailable = useMemo(() => {
+    const i = product.sizes.findIndex((s) => !s.soldOut);
+    return i === -1 ? 0 : i;
+  }, [product.sizes]);
+  const [selectedIndex, setSelectedIndex] = useState(firstAvailable);
+  const selected = product.sizes[selectedIndex] ?? product.sizes[0];
+  const selectedSoldOut = !!selected?.soldOut;
 
   const handleAdd = () => {
+    if (!selected || selectedSoldOut) return;
     addToCart({
       id: selected.id,
       name: `${product.name} ${selected.size}`,
@@ -72,9 +79,13 @@ const ProductDetailModal = ({ open, onOpenChange, product }: ProductDetailModalP
                   {product.sizes.map((sizeOpt, i) => (
                     <button
                       key={sizeOpt.id}
-                      onClick={() => setSelectedIndex(i)}
-                      className={`flex flex-col items-center gap-2 border p-3 transition-all duration-300 flex-1 ${
-                        selectedIndex === i
+                      onClick={() => !sizeOpt.soldOut && setSelectedIndex(i)}
+                      disabled={sizeOpt.soldOut}
+                      aria-disabled={sizeOpt.soldOut}
+                      className={`relative flex flex-col items-center gap-2 border p-3 transition-all duration-300 flex-1 ${
+                        sizeOpt.soldOut
+                          ? "border-border opacity-50 cursor-not-allowed"
+                          : selectedIndex === i
                           ? "border-primary bg-primary/5"
                           : "border-border hover:border-primary/40"
                       }`}
@@ -82,14 +93,18 @@ const ProductDetailModal = ({ open, onOpenChange, product }: ProductDetailModalP
                       <img
                         src={sizeOpt.image}
                         alt={sizeOpt.size}
-                        className="w-16 h-16 object-cover rounded"
+                        className={`w-16 h-16 object-cover rounded ${sizeOpt.soldOut ? "grayscale" : ""}`}
                       />
                       <span className="font-body text-xs font-semibold text-foreground">
                         {sizeOpt.size}
                       </span>
-                      <span className="font-body text-xs text-primary">
-                        ${sizeOpt.price}
-                      </span>
+                      {sizeOpt.soldOut ? (
+                        <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground">
+                          Sold Out
+                        </span>
+                      ) : (
+                        <span className="font-body text-xs text-primary">${sizeOpt.price}</span>
+                      )}
                     </button>
                   ))}
                 </div>
@@ -98,9 +113,10 @@ const ProductDetailModal = ({ open, onOpenChange, product }: ProductDetailModalP
 
             <button
               onClick={handleAdd}
-              className="mt-6 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              disabled={selectedSoldOut}
+              className="mt-6 w-full border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-primary"
             >
-              Add to Cart
+              {selectedSoldOut ? "Sold Out" : "Add to Cart"}
             </button>
           </div>
         </div>
