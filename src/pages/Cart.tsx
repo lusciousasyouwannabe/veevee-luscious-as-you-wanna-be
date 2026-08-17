@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const SHIPPING_RATE = 10.0;
+export const PENDING_ORDER_KEY = "vv_pending_order";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, totalPrice, totalItems } = useCart();
@@ -18,6 +19,17 @@ const Cart = () => {
     setIsCheckingOut(true);
     try {
       const successUrl = `${window.location.origin}/checkout/success`;
+
+      // Snapshot the cart so inventory can be deducted once the customer
+      // returns from Clover with a completed payment.
+      const orderReference = `VV-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+      localStorage.setItem(
+        PENDING_ORDER_KEY,
+        JSON.stringify({
+          orderReference,
+          lines: items.map((item) => ({ slug: item.id, quantity: item.quantity })),
+        })
+      );
 
       const { data, error } = await supabase.functions.invoke("clover-checkout", {
         body: {

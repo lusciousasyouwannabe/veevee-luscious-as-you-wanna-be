@@ -4,12 +4,30 @@ import { CheckCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
+import { supabase } from "@/integrations/supabase/client";
+import { PENDING_ORDER_KEY } from "@/pages/Cart";
 
 const CheckoutSuccess = () => {
   const { clearCart } = useCart();
 
   useEffect(() => {
     clearCart();
+
+    // Deduct inventory for the completed order (bundles deduct from their
+    // component products). The backend is idempotent per order reference.
+    const raw = localStorage.getItem(PENDING_ORDER_KEY);
+    if (!raw) return;
+    localStorage.removeItem(PENDING_ORDER_KEY);
+    try {
+      const pending = JSON.parse(raw);
+      if (pending?.orderReference && pending?.lines?.length) {
+        supabase.functions
+          .invoke("fulfill-order", { body: pending })
+          .catch((err) => console.error("Inventory deduction failed:", err));
+      }
+    } catch (err) {
+      console.error("Could not read pending order:", err);
+    }
   }, []);
 
   return (
