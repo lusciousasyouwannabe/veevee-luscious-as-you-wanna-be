@@ -27,6 +27,7 @@ import {
 import InventoryHistory from "@/components/inventory/InventoryHistory";
 import RestockDialog from "@/components/inventory/RestockDialog";
 import ProductEditDialog from "@/components/inventory/ProductEditDialog";
+import BundleManager from "@/components/inventory/BundleManager";
 
 type SortKey = "name" | "sku" | "category" | "quantity" | "sold_out_at" | "last_production_date" | "status";
 const PAGE_SIZE = 15;
@@ -228,8 +229,13 @@ const InventoryManager = () => {
       <Tabs defaultValue="items">
         <TabsList>
           <TabsTrigger value="items">Products</TabsTrigger>
+          <TabsTrigger value="bundles">Bundles</TabsTrigger>
           <TabsTrigger value="history">Inventory History</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="bundles">
+          <BundleManager products={rows} />
+        </TabsContent>
 
         <TabsContent value="items" className="space-y-4">
           {/* Filters */}
