@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Clock, Sparkles } from "lucide-react";
@@ -6,6 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 import PresaleBundleModal from "@/components/PresaleBundleModal";
+import { useBundles, componentLabel } from "@/hooks/useBundles";
+import { useProducts } from "@/hooks/useProducts";
+import { resolveProductImage } from "@/data/productImages";
 
 import glowCollection from "@/assets/product-glow-collection-edited.jpg";
 import presaleBundle from "@/assets/product-presale-bundle.jpg";
@@ -120,7 +123,30 @@ const Bundles = () => {
   const [filter, setFilter] = useState(searchParams.get("tab") || "All");
   const [presaleModalOpen, setPresaleModalOpen] = useState(false);
 
-  const filtered = bundles;
+  // Inventory-linked bundles. The backend hides any bundle whose required
+  // components are out of stock, so anything returned here is purchasable.
+  const { bundles: liveBundles, groups } = useBundles(true);
+  const { rows: products } = useProducts(false);
+
+  const dynamicBundles: BundleItem[] = useMemo(() => {
+    const productName = (id: string | null) => {
+      const p = products.find((x) => x.id === id);
+      return p ? `${p.name}${p.size ? ` ${p.size}` : ""}` : "Handcrafted item";
+    };
+    const groupName = (id: string | null) => groups.find((g) => g.id === id)?.name || "item";
+    return liveBundles.map((b) => ({
+      id: b.slug,
+      name: b.name,
+      price: b.price,
+      originalPrice: b.original_price ?? undefined,
+      savings: b.savings_label ?? undefined,
+      image: resolveProductImage(b.image_key),
+      includes: b.components.map((c) => componentLabel(c, productName, groupName, b.surprise_mode)),
+      category: b.category,
+    }));
+  }, [liveBundles, groups, products]);
+
+  const filtered = [...dynamicBundles, ...bundles];
 
   const handleAdd = (item: BundleItem) => {
     addToCart({ id: item.id, name: item.name, price: item.price, originalPrice: item.originalPrice, image: item.image, category: item.category });
