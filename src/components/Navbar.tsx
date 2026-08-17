@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between h-16 px-6">
         <Link to="/" className="flex items-center gap-2 font-display text-lg tracking-wider text-gradient-gold font-bold">
-          <img src={logo} alt="VeeVee Luscious logo" className="w-8 h-8 rounded-full object-cover" />
+          <img src={logo} alt="VeeVee Luscious luxury bath and body products" className="w-8 h-8 rounded-full object-cover" />
           <span className="hidden sm:inline">VEEVEE LUSCIOUS AS YOU WANNA BE</span>
         </Link>
 
@@ -34,6 +34,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/cart"
+            aria-label="View shopping cart"
             className="relative font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
           >
             <ShoppingBag size={20} />
@@ -46,7 +47,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 md:hidden">
-          <Link to="/cart" className="relative text-foreground">
+          <Link to="/cart" aria-label="View shopping cart" className="relative text-foreground">
             <ShoppingBag size={20} />
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
@@ -54,7 +55,12 @@ const Navbar = () => {
               </span>
             )}
           </Link>
-          <button onClick={() => setOpen(!open)} className="text-foreground">
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            className="text-foreground"
+          >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
