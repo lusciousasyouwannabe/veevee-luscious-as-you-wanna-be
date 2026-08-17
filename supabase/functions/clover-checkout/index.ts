@@ -3,6 +3,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts'
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.58.0'
 
 const ItemSchema = z.object({
   name: z.string().min(1).max(255),
@@ -10,7 +11,7 @@ const ItemSchema = z.object({
   quantity: z.number().int().positive(),
 })
 
-const BodySchema = z.object({
+const BodySchemaBase = z.object({
   items: z.array(ItemSchema).min(1),
   redirectUrl: z.string().url(),
   discount: z
@@ -18,6 +19,16 @@ const BodySchema = z.object({
     .optional(),
   customerEmail: z.string().email().optional(),
 })
+
+const OrderSchema = z.object({
+  orderReference: z.string().min(1).max(100),
+  lines: z.array(z.object({ slug: z.string().min(1).max(200), quantity: z.number().int().positive() })).min(1),
+  subtotal: z.number().nonnegative().optional(),
+  customer: z.record(z.string()).optional(),
+  discount: z.object({ code: z.string().max(40), amount: z.number() }).optional(),
+})
+
+const BodySchema = BodySchemaBase.extend({ order: OrderSchema.optional() })
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -33,7 +44,7 @@ Deno.serve(async (req) => {
       )
     }
 
-    const { items, redirectUrl, discount, customerEmail } = parsed.data
+    const { items, redirectUrl, discount, customerEmail, order } = parsed.data
 
     const apiKey = Deno.env.get('CLOVER_API_KEY')
     const merchantId = Deno.env.get('CLOVER_MERCHANT_ID')
@@ -113,11 +124,38 @@ Deno.serve(async (req) => {
     }
 
     const checkoutData = JSON.parse(checkoutText)
+    const checkoutSessionId = checkoutData.id || checkoutData.checkout?.id || null
+
+    // Record the pending order so the order-confirmation webhook can fulfill it
+    // even if the customer never returns to the success page.
+    if (order) {
+      try {
+        const supabase = createClient(
+          Deno.env.get('SUPABASE_URL')!,
+          Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
+          { auth: { persistSession: false } }
+        )
+        await supabase.from('pending_orders').upsert(
+          {
+            order_reference: order.orderReference,
+            checkout_session_id: checkoutSessionId,
+            lines: order.lines,
+            customer: order.customer ?? (customerEmail ? { email: customerEmail } : null),
+            discount: order.discount ?? null,
+            subtotal: order.subtotal ?? 0,
+            status: 'pending',
+          },
+          { onConflict: 'order_reference' }
+        )
+      } catch (e) {
+        console.error('Failed to record pending order:', e)
+      }
+    }
 
     return new Response(
       JSON.stringify({
         checkoutUrl: checkoutData.href || checkoutData.checkout?.href,
-        checkoutSessionId: checkoutData.id || checkoutData.checkout?.id,
+        checkoutSessionId,
       }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     )
