@@ -14,6 +14,183 @@ export type Database = {
   }
   public: {
     Tables: {
+      bundle_components: {
+        Row: {
+          bundle_id: string
+          component_type: string
+          created_at: string
+          customer_choice: boolean
+          display_label: string | null
+          group_id: string | null
+          id: string
+          product_id: string | null
+          quantity: number
+          required: boolean
+          sort_order: number
+          substitution_mode: string
+          updated_at: string
+        }
+        Insert: {
+          bundle_id: string
+          component_type?: string
+          created_at?: string
+          customer_choice?: boolean
+          display_label?: string | null
+          group_id?: string | null
+          id?: string
+          product_id?: string | null
+          quantity?: number
+          required?: boolean
+          sort_order?: number
+          substitution_mode?: string
+          updated_at?: string
+        }
+        Update: {
+          bundle_id?: string
+          component_type?: string
+          created_at?: string
+          customer_choice?: boolean
+          display_label?: string | null
+          group_id?: string | null
+          id?: string
+          product_id?: string | null
+          quantity?: number
+          required?: boolean
+          sort_order?: number
+          substitution_mode?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bundle_components_bundle_id_fkey"
+            columns: ["bundle_id"]
+            isOneToOne: false
+            referencedRelation: "bundles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bundle_components_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "substitution_groups"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bundle_components_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bundle_fulfillments: {
+        Row: {
+          bundle_id: string | null
+          bundle_name: string
+          created_at: string
+          id: string
+          order_reference: string | null
+          selections: Json
+        }
+        Insert: {
+          bundle_id?: string | null
+          bundle_name: string
+          created_at?: string
+          id?: string
+          order_reference?: string | null
+          selections?: Json
+        }
+        Update: {
+          bundle_id?: string | null
+          bundle_name?: string
+          created_at?: string
+          id?: string
+          order_reference?: string | null
+          selections?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bundle_fulfillments_bundle_id_fkey"
+            columns: ["bundle_id"]
+            isOneToOne: false
+            referencedRelation: "bundles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bundles: {
+        Row: {
+          archived: boolean
+          blocking_item: string | null
+          category: string
+          created_at: string
+          description: string | null
+          id: string
+          image_key: string
+          is_visible: boolean
+          manual_hidden: boolean
+          name: string
+          notes: string | null
+          original_price: number | null
+          own_quantity: number
+          price: number
+          savings_label: string | null
+          slug: string
+          sort_order: number
+          status: string
+          surprise_mode: boolean
+          track_own_inventory: boolean
+          updated_at: string
+        }
+        Insert: {
+          archived?: boolean
+          blocking_item?: string | null
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_key?: string
+          is_visible?: boolean
+          manual_hidden?: boolean
+          name: string
+          notes?: string | null
+          original_price?: number | null
+          own_quantity?: number
+          price?: number
+          savings_label?: string | null
+          slug: string
+          sort_order?: number
+          status?: string
+          surprise_mode?: boolean
+          track_own_inventory?: boolean
+          updated_at?: string
+        }
+        Update: {
+          archived?: boolean
+          blocking_item?: string | null
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_key?: string
+          is_visible?: boolean
+          manual_hidden?: boolean
+          name?: string
+          notes?: string | null
+          original_price?: number | null
+          own_quantity?: number
+          price?: number
+          savings_label?: string | null
+          slug?: string
+          sort_order?: number
+          status?: string
+          surprise_mode?: boolean
+          track_own_inventory?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -286,6 +463,72 @@ export type Database = {
         }
         Relationships: []
       }
+      substitution_group_products: {
+        Row: {
+          created_at: string
+          group_id: string
+          id: string
+          preference_order: number
+          product_id: string
+        }
+        Insert: {
+          created_at?: string
+          group_id: string
+          id?: string
+          preference_order?: number
+          product_id: string
+        }
+        Update: {
+          created_at?: string
+          group_id?: string
+          id?: string
+          preference_order?: number
+          product_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "substitution_group_products_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "substitution_groups"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "substitution_group_products_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      substitution_groups: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string
@@ -315,6 +558,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      deduct_bundle_inventory: {
+        Args: { _bundle_id: string; _order_reference?: string; _qty?: number }
+        Returns: Json
+      }
       delete_email: {
         Args: { message_id: number; queue_name: string }
         Returns: boolean
@@ -340,6 +587,15 @@ export type Database = {
           msg_id: number
           read_ct: number
         }[]
+      }
+      recalc_bundle: { Args: { _bundle_id: string }; Returns: undefined }
+      recalc_bundles_for_product: {
+        Args: { _product_id: string }
+        Returns: undefined
+      }
+      resolve_bundle_component: {
+        Args: { _component_id: string }
+        Returns: string
       }
     }
     Enums: {
