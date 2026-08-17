@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import logo from "@/assets/logo-black-gold.png";
 import bgImage from "@/assets/invoice-bg-lavender.jpg";
+import Seo from "@/components/Seo";
 
 interface LineItem {
   id: number;
@@ -41,6 +42,7 @@ const Invoice = () => {
       className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat text-[hsl(40,20%,90%)] font-[var(--font-body)]"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+    <Seo title="Invoice | VeeVee Luscious" description="Internal invoice utility for VeeVee Luscious." path="/invoice" noindex />
       {/* Dark overlay for readability */}
       <div className="min-h-screen bg-black/60 backdrop-blur-[2px]">
       {/* Controls - hidden on print */}

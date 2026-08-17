@@ -1,0 +1,12 @@
+# VeeVee Luscious
+
+> Luxury bath and body care — whipped body butters, sugar body scrubs, handmade bath bars, massage oils and men's grooming, made to nourish skin and elevate everyday self-care.
+
+VeeVee Luscious is a handcrafted bath and body brand. Products are made in small batches with nourishing ingredients and sold directly through this site, including single items and curated collections.
+
+## Pages
+
+- [Home](/): Brand story, best sellers and the Luscious As You Wanna Be experience.
+- [Shop](/shop): Body butters, sugar scrubs, bath bars, massage oils and men's grooming, with sizes and pricing.
+- [Bundles](/bundles): Curated collections, limited edition sets and monthly subscription boxes.
+- [Cart](/cart): Review your selections and check out with flat-rate shipping.

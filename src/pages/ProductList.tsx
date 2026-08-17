@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 import { useProducts } from "@/hooks/useProducts";
+import Seo from "@/components/Seo";
 
 interface CategoryList {
   title: string;
@@ -56,6 +57,7 @@ const ProductList = () => {
 
   return (
     <div className="min-h-screen bg-background">
+    <Seo title="Product List | VeeVee Luscious" description="Internal product list utility for VeeVee Luscious." path="/product-list" noindex />
       <Navbar />
       <section className="pt-32 pb-24 px-6">
         <div className="container max-w-3xl mx-auto">

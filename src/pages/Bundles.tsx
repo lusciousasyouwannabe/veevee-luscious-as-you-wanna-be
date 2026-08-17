@@ -22,6 +22,7 @@ import blueberryChamomile from "@/assets/product-blueberry-chamomile.png";
 import myrtilleChamomileBundle from "@/assets/product-myrtille-chamomile-bundle.jpg";
 import cremeBruleeBundle from "@/assets/product-creme-brulee-bundle.jpg";
 import classicManSet from "@/assets/product-classic-man-set.jpg";
+import Seo, { SITE_URL } from "@/components/Seo";
 
 interface BundleItem {
   id: string;
@@ -160,6 +161,12 @@ const Bundles = () => {
 
   return (
     <div className="min-h-screen bg-background">
+    <Seo
+      title="Curated Bath & Body Bundles | VeeVee Luscious"
+      description="Thoughtfully paired luxury self-care collections and monthly subscription boxes — body butter, sugar scrub, bath bar and massage oil sets at a saving."
+      path="/bundles"
+      jsonLd={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "VeeVee Luscious Bundles", url: `${SITE_URL}/bundles`, description: "Curated luxury bath and body gift sets and subscriptions." }}
+    />
       <Navbar />
       <section className="pt-32 pb-16 px-6">
         <div className="container max-w-6xl mx-auto">

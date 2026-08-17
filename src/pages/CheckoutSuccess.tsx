@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 import { supabase } from "@/integrations/supabase/client";
 import { PENDING_ORDER_KEY } from "@/pages/Cart";
+import Seo from "@/components/Seo";
 
 const CheckoutSuccess = () => {
   const { clearCart } = useCart();
@@ -32,6 +33,7 @@ const CheckoutSuccess = () => {
 
   return (
     <div className="min-h-screen bg-background">
+    <Seo title="Order Confirmed | VeeVee Luscious" description="Thank you for your order. Your luxurious self-care essentials are being prepared." path="/checkout/success" noindex />
       <Navbar />
       <section className="pt-32 pb-24 px-6">
         <div className="container max-w-2xl mx-auto text-center">

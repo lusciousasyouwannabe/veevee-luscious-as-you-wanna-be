@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import Seo from "@/components/Seo";
 
 const SHIPPING_RATE = 10.0;
 export const PENDING_ORDER_KEY = "vv_pending_order";
@@ -65,6 +66,7 @@ const Cart = () => {
   if (items.length === 0) {
     return (
       <div className="min-h-screen bg-background">
+        <Seo title="Your Cart | VeeVee Luscious" description="Review your luxury bath and body selections and check out securely with flat-rate shipping." path="/cart" noindex />
         <Navbar />
         <section className="pt-32 pb-24 px-6">
           <div className="container max-w-2xl mx-auto text-center">
@@ -88,6 +90,7 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen bg-background">
+    <Seo title="Your Cart | VeeVee Luscious" description="Review your luxury bath and body selections and check out securely with flat-rate shipping." path="/cart" noindex />
       <Navbar />
       <section className="pt-32 pb-24 px-6">
         <div className="container max-w-4xl mx-auto">
