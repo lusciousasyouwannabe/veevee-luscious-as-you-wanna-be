@@ -540,6 +540,48 @@ export type Database = {
         }
         Relationships: []
       }
+      pending_orders: {
+        Row: {
+          checkout_session_id: string | null
+          completed_at: string | null
+          created_at: string
+          customer: Json | null
+          discount: Json | null
+          id: string
+          lines: Json
+          order_reference: string
+          status: string
+          subtotal: number
+          updated_at: string
+        }
+        Insert: {
+          checkout_session_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          customer?: Json | null
+          discount?: Json | null
+          id?: string
+          lines?: Json
+          order_reference: string
+          status?: string
+          subtotal?: number
+          updated_at?: string
+        }
+        Update: {
+          checkout_session_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          customer?: Json | null
+          discount?: Json | null
+          id?: string
+          lines?: Json
+          order_reference?: string
+          status?: string
+          subtotal?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       processed_orders: {
         Row: {
           created_at: string
