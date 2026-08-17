@@ -147,7 +147,14 @@ const Bundles = () => {
     }));
   }, [liveBundles, groups, products]);
 
-  const filtered = [...dynamicBundles, ...bundles];
+  const categories = ["All", "Sets", "Collections"];
+
+  const filtered = useMemo(() => {
+    const allBundles = [...dynamicBundles, ...bundles];
+    if (filter === "All") return allBundles;
+    if (filter === "Sets") return allBundles.filter((b) => b.category === "Sets" || b.category === "Collections");
+    return allBundles.filter((b) => b.category === filter);
+  }, [dynamicBundles, bundles, filter]);
 
   const handleAdd = (item: BundleItem) => {
     addToCart({ id: item.id, name: item.name, price: item.price, originalPrice: item.originalPrice, image: item.image, category: item.category });
