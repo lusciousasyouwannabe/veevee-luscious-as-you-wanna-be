@@ -376,6 +376,30 @@ export type Database = {
         }
         Relationships: []
       }
+      processed_orders: {
+        Row: {
+          created_at: string
+          id: string
+          line_items: Json
+          order_reference: string
+          result: Json | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          line_items?: Json
+          order_reference: string
+          result?: Json | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          line_items?: Json
+          order_reference?: string
+          result?: Json | null
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           archived: boolean
